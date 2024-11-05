@@ -1,0 +1,90 @@
+<?php
+
+namespace App\Views\Client\Layouts;
+
+use App\Views\BaseView;
+
+class Footer extends BaseView
+{
+    public static function render($data = null)
+    {
+?>
+
+<div class="logo-bar">
+        <img src="/public/assets/images/logo/logo-apple.png" alt="Apple">
+        <img src="/public/assets/images/logo/logo-acer.png" alt="Acer">
+        <img src="/public/assets/images/logo/logo-asus.png" alt="Asus">
+        <img src="/public/assets/images/logo/logo-dell.png" alt="Dell">
+        <img src="/public/assets/images/logo/logo-gigabyte.png" alt="Gigabyte">
+        <img src="/public/assets/images/logo/logo-hp.png" alt="HP">
+        <img src="/public/assets/images/logo/logo-lenovo.png" alt="Lenovo">
+        <img src="/public/assets/images/logo/logo-msi.png" alt="MSI">
+    </div>
+    <!-- Footer -->
+    <footer class="bg-dark text-light pt-4 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h5>TS Store</h5>
+                    <p>Địa chỉ: FPT Polytechnic Cần Thơ</p>
+                    <p>Điện thoại: 0123 456 789</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Theo dõi chúng tôi</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Phương thức thanh toán</h5>
+                    <div class="payment-icons">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAsCAMAAAAHH4uhAAAAxlBMVEXw7+vqABv3nxr/XwHqAAD39vL3mwDz8u7w9PD4mADw8fDw+PT2oxvw8/TqABj7+vbx6N3j4t5bWlnshITzzaX/WQDtjo7yMhX/ZADv09Dx4c7qABLv5OB9fHp3dnTX1tNQUE/GxcLtoaDsbW/uqKf0v4T1uHHtlJPqKTL3ozH0xpPusbDqGyfuyMnz0q/sd3j0JgD8fgD2QhD6ixPrRUr8dw32qkj5TQvrWV32sVz9bAnsTlSdnJloaGaNjYokJCRAQD+1tbJK6QNxAAACNUlEQVRIie2VfXeaMBTGIwYSyCAmYicob1pdtbbbuq2rKyB+/y+1JFonAbRnf+7s4ZwEgr9z731CrgD81/uFMSEEY3RacBzHdR3nGkaC2XA+H94GBCvKDf3FcrnwQ/cSisGnHoRwMhHD3Qxjx/FXtqVkG2vQiZJ7CL3eUR7cPIQryzjJsh7dDu7zH0yhX75+MM5lL1tJMoe9mp7GI4202khyo3Efx/3+6JtRJ9cNEgca5wlOkHXQsEPdIfJ9Ugd/9pV+1JM1nt0rAXvjA3gtJB62VKhAvcpFPSS5a8+0metKy1XPdPQGjjXQqnNTHeyfpBc5OOfQ34KXImqp2tp2eF4dPNX4SwON+naQF83Vp5Ormjfbuqv49r376OvfXFeRl0vsOBxtx2Ogk3jT9u3o1qycJhhAzdjWTWzpO/gB1mN6o76tcY3TeIy5Oa/Tg69b6xyzjLZ4isQ3ojeqhD3RIWfE9UVjfMPsNepurQTMXqHU5OUeY9nFH7eGLWQ9+91t9RCVoGkQTPGhkctW7gzCcAAuNvKjEJJ/HOb1Hx5lSiEkBnGLWE7B4RGpBbVo0oI140S8jFLGeFyigifFLjJjnmRxmaTcjHgMIs4iXrWAO8qzrOQMVEmaoSSmeZml+5zuEBBjBXZUTGkLmNI4ScqUoYomZcQUmO33dEdRLghQUTkx1CAjmrMkZ2kRieQSk3Oz4PssM7MqNeO0ALGppqxpjriQMkc6AqQdVBqMqLyTb9XUjPjv6jfqnjNFPcAO2QAAAABJRU5ErkJggg==" alt="MasterCard">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png" alt="PayPal">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAASCAMAAAAewWyUAAAAqFBMVEX///8AAM+cn+eIiuOAg+LoABH98fP5ys/97vD61Nj5z9R2eeDzkZz2sLj+9faanOf1p7AIFtHrLEvpACR6fODyh5THyPH7297oABnxgY/sQFn0nqjU1PS9v+9ucd5oa93u7vvrHkLxeon4w8jqCTmjpentU2jpAC5FSthLT9iTleX3vMPb3Pb4+P23ue3oAABYXNssM9Q+Q9fm5vnwcIAdJdNhZNw1O9bLcgKdAAABHUlEQVQokZWR6XaCMBCF50LYBJGABrcibrQutFps+/5v1oEAPyu95yST5Tszkxui/8txh3HpfDEMXMbPCC9oCiejVXuw9kUdhL+mlyzb+JNcnweJs9zuxuH+0IJHQBEpwKAJGlX6ojjY0dYajV9b0IR8IzpJmGSAk29wbm/ikU0eZ04Xl/rlmZS4XiFlxuCUyg3euzZnHzb3urCLZM6N3iAwFTzdGKx1751JdnUI96t05hF9opKsCj8MnozzHaJzpqCLTXGSPJrtF3J+xLmE1D0qXmhFoWsV9FiFegvkOY8SYDCrrt+cuqk4K6xgPHfc7meAkpSiGmztUdpwq9izm4dLb4/ZRyWEMI+tjaQrelEHPlNghcPA0BuY8W/9AlvzEmQYIE3OAAAAAElFTkSuQmCC" alt="MBbank">
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5>Liên hệ</h5>
+                    <p>Email: support@tsstore.com</p>
+                    <p>Hotline: 18001008</p>
+                    <h5>Đăng ký nhận tin</h5>
+                    <form>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Nhập email của bạn">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">Đăng ký</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center pt-3">
+                <p>&copy; 2024 TS Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="/public/assets/client/script.js"></script>
+        </body>
+
+        </html>
+
+
+<?php
+
+        // unset($_SESSION['success']);
+        // unset($_SESSION['error']);
+    }
+}
+
+?>
