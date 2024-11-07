@@ -1,35 +1,63 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const slider = document.querySelector('.slider');
-    const images = document.querySelectorAll('.slider img');
-    let currentIndex = 0;
-    const totalImages = images.length;
+// document.addEventListener('DOMContentLoaded', function () {
+//     const slider = document.querySelector('.slider');
+//     const images = document.querySelectorAll('.slider img');
+//     let currentIndex = 0;
+//     const totalImages = images.length;
 
-    function moveSlider() {
-        currentIndex++;
-        if (currentIndex === totalImages) {
-            currentIndex = 0;
-        }
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
+//     function moveSlider() {
+//         currentIndex++;
+//         if (currentIndex === totalImages) {
+//             currentIndex = 0;
+//         }
+//         slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+//     }
 
-    let interval = setInterval(moveSlider, 3000);
+//     let interval = setInterval(moveSlider, 3000);
 
-    document.getElementById('next').addEventListener('click', function () {
-        clearInterval(interval);
-        moveSlider();
-        interval = setInterval(moveSlider, 3000);
+//     document.getElementById('next').addEventListener('click', function () {
+//         clearInterval(interval);
+//         moveSlider();
+//         interval = setInterval(moveSlider, 3000);
+//     });
+
+//     document.getElementById('prev').addEventListener('click', function () {
+//         clearInterval(interval);
+//         currentIndex--;
+//         if (currentIndex < 0) {
+//             currentIndex = totalImages - 1;
+//         }
+//         slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+//         interval = setInterval(moveSlider, 3000);
+//     });
+// });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var myCarousel = document.querySelector('#header-carousel');
+    
+    // Khởi tạo các options cho carousel
+    var options = {
+        interval: 5000, // Thời gian chuyển slide tự động (ms)
+        wrap: true,      // Lặp lại slide khi đạt cuối cùng
+        touch: true      // Cho phép chạm để chuyển slide
+    };
+
+    // Khởi tạo carousel từ đối tượng Bootstrap
+    var carousel = new bootstrap.Carousel(myCarousel, options);
+
+    // Xử lý sự kiện khi click vào nút prev và next
+    document.querySelector('.carousel-control-prev').addEventListener('click', function() {
+        carousel.prev();
+    });
+    document.querySelector('.carousel-control-next').addEventListener('click', function() {
+        carousel.next();
     });
 
-    document.getElementById('prev').addEventListener('click', function () {
-        clearInterval(interval);
-        currentIndex--;
-        if (currentIndex < 0) {
-            currentIndex = totalImages - 1;
-        }
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        interval = setInterval(moveSlider, 3000);
-    });
+    // Hàm tự động chuyển slide
+    var autoSlide = setInterval(function() {
+        carousel.next(); // Tự động chuyển đến slide tiếp theo
+    }, options.interval);
 });
+
 
 function calculateProductTotal(quantity, price) {
     return quantity * price;
@@ -95,139 +123,26 @@ function increaseQuantity(inputId) {
         document.getElementById('tong2').innerText = amount;
     }
 }
-document.getElementById("btn-xemthem").addEventListener("click", function() {
+document.getElementById("btn-xemthem").addEventListener("click", function () {
     var element = document.getElementById("xemthem");
     if (element) {
         element.classList.add("hien");
         element.scrollIntoView({
-            behavior: "smooth", 
-            block: "start"      
+            behavior: "smooth",
+            block: "start"
         });
 
         this.style.display = 'none';
     }
 });
- document.getElementById("btn-thugon").addEventListener("click", function() {
-                var element = document.getElementById("xemthem");
+document.getElementById("btn-thugon").addEventListener("click", function () {
+    var element = document.getElementById("xemthem");
 
-                if (element) {
-                    element.classList.remove("hien");
+    if (element) {
+        element.classList.remove("hien");
 
-                    window.scrollTo(0, 500);
-                    document.getElementById("btn-xemthem").style.display = 'block';
-                }
-            });
-                
-                // Initiate the wowjs
-                new WOW().init();
-            
-            
-                // Sticky Navbar
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 45) {
-                        $('.navbar').addClass('sticky-top shadow-sm');
-                    } else {
-                        $('.navbar').removeClass('sticky-top shadow-sm');
-                    }
-                });
-                
-                // Dropdown on mouse hover
-                const $dropdown = $(".dropdown");
-                const $dropdownToggle = $(".dropdown-toggle");
-                const $dropdownMenu = $(".dropdown-menu");
-                const showClass = "show";
-                
-                $(window).on("load resize", function() {
-                    if (this.matchMedia("(min-width: 992px)").matches) {
-                        $dropdown.hover(
-                        function() {
-                            const $this = $(this);
-                            $this.addClass(showClass);
-                            $this.find($dropdownToggle).attr("aria-expanded", "true");
-                            $this.find($dropdownMenu).addClass(showClass);
-                        },
-                        function() {
-                            const $this = $(this);
-                            $this.removeClass(showClass);
-                            $this.find($dropdownToggle).attr("aria-expanded", "false");
-                            $this.find($dropdownMenu).removeClass(showClass);
-                        }
-                        );
-                    } else {
-                        $dropdown.off("mouseenter mouseleave");
-                    }
-                });
-            
-            
-                // Facts counter
-                $('[data-toggle="counter-up"]').counterUp({
-                    delay: 10,
-                    time: 2000
-                });
-                
-                
-                // Back to top button
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 100) {
-                        $('.back-to-top').fadeIn('slow');
-                    } else {
-                        $('.back-to-top').fadeOut('slow');
-                    }
-                });
-                $('.back-to-top').click(function () {
-                    $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-                    return false;
-                });
-            
-            
-                // Testimonials carousel
-                $(".testimonial-carousel").owlCarousel({
-                    autoplay: true,
-                    smartSpeed: 1500,
-                    dots: true,
-                    loop: true,
-                    center: true,
-                    responsive: {
-                        0:{
-                            items:1
-                        },
-                        576:{
-                            items:1
-                        },
-                        768:{
-                            items:2
-                        },
-                        992:{
-                            items:3
-                        }
-                    }
-                });
-            
-            
-                // Vendor carousel
-                $('.vendor-carousel').owlCarousel({
-                    loop: true,
-                    margin: 45,
-                    dots: false,
-                    loop: true,
-                    autoplay: true,
-                    smartSpeed: 1000,
-                    responsive: {
-                        0:{
-                            items:2
-                        },
-                        576:{
-                            items:4
-                        },
-                        768:{
-                            items:6
-                        },
-                        992:{
-                            items:8
-                        }
-                    }
-                });
-                
-            
-            
-           
+        window.scrollTo(0, 500);
+        document.getElementById("btn-xemthem").style.display = 'block';
+    }
+});
+
