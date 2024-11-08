@@ -64,26 +64,36 @@ class Header extends BaseView
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
+                            <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
+                            <a href="service.html" class="nav-item nav-link">Sản phẩm</a>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sách</a>
                                 <div class="dropdown-menu m-0">
                                     <a href="blog.html" class="dropdown-item">Blog Grid</a>
                                     <a href="detail.html" class="dropdown-item">Blog Detail</a>
                                 </div>
                             </div>
+                            <a href="about.html" class="nav-item nav-link">About</a>
+                            
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu m-0">
-                                    <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                                    <a href="feature.html" class="dropdown-item">Our features</a>
-                                    <a href="team.html" class="dropdown-item">Team Members</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="quote.html" class="dropdown-item">Free Quote</a>
-                                </div>
-                            </div>
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+    <div class="dropdown-menu m-0">
+        <div class="dropdown-submenu">
+            <a href="price.html" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Pricing Plan</a>
+            <div class="dropdown-menu">
+                <a href="basic.html" class="dropdown-item">Basic Plan</a>
+                <a href="premium.html" class="dropdown-item">Premium Plan</a>
+                <a href="enterprise.html" class="dropdown-item">Enterprise Plan</a>
+            </div>
+        </div>
+        <a href="feature.html" class="dropdown-item">Our Features</a>
+        <a href="team.html" class="dropdown-item">Team Members</a>
+        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+        <a href="quote.html" class="dropdown-item">Free Quote</a>
+    </div>
+</div>
+
+
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
