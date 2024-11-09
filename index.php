@@ -15,8 +15,8 @@ use Dotenv\Dotenv;
 use App\Route;
 
 // Tạo đối tượng Dotenv và chỉ định thư mục chứa tệp .env
-$dotenv =  Dotenv::createImmutable(paths: __DIR__);/* Dotenv::createImmutable(__DIR__); */
-$echo=$dotenv->load();
+// $dotenv =  Dotenv::createImmutable(paths: __DIR__);/* Dotenv::createImmutable(__DIR__); */
+// $echo=$dotenv->load();
 // if ($echo){
 //     echo "<p> ok</p>";
 // }
