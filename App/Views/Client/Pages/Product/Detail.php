@@ -66,7 +66,7 @@ class Detail extends BaseView
     </div>
 
  
-    <div class="mt-5">
+    <div class="mt-5 mx-4">
         <h4>Thông tin chi tiết</h4>
         <table class="table table-striped">
             <tbody>
@@ -94,7 +94,6 @@ class Detail extends BaseView
             </tbody>
             
         </table>
-        <p>hdhskhhsfdsffs</p>
     </div>
 </div>
 
@@ -105,7 +104,7 @@ class Detail extends BaseView
 
       <div class="col-md-2">
           <div class="card text-center">
-              <img src="./img/1.jpg" class="card-img-top" alt="Product Image">
+              <img src="/public/assets/client/images/1.jpg" class="card-img-top" alt="Product Image">
               <div class="card-body">
                   <h6 class="card-title">7 Thói Quen Hôn Nhân Hạnh Phúc - The 7 Habits...</h6>
                   <p class="text-danger fw-bold">119.350₫ <span class="text-muted text-decoration-line-through">155.000₫</span></p>
@@ -117,7 +116,7 @@ class Detail extends BaseView
 
       <div class="col-md-2">
           <div class="card text-center">
-              <img src="./img/1.jpg" class="card-img-top" alt="Product Image">
+              <img src="/public/assets/client/images/1.jpg" class="card-img-top" alt="Product Image">
               <div class="card-body">
                   <h6 class="card-title">Thay Đổi Tư Duy Thay Đổi Cuộc Sống (Tái Bản 2015)</h6>
                   <p class="text-danger fw-bold">162.360₫ <span class="text-muted text-decoration-line-through">198.000₫</span></p>
@@ -128,7 +127,7 @@ class Detail extends BaseView
 
       <div class="col-md-2">
         <div class="card text-center">
-            <img src="./img/1.jpg" class="card-img-top" alt="Product Image">
+            <img src="/public/assets/client/images/1.jpg" class="card-img-top" alt="Product Image">
             <div class="card-body">
                 <h6 class="card-title">Thay Đổi Tư Duy Thay Đổi Cuộc Sống (Tái Bản 2015)</h6>
                 <p class="text-danger fw-bold">162.360₫ <span class="text-muted text-decoration-line-through">198.000₫</span></p>
@@ -139,7 +138,7 @@ class Detail extends BaseView
 
     <div class="col-md-2">
       <div class="card text-center">
-          <img src="./img/1.jpg" class="card-img-top" alt="Product Image">
+          <img src="/public/assets/client/images/1.jpg" class="card-img-top" alt="Product Image">
           <div class="card-body">
               <h6 class="card-title">Thay Đổi Tư Duy Thay Đổi Cuộc Sống (Tái Bản 2015)</h6>
               <p class="text-danger fw-bold">162.360₫ <span class="text-muted text-decoration-line-through">198.000₫</span></p>
@@ -150,7 +149,7 @@ class Detail extends BaseView
 
   <div class="col-md-2">
     <div class="card text-center">
-        <img src="./img/1.jpg" class="card-img-top" alt="Product Image">
+        <img src="/public/assets/client/images/1.jpg" class="card-img-top" alt="Product Image">
         <div class="card-body">
             <h6 class="card-title">Thay Đổi Tư Duy Thay Đổi Cuộc Sống (Tái Bản 2015)</h6>
             <p class="text-danger fw-bold">162.360₫ <span class="text-muted text-decoration-line-through">198.000₫</span></p>
@@ -161,7 +160,7 @@ class Detail extends BaseView
 
 <div class="col-md-2">
   <div class="card text-center">
-      <img src="./img/1.jpg" class="card-img-top" alt="Product Image">
+      <img src="/public/assets/client/images/1.jpg" class="card-img-top" alt="Product Image">
       <div class="card-body">
           <h6 class="card-title">Thay Đổi Tư Duy Thay Đổi Cuộc Sống (Tái Bản 2015)</h6>
           <p class="text-danger fw-bold">162.360₫ <span class="text-muted text-decoration-line-through">198.000₫</span></p>

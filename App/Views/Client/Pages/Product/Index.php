@@ -31,7 +31,7 @@ class Index extends BaseView
                             <div class="dropdown-button">
                                 <button class="dropdown-item-button">
                                     <a class="dropdown-toggle" href="index.php?url=dienthoai#dienthoai-content" id="navbarDropdown1" role="button" aria-expanded="false">
-                                        Điện thoại <i class="fas fa-chevron-right">&nbsp;</i>
+                                        Sách <i class="fas fa-chevron-right">&nbsp;</i>
                                     </a>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
@@ -55,7 +55,7 @@ class Index extends BaseView
                             <div class="dropdown-button">
                                 <button class="dropdown-item-button">
                                     <a class="dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Laptop <i class="fas fa-chevron-right">&nbsp;</i>
+                                        Tạp chí <i class="fas fa-chevron-right">&nbsp;</i>
                                     </a>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown2">
@@ -74,7 +74,7 @@ class Index extends BaseView
                             <div class="dropdown-button">
                                 <button class="dropdown-item-button">
                                     <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Máy tính bảng <i class="fas fa-chevron-right">&nbsp;</i>
+                                        Bút mực & Bút chì <i class="fas fa-chevron-right">&nbsp;</i>
                                     </a>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown3">
@@ -91,7 +91,7 @@ class Index extends BaseView
                             <div class="dropdown-button">
                                 <button class="dropdown-item-button">
                                     <a class="dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Đồng hồ thông minh <i class="fas fa-chevron-right">&nbsp;</i>
+                                        Đồng hồ <i class="fas fa-chevron-right">&nbsp;</i>
                                     </a>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown4">
@@ -108,7 +108,7 @@ class Index extends BaseView
                             <div class="dropdown-button">
                                 <button class="dropdown-item-button">
                                     <a class="dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Điện máy <i class="fas fa-chevron-right">&nbsp;</i>
+                                        Đồ chơi <i class="fas fa-chevron-right">&nbsp;</i>
                                     </a>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown5">
@@ -164,7 +164,7 @@ class Index extends BaseView
                             <div class="dropdown-button">
                                 <button class="dropdown-item-button">
                                     <a class="dropdown-toggle" href="#" id="navbarDropdown8" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        PC - Màn hình - Máy in <i class="fas fa-chevron-right">&nbsp;</i>
+                                        Máy tính <i class="fas fa-chevron-right">&nbsp;</i>
                                     </a>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown8">
