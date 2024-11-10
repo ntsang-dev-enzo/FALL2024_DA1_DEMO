@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <title>settle</title>
-      <link rel="stylesheet" href="/public/assets/client/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/public/assets/client/css/footer.css">
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-   </head>
-   <body class="main-layout">
-      <!--  footer -->
+<?php
+
+namespace App\Views\Client\Layouts;
+
+use App\Views\BaseView;
+
+class Footer extends BaseView
+{
+    public static function render($data = null)
+    {
+?>
+
       <footer>
-         <div class="footer">
-            <div class="container">
-               <div class="row border_bo1 ">
+         <div class="footer col-12">
+            <div class="container col-12">
+               <div class="row border_bo1 col-12">
                   <div class="col-md-4">
                      <a class="logof" href="index.html"><img src="/public/assets/client/images/logofooter.png" alt="#"/></a> 
                      <form class="form_subscri">
@@ -88,11 +86,11 @@
                   </div>
                </div>
             </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
+            <div class="copyright col-12">
+               <div class="container col-12">
+                  <div class="row col-12">
                      <div class="col-md-12">
-                        <p>© 2020 All Rights Reserved. <a href="https://html.design/"> Free html Templates</a></p>
+                        <p>© 2020 All Rights Reserved. <a href=""> Free html Templates</a></p>
                      </div>
                   </div>
                </div>
@@ -100,17 +98,18 @@
          </div>
       </footer>
       <!-- end footer -->
-
-
-
-
-
-      
+      <script src="<?= APP_URL?>/public/assets/client/script.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    </body>
+   
 </html>
+<?php
 
+        // unset($_SESSION['success']);
+        // unset($_SESSION['error']);
+    }
+}
 
-
-
-
-
+?>
