@@ -65,7 +65,7 @@ class Header extends BaseView
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto py-0">
                             <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
-                            <a href="service.html" class="nav-item nav-link">Sản phẩm</a>
+                            <a href="/products" class="nav-item nav-link">Sản phẩm</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sách</a>
                                 <div class="dropdown-menu m-0">
