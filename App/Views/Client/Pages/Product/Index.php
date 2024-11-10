@@ -11,20 +11,7 @@ class Index extends BaseView
     {
 
 ?>
-
-
-        
-<nav class="serch ">
-        <a class="navbar-brand" href="#"></a>
-        <div class="roww">
-            <form class="TimKiem">
-                <input class="form-control" type="search" placeholder="Search for books" aria-label="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-
-  
+>
     <section class="banner container mt-4">
         <div class="row">
             <div class="col-12">
@@ -34,7 +21,7 @@ class Index extends BaseView
     </section>
     
   <div class="container">
-    <aside class="sidebar">
+    <aside class="sidebar col-3">
     <nav class="navbar category-list col-12 navbar-expand-lg navbar-light">
                     <div class="menu col-md-12">
                         <h6 style="padding: 10px;background-color: orange;color: black;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
@@ -42,7 +29,7 @@ class Index extends BaseView
                             </svg></i>DANH MỤC</h6>
                         <div class="nav-item dropdown dropend">
                             <div class="dropdown-button">
-                                <button class="dropdown-item-button" hr>
+                                <button class="dropdown-item-button">
                                     <a class="dropdown-toggle" href="index.php?url=dienthoai#dienthoai-content" id="navbarDropdown1" role="button" aria-expanded="false">
                                         Điện thoại <i class="fas fa-chevron-right">&nbsp;</i>
                                     </a>
@@ -232,6 +219,7 @@ class Index extends BaseView
                         </div>
                     </div>
                 </nav>
+                <div class="fill">
       <h3>NHÓM SẢN PHẨM</h3>
       <ul>
         <li><a href="#">Tất Cả Nhóm Sản Phẩm</a></li>
@@ -248,26 +236,35 @@ class Index extends BaseView
         <label><input type="checkbox" data-min="300000" data-max="500000"> 300,000đ - 500,000đ</label><br>
         <label><input type="checkbox" data-min="500000" data-max="700000"> 500,000đ - 700,000đ</label><br>
         <label><input type="checkbox" data-min="700000"> 700,000đ - Trở Lên</label>
-      </form>
+      </form></div>
     </aside>
     <main class="main-content">
-      <div class="sorting">
-        <label for="sort">Sắp xếp theo:</label>
-        <select id="sort">
+    <!-- Tìm kiếm form nhỏ nằm ở góc phải -->
+    <div class="col-12 d-flex ">
+      <div class="sorting col-12">
+        <label for="sort" class="col-2">Sắp xếp theo:</label>
+        <select id="sort" class="form-select me-3">
           <option value="default">Bán Chạy Tuần</option>
           <option value="lowToHigh">Giá: Thấp đến Cao</option>
           <option value="highToLow">Giá: Cao đến Thấp</option>
         </select>
-        <select>
+        <select class="form-select">
           <option>24 sản phẩm</option>
         </select>
-      </div>
+      
+<form class="d-flex col-5 ms-4">
+        <input class="form-control me-2" type="search" placeholder="Search for books" aria-label="Search">
+        <button class="btn btn-success" type="button">Search</button>
+      </form>
+    </div>
+</div>
+
 
       <div class="product-grid" id="product-grid">
         <div class="product" data-price="45240">
           <div class="discount">13%</div>
           <img src="https://cdn0.fahasa.com/media/catalog/product/l/i/lich-tuong-2025_1.jpg" alt="Product 1">
-          <h5>Lịch Bàn Chữ A 2025 - Danh Cảnh Việt Nam</h5>
+          <a href="/detail"><h5>Lịch Bàn Chữ A 2025 - Danh Cảnh Việt Nam</h5></a>
           <p class="price"><span class="old-price">52.000 đ</span> 45.240 đ</p>
         </div>
         <div class="product" data-price="70520">
@@ -288,7 +285,7 @@ class Index extends BaseView
           <h5>Tranh Truyện Dân Gian Việt Nam - Sự Tích Chú Cuội Cung Trăng (Tái Bản 2023)</h5>
           <p class="price"><span class="old-price">15.000 đ</span> 20.520 đ</p>
         </div>
-        <div class="product" data-price="70520">/-strong/-heart:>:o:-((:-h <div class="discount">23%</div>
+        <div class="product" data-price="70520"><div class="discount">23%</div>
           <img src="https://cdn0.fahasa.com/media/catalog/product/t/r/tranh-truyen-lich-su-viet-nam_phung-hung_tb-2023.jpg" alt="Product 2">
           <h5>Tranh Truyện Lịch Sử Việt Nam - Phùng Hưng (Tái Bản 2023)</h5>
           <p class="price"><span class="old-price">15.000 đ</span> 20.000đ</p>

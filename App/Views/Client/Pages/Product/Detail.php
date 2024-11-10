@@ -98,9 +98,9 @@ class Detail extends BaseView
     </div>
 </div>
 
-<!-- Related Products Section -->
+<!-- Related Products Section -->  <div class="container"><h4 class="fw-bold">Sách liên quan </h4></div>
 <div class="container my-5">
-  <h4 class="fw-bold">Sách liên quan </h4>
+  
   <div class="row">
 
       <div class="col-md-2">
@@ -172,7 +172,7 @@ class Detail extends BaseView
       
 
 
-<div class="container my-5">
+<div class="container my-5 d-flex flex-column">
   <h4 class="fw-bold">Đánh giá sản phẩm</h4>
   <div class="row">
       <div class="col-md-2 text-center">
@@ -192,6 +192,8 @@ class Detail extends BaseView
       </div>
   </div>
   <p class="text-center mt-4">Chỉ có thành viên mới có thể viết nhận xét. Vui lòng <a href="#">đăng nhập</a> hoặc <a href="#">đăng ký</a>.</p>
+</div>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

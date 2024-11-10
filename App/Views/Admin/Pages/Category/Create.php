@@ -53,6 +53,10 @@ class Create extends BaseView
                                         <input type="text" class="form-control" id="name" placeholder="Nhập tên loại sản phẩm..." name="name" >
                                     </div>
                                     <div class="form-group">
+                                        <label for="description">Mô tả*</label>
+                                        <textarea class="form-control" cols="50" rows="6" name="description" id="description"></textarea>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="status">Trạng thái*</label>
                                         <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="status" name="status" >
                                             <option value="" selected disabled>Vui lòng chọn...</option>

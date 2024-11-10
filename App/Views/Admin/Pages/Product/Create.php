@@ -79,13 +79,12 @@ class Create extends BaseView
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="is_featured">Nổi bật*</label>
-                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="is_featured" name="is_featured" >
-                                            <option value="" selected disabled>Vui lòng chọn...</option>
-                                            <option value="1">Nổi bật</option>
-                                            <option value="0">Bình thường</option>
-
-                                        </select>
+                                        <label for="name">Tác giả*</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="productname" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Nhà xuất bản*</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="productname" >
                                     </div>
                                     <div class="form-group">
                                         <label for="status">Trạng thái*</label>

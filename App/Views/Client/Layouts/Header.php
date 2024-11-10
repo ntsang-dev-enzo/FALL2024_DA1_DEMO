@@ -19,7 +19,7 @@ class Header extends BaseView
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>TS Store</title>
+            <title>TSBooks</title>
             <!-- Bootstrap CSS -->
             <link rel="stylesheet" href="<?= APP_URL ?>/public/assets/client/css/style.css">
 
@@ -34,9 +34,9 @@ class Header extends BaseView
                 <div class="row gx-0">
                     <div class="col-lg-8 text-center text-lg-start">
                         <div class="d-inline-flex align-items-center" style="height: 45px;">
-                            <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+                            <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>An Bình, Ninh Kiều, Cần Thơ</small>
                             <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
-                            <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
+                            <small class="text-light"><i class="fa fa-envelope-open me-2"></i>sang@example.com</small>
                         </div>
                     </div>
                     <div class="col-lg-4 text-center text-lg-end">
@@ -57,7 +57,7 @@ class Header extends BaseView
             <div class="container-fluid position-relative p-0">
                 <nav class="navbar navbar-expand-lg navbar-dark px-5">
                     <a href="/" class="navbar-brand p-0">
-                        <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+                        <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>TSBooks</h1>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars"></span>
@@ -67,16 +67,16 @@ class Header extends BaseView
                             <a href="/" class="nav-item nav-link active">Trang chủ</a>
                             <a href="/products" class="nav-item nav-link">Sản phẩm</a>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sách</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Liên hệ</a>
                                 <div class="dropdown-menu m-0">
                                     <a href="blog.html" class="dropdown-item">Blog Grid</a>
                                     <a href="detail.html" class="dropdown-item">Blog Detail</a>
                                 </div>
                             </div>
-                            <a href="about.html" class="nav-item nav-link">About</a>
+                            <a href="about.html" class="nav-item nav-link">Giới thiệu</a>
                             
                             <div class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Góp ý</a>
     <div class="dropdown-menu m-0">
         <div class="dropdown-submenu">
             <a href="price.html" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Pricing Plan</a>
@@ -94,10 +94,10 @@ class Header extends BaseView
 </div>
 
 
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="/cart" class="nav-item nav-link">Giỏ hàng</a>
                         </div>
                         <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-                        <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
+                        <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Đăng nhập</a>
                     </div>
                 </nav>
 

@@ -6,7 +6,7 @@ use App\Helpers\NotificationHelper;
 
 class User extends BaseModel
 {
-    protected $table = 'users';
+    protected $table = 'customers';
     protected $id = 'id';
 
     public function getAllUser()
@@ -39,7 +39,7 @@ class User extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT * FROM users WHERE username=?";
+            $sql = "SELECT * FROM customers WHERE username=?";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->bind_param('s', $username);
