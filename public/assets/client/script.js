@@ -148,3 +148,55 @@ document.getElementById("btn-thugon").addEventListener("click", function () {
     }
 });
 
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const deleteButtons = document.querySelectorAll(".delete-btn");
+        
+                deleteButtons.forEach((button) => {
+                    button.addEventListener("click", (event) => {
+                        const cartItem = event.target.closest(".cart-item");
+                        cartItem.classList.add("fade-out");
+        
+                        // Wait for the fade-out transition to complete before removing the item
+                        cartItem.addEventListener("transitionend", () => {
+                            cartItem.remove();
+                            updateCartCount();
+                        });
+                    });
+                });
+        
+                // Function to update cart count
+                function updateCartCount() {
+                    const cartSection = document.querySelector(".cart-section h2");
+                    const cartItems = document.querySelectorAll(".cart-item").length;
+                    cartSection.textContent = `Giỏ Hàng (${cartItems} sản phẩm)`;
+                }
+            });
+    
+            document.addEventListener("DOMContentLoaded", () => {
+            const checkboxes = document.querySelectorAll(".cart-item input[type='checkbox']");
+            const totalPriceElement = document.querySelector(".summary p strong");
+    
+            // Function to calculate and update the total price
+            function updateTotalPrice() {
+                let total = 0;
+                checkboxes.forEach((checkbox) => {
+                    if (checkbox.checked) {
+                        const priceElement = checkbox.closest(".cart-item").querySelector(".price");
+                        const price = parseFloat(priceElement.textContent.replace(/[^\d]/g, ""));
+                        total += price;
+                    }
+                });
+                totalPriceElement.textContent = `Tổng Số Tiền (gồm VAT): ${total.toLocaleString()} đ`;
+            }
+    
+            // Add event listeners to each checkbox
+            checkboxes.forEach((checkbox) => {
+                checkbox.addEventListener("change", updateTotalPrice);
+            });
+    
+            // Optionally: update total price on page load in case any items are pre-selected
+            updateTotalPrice();
+        });
+        
+
