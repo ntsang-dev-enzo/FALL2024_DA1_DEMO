@@ -1150,10 +1150,10 @@ footer .social-icons a:hover {
     display: block;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    transition: transform 0.3s;
-}
+    .card:hover {
+        transform: translateY(-10px);
+        transition: transform 0.3s;
+    }
 
 .banner {
     width: 90%;
