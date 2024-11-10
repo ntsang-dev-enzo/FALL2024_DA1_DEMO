@@ -1,3 +1,18 @@
+<?php
+
+namespace App\Views\Client\Pages\Product;
+
+use App\Views\BaseView;
+use App\Views\Client\Components\Category;
+
+class Cart extends BaseView
+{
+    public static function render($data = null)
+    {
+
+?>
+
+
 <div class="container">
             <div class="cart-section">
                 <h2>Giỏ Hàng (3 sản phẩm)</h2>
@@ -74,4 +89,7 @@
             </div>
         </div>
         
-        
+        <?php
+
+    }
+}

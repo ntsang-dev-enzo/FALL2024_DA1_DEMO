@@ -198,5 +198,5 @@ document.getElementById("btn-thugon").addEventListener("click", function () {
             // Optionally: update total price on page load in case any items are pre-selected
             updateTotalPrice();
         });
-        
+        //
 
