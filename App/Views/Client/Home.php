@@ -168,7 +168,7 @@ class Home extends BaseView
     
                         <div class="section-header align-center">
                             
-                            <h2 class="section-title">Featured Books</h2>
+                            <h2 class="section-title">Sách Nổi Bật</h2>
                         </div>
     
                         <div class="product-list" data-aos="fade-up">
@@ -178,13 +178,12 @@ class Home extends BaseView
                                     <div class="product-item">
                                         <figure class="product-style">
                                             <img src="/public/assets/client/images/product-item1.jpg" alt="Books" class="product-item">
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
-                                                Cart</button>
+                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Thêm vào giỏ hàng</button>
                                         </figure>
                                         <figcaption>
                                             <h3>Simple way of piece life</h3>
                                             <span>Armor Ramsey</span>
-                                            <div class="item-price">$ 40.00</div>
+                                            <div class="item-price">45.000 đ</div>
                                         </figcaption>
                                     </div>
                                 </div>
@@ -193,13 +192,12 @@ class Home extends BaseView
                                     <div class="product-item">
                                         <figure class="product-style">
                                             <img src="/public/assets/client/images/product-item2.jpg" alt="Books" class="product-item">
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
-                                                Cart</button>
+                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Thêm vào giỏ hàng</button>
                                         </figure>
                                         <figcaption>
                                             <h3>Great travel at desert</h3>
                                             <span>Sanchit Howdy</span>
-                                            <div class="item-price">$ 38.00</div>
+                                            <div class="item-price">40.000 đ</div>
                                         </figcaption>
                                     </div>
                                 </div>
@@ -208,13 +206,12 @@ class Home extends BaseView
                                     <div class="product-item">
                                         <figure class="product-style">
                                             <img src="/public/assets/client/images/product-item3.jpg" alt="Books" class="product-item">
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
-                                                Cart</button>
+                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Thêm vào giỏ hàng</button>
                                         </figure>
                                         <figcaption>
                                             <h3>The lady beauty Scarlett</h3>
                                             <span>Arthur Doyle</span>
-                                            <div class="item-price">$ 45.00</div>
+                                            <div class="item-price">45.000 đ</div>
                                         </figcaption>
                                     </div>
                                 </div>
@@ -223,13 +220,12 @@ class Home extends BaseView
                                     <div class="product-item">
                                         <figure class="product-style">
                                             <img src="/public/assets/client/images/product-item4.jpg" alt="Books" class="product-item">
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
-                                                Cart</button>
+                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Thêm vào giỏ hàng</button>
                                         </figure>
                                         <figcaption>
                                             <h3>Once upon a time</h3>
                                             <span>Klien Marry</span>
-                                            <div class="item-price">$ 35.00</div>
+                                            <div class="item-price">35.000 đ</div>
                                         </figcaption>
                                     </div>
                                 </div>
@@ -237,7 +233,7 @@ class Home extends BaseView
                             </div>
                         </div>
                     </div><div class="btn-wrap align-right">
-                            <a href="#" class="btn-accent-arrow">View all products <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                            <a href="#" class="btn-accent-arrow">Xem tất cả sản phẩm <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                               </svg></a>
                         </div>
