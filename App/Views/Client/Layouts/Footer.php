@@ -19,62 +19,62 @@ class Footer extends BaseView
                      <form class="form_subscri">
                         <div class="row">
                            <div class="col-md-12">
-                              <h3>Đăng ký ngay</h3>
+                              <h3>Subscribe Now</h3>
                            </div>
                            <div class="col-md-12">
-                              <input class="subsrib" placeholder="Nhập email của bạn" type="text" name="Enter your email">
+                              <input class="subsrib" placeholder="Enter your email" type="text" name="Enter your email">
                            </div>
                            <div class="col-md-12">
-                              <button class="subsci_btn">Đăng ký</button>
+                              <button class="subsci_btn">subscribe</button>
                            </div>
                         </div>
                      </form>
                   </div>
                   <div class="col-lg-2 col-md-4 col-sm-6">
                      <div class="infoma">
-                        <h3>Thông tin</h3>
+                        <h3>Information</h3>
                         <ul>
-                           <li>Sách Thiếu Nhi </li>
-                           <li>Truyện tranh</li>
-                           <li>Truyện Đam mỹ</li>
-                           <li>Sách nhăn văn</li>
-                           <li>Sách báo chí</li>
-                           <li>Sách vui</li>
+                           <li>There are many </li>
+                           <li>variations of pas</li>
+                           <li>sages of Lorem  </li>
+                           <li>psum available,  </li>
+                           <li>but the majority  </li>
+                           <li>have suffered  </li>
                         </ul>
                      </div>
                   </div>
                   <div class="col-lg-2 col-md-4 col-sm-6">
                      <div class="infoma">
-                        <h3>Liên kết</h3>
+                        <h3>Helpful Links</h3>
                         <ul>
-                           <li>Toàn quốc</li>
-                           <li>Có ở mọi nơi</li>
-                           <li>Cửa hàng sách</li>
-                           
-                           
+                           <li>There are many </li>
+                           <li>variations of pas</li>
+                           <li>sages of Lorem  </li>
+                           <li>psum available,  </li>
+                           <li>but the majority  </li>
                         </ul>
                      </div>
                   </div>
                   <div class="col-lg-2 col-md-4 col-sm-6">
                      <div class="infoma">
-                        <h3>Thể loại</h3>
+                        <h3>Our Weddings</h3>
                         <ul>
-                           <li>Đam mỹ</li>
-                           <li>Hiện đại</li>
-                           <li>Cổ trang</li>
-                           <li>Kỳ tích</li>
-                           <li>Xuyên không</li>
+                           <li>There are many </li>
+                           <li>variations of pas</li>
+                           <li>sages of Lorem  </li>
+                           <li>psum available,  </li>
+                           <li>but the majority  </li>
                         </ul>
                      </div>
                   </div>
                   <div class="col-lg-2 col-md-4 col-sm-6">
                      <div class="infoma">
-                        <h3>Liên hệ</h3>
+                        <h3>Contact Us</h3>
                         <ul class="conta">
-                           <li><i class="fa fa-map-marker" aria-hidden="true"></i>Địa điểm 
+                           <li><i class="fa fa-map-marker" aria-hidden="true"></i>Locations 
                            </li>
-                           <li><i class="fa fa-volume-control-phone" aria-hidden="true"></i>+84 0587961173 </li>
-                           <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> thuongdtdpc05718@fpt.edu.vn</a></li>
+                           <li><i class="fa fa-volume-control-phone" aria-hidden="true"></i>+71 12345678901</li>
+                           <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> demo@gmail.com</a></li>
                         </ul>
                         <ul class="social_icon">
                            <li><a href="Javascript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -90,7 +90,7 @@ class Footer extends BaseView
                <div class="container col-12">
                   <div class="row col-12">
                      <div class="col-md-12">
-                        <p>© 2024 Mọi quyền được bảo hành. <a href=""> Cửa hàng sách của chúng tôi luôn chào đón bạn</a></p>
+                        <p>© 2020 All Rights Reserved. <a href=""> Free html Templates</a></p>
                      </div>
                   </div>
                </div>
