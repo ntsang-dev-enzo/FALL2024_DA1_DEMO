@@ -57,13 +57,14 @@ class Myaccount extends BaseView
             <h2 class="text-center">Thông Tin Cá Nhân</h2>
             <div class="row">
                 <div class="col-md-4 text-center">
-                    <?php
-                    if ($data&&$data['avatar']):
-                    ?>
-                    <img id="profilePic" src="<?=APP_URL?>/public/uploads/users/<?=$data['avatar']?>" alt="Ảnh Đại Diện" class="profile-pic">
-                    <?php else:?>
-                        <img id="profilePic" src="https://via.placeholder.com/150" alt="Ảnh Đại Diện" class="profile-pic">
-                        <?php endif;?>
+                <?php
+if (isset($data) && isset($data['avatar']) && $data['avatar']):
+?>
+    <img id="profilePic" src="<?=APP_URL?>/public/uploads/users/<?=$data['avatar']?>" alt="Ảnh Đại Diện" class="profile-pic">
+<?php else: ?>
+    <img id="profilePic" src="https://via.placeholder.com/150" alt="Ảnh Đại Diện" class="profile-pic">
+<?php endif; ?>
+
 
                 </div>
                 <div class="col-md-8">

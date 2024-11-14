@@ -107,15 +107,16 @@ class AuthController{
             if (isset($_SESSION['error']['user_id'])) {
                 $data = $_SESSION['user'];
                 $user_id = $data['id'];
-                header("Location: /users/$user_id");
+                header("Location: /users//$user_id");
                 exit;
             }
         }
         $data=$_SESSION['user'];
-       
+        
         Notification::render();
         NotificationHelper::unset();
         Myaccount::render($data);
+
     }
 
 public static function update($id){

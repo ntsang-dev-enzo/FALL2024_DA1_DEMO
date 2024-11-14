@@ -96,8 +96,18 @@ class Header extends BaseView
 
                             <a href="/cart" class="nav-item nav-link">Giỏ hàng</a>
                         </div>
-                        <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-                        <a href="/login" class="btn btn-primary py-2 px-4 ms-3">Đăng nhập</a>
+
+                <?php  
+                if ($is_login) :
+                ?>      
+                <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
+                <a href="/logout" class="btn btn-primary py-2 px-4 ms-3">Đăng Xuất</a> 
+                <a href="/users/<?=$_SESSION['user']['id']?>"<?=$_SESSION['user']['id']?> class="btn btn-primary py-2 px-4 ms-3">Tài Khoản</a> 
+                <?php else :?>
+
+<button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
+<a href="/login" class="btn btn-primary py-2 px-4 ms-3">Đăng nhập</a>   
+                <?php endif;?>  
                     </div>
                 </nav>
 
