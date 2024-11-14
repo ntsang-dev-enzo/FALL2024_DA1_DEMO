@@ -80,7 +80,7 @@ class AuthHelper{
             $user=$_COOKIE['user'];
             $user_data=json_decode($user);
             // $_SESSION['user']=(array)$user_data;
-            self::updateCookie($user_data['id']);
+            self::updateCookie($user_data->id);
             return true;
         }
         if (isset($_SESSION['user'])) {
