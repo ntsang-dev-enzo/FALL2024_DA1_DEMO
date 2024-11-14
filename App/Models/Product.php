@@ -37,7 +37,7 @@ class Product extends BaseModel
             $sql = "SELECT products. * 
         FROM products 
         INNER JOIN categories 
-        ON products.idcategory=categories.id 
+        ON products.category_id=categories.id 
         WHERE products.status=" . self::STATUS_ENABLE . " 
         AND categories.status=" . self::STATUS_ENABLE;
             $result = $this->_conn->MySQLi()->query($sql);
