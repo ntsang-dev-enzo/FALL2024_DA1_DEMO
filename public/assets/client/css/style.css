@@ -2144,6 +2144,7 @@ ul.conta {
           line-height: 18px;
           display: flex;
           align-items: center;
+          
           i {
                padding-right: 15px;
                text-align: center;
@@ -2152,6 +2153,7 @@ ul.conta {
           }
           a {
                color: #bebbbb;
+               text-decoration: none;
           }
      }
      li:last-child {
