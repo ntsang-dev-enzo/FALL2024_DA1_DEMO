@@ -19,17 +19,17 @@ class Detail extends BaseView
         
         <div class="col-md-5">
             <div class="card">
-                <img src="https://cdn0.fahasa.com/media/catalog/product/8/9/8935280400733.jpg" class="card-img-top" alt="Product Image">
+                <img src="<?= $data['product']['image'] ?>" class="card-img-top" alt="Product Image">
                 
             </div>
         </div>
 
        
         <div class="col-md-7">
-            <h2 class="fw-bold">7 Thói Quen Hiệu Quả - The 7 Habits Of Highly Effective People</h2>
-            <p class="text-muted">Tác giả: Stephen R Covey</p>
+            <h2 class="fw-bold"><?= $data['product']['name'] ?></h2>
+            <p class="text-muted">Tác giả: <?= $data['product']['author'] ?></p>
             <p class="text-muted">Hình thức bìa: Bìa Cứng</p>
-            <h3 class="text-danger">180.000₫ <span class="text-muted text-decoration-line-through">250.000₫</span> <span class="badge bg-warning text-dark">-28%</span></h3>
+            <h3 class="text-danger"><?= $data['product']['price'] ?> <span class="text-muted text-decoration-line-through"><?= $data['product']['discount_price'] ?></span> <span class="badge bg-warning text-dark">-28%</span></h3>
 
             <div class="alert alert-danger d-flex align-items-center" role="alert">
                 <span class="me-2">Flash Sale</span>
@@ -80,7 +80,7 @@ class Detail extends BaseView
                 </tr>
                 <tr>
                     <th scope="row">Tác giả</th>
-                    <td>Stephen R Covey</td>
+                    <td><?= $data['product']['author'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Người Dịch</th>
@@ -88,7 +88,7 @@ class Detail extends BaseView
                 </tr>
                 <tr>
                     <th scope="row">NXB</th>
-                    <td>Tổng Hợp TPHCM</td>
+                    <td><?= $data['product']['publisher'] ?></td>
                 </tr>
                 
             </tbody>

@@ -36,21 +36,21 @@ class ProductController
         Index::render($data);
         Footer::render();
     }
-    public static function detail(/* $id */)
+    public static function detail($id)
     {
-        // $product=new Product();
-        // $product_detail=$product->getOneProductByStatus($id);
-        // if (!$product_detail) {
-        //     NotificationHelper::error('product_detail','Không thể xem sản phẩm này!');
-        //     header('location: /products');
-        //     exit;
-        // }
-        // $comment= new Comment();
-        // $comments=$comment->get5CommentNewestByProductAndStatus($id);
-        // $data = [
-        //     'product' => $product_detail,
-        //     'comments' => $comments
-        // ];
+        $product=new Product();
+        $product_detail=$product->getOneProductByStatus($id);
+        if (!$product_detail) {
+            NotificationHelper::error('product_detail','Không thể xem sản phẩm này!');
+            header('location: /products');
+            exit;
+        }
+        $comment= new Comment();
+        $comments=$comment->get5CommentNewestByProductAndStatus($id);
+        $data = [
+            'product' => $product_detail,
+            'comments' => $comments
+        ];
 
         // $view_result=ViewProductHelper::cookieView($id, $product_detail['view']);
 
@@ -58,8 +58,8 @@ class ProductController
         Header::render();
         Notification::render();
         NotificationHelper::unset();
-        Detail::render();
-        // Detail::render($data);
+        // Detail::render();
+        Detail::render($data);
         Footer::render();
     }
     public static function cart(/* $id */)

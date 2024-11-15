@@ -98,7 +98,7 @@ class Product extends BaseModel
         $result = [];
         try {
             $sql = "SELECT products.*, categories.name AS category_name FROM products 
-            INNER JOIN categories ON products.idcategory = categories.id 
+            INNER JOIN categories ON products.category_id = categories.id 
             WHERE products.status = " . self::STATUS_ENABLE . " 
             AND categories.status = " . self::STATUS_ENABLE . " AND products.id=?";
             $conn = $this->_conn->MySQLi();

@@ -10,6 +10,7 @@ class Header extends BaseView
     public static function render($data = null)
     {
         $is_login = AuthHelper::checkLogin();
+
         // var_dump($is_login);
 ?>
 
@@ -65,8 +66,8 @@ class Header extends BaseView
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto py-0">
-                            <a href="/" class="nav-item nav-link active">Trang chủ</a>
-                            <a href="/products" class="nav-item nav-link">Sản phẩm</a>
+                            <a href="/" class="nav-item nav-link  <?= $_SERVER['REQUEST_URI'] == '/' ? 'active' : '' ?>">Trang chủ</a>
+                            <a href="/products" class="nav-item nav-link  <?= $_SERVER['REQUEST_URI'] == '/products' ? 'active' : '' ?>">Sản phẩm</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Liên hệ</a>
                                 <div class="dropdown-menu m-0">
@@ -75,50 +76,50 @@ class Header extends BaseView
                                 </div>
                             </div>
                             <a href="about.html" class="nav-item nav-link">Giới thiệu</a>
-                            
+
                             <div class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Góp ý</a>
-    <div class="dropdown-menu m-0">
-        <div class="dropdown-submenu">
-            <a href="price.html" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Pricing Plan</a>
-            <div class="dropdown-menu">
-                <a href="basic.html" class="dropdown-item">Basic Plan</a>
-                <a href="premium.html" class="dropdown-item">Premium Plan</a>
-                <a href="enterprise.html" class="dropdown-item">Enterprise Plan</a>
-            </div>
-        </div>
-        <a href="feature.html" class="dropdown-item">Our Features</a>
-        <a href="team.html" class="dropdown-item">Team Members</a>
-        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-        <a href="quote.html" class="dropdown-item">Free Quote</a>
-    </div>
-</div>
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Góp ý</a>
+                                <div class="dropdown-menu m-0">
+                                    <div class="dropdown-submenu">
+                                        <a href="price.html" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Pricing Plan</a>
+                                        <div class="dropdown-menu">
+                                            <a href="basic.html" class="dropdown-item">Basic Plan</a>
+                                            <a href="premium.html" class="dropdown-item">Premium Plan</a>
+                                            <a href="enterprise.html" class="dropdown-item">Enterprise Plan</a>
+                                        </div>
+                                    </div>
+                                    <a href="feature.html" class="dropdown-item">Our Features</a>
+                                    <a href="team.html" class="dropdown-item">Team Members</a>
+                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                    <a href="quote.html" class="dropdown-item">Free Quote</a>
+                                </div>
+                            </div>
 
 
                             <a href="/cart" class="nav-item nav-link">Giỏ hàng</a>
                         </div>
 
-                <?php  
-                if ($is_login) :
-                ?>      
-                <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-                <a href="/logout" class="btn btn-primary py-2 px-4 ms-3">Đăng Xuất</a> 
-                <a href="/users/<?=$_SESSION['user']['id']?>"<?=$_SESSION['user']['id']?> class="btn btn-primary py-2 px-4 ms-3">Tài Khoản</a> 
-                <?php else :?>
+                        <?php
+                        if ($is_login) :
+                        ?>
+                            <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
+                            <a href="/logout" class="btn btn-primary py-2 px-4 ms-3">Đăng Xuất</a>
+                            <a href="/users/<?= $_SESSION['user']['id'] ?>" <?= $_SESSION['user']['id'] ?> class="btn btn-primary py-2 px-4 ms-3">Tài Khoản</a>
+                        <?php else : ?>
 
-<button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-<a href="/login" class="btn btn-primary py-2 px-4 ms-3">Đăng nhập</a>   
-                <?php endif;?>  
+                            <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
+                            <a href="/login" class="btn btn-primary py-2 px-4 ms-3">Đăng nhập</a>
+                        <?php endif; ?>
                     </div>
                 </nav>
 
-                
+
             </div>
             <!-- Navbar & Carousel End -->
 
 
             <!-- Full Screen Search Start -->
-            
+
     <?php
     }
 }
