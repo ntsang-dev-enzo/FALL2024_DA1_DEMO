@@ -57,7 +57,7 @@ class CategoryController
         }
         // echo 'ucii';
         $name = $_POST['name'];
-        $status = $_POST['status'];
+        $description = $_POST['description'];
         //kiểm tra tên loại tồn tại chưa, không được trùng
         $category=new Category();
         $is_exist=$category->getOneCategoryByName($name);
@@ -70,7 +70,7 @@ class CategoryController
         //thêm
         $data=[
             'name' => $name,
-           'status' => $status
+           'description' => $description
         ];
         $result=$category->createCategory($data);
         if ($result) {
