@@ -159,6 +159,7 @@ class AuthHelper{
             }
             self::updateSession($id);
             NotificationHelper::success('change-password','Đổi mật khẩu thành công!');
+            
             return true;
         }
         else{

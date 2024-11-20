@@ -134,7 +134,7 @@ public static function update($id){
     // kiểm tra có upload hình ảnh không nếu có thì kiểm tr5a xem có hợp lệ khoong
     $is_upload=AuthValidation::uploadAvatar();
     if ($is_upload) {
-        $data['avatar'] = $is_upload;
+        $data['image'] = $is_upload;
     }
     // gọi helper để update
     $result = AuthHelper::update($id, $data);
