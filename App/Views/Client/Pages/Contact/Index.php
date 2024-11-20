@@ -1,3 +1,16 @@
+<?php
+
+namespace App\Views\Client\Pages\Contact;
+
+use App\Views\BaseView;
+
+class Index extends BaseView
+{
+  public static function render($data = null)
+  {
+
+
+?>
 <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,3 +93,8 @@
             </div>
         </div>
     </section>
+    <?php
+
+
+  }
+}

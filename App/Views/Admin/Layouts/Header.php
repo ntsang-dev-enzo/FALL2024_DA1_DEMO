@@ -32,6 +32,7 @@ class Header extends BaseView
             <link rel="stylesheet" type="text/css" href="<?= APP_URL ?>/public/assets/admin/libs/quill/dist/quill.snow.css">
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
             <!-- Custom CSS -->
             <link href="<?= APP_URL ?>/public/assets/admin/dist/css/style.min.css" rel="stylesheet">
 

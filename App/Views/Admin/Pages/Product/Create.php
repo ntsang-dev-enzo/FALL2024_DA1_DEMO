@@ -66,7 +66,7 @@ class Create extends BaseView
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Mô tả*</label>
-                                        <textarea class="form-control" cols="50" rows="6" name="description" id="description"></textarea>
+                                        <textarea class="form-control" id="editor" cols="50" rows="6" name="description" id="description"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="idcategory">Loại sản phẩm*</label>

@@ -42,7 +42,7 @@ class Login extends BaseView
                 <input type="text" class="form-control-register" name="username" placeholder="Tên người dùng">
             </div>
             <div class="form-group-register">
-                <input type="password" class="form-control-register" name="password" placeholder="Mật khẩu">
+                <input type="password" class="form-control-register" autocomplete="current-password" name="password" placeholder="Mật khẩu">
             </div>
             <div class="form-group-register">
                 <input type="checkbox" name="remember" id="rememberMe">

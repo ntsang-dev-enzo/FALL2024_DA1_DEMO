@@ -80,18 +80,18 @@ class AuthController{
         header('Location: /login');
        }
     }
-    // public static function checkLogin():bool{
-    //     if (isset($_COOKIE['user'])) {
-    //         $user = $_COOKIE['user'];
-    //         $user_data = json_decode($user);
-    //         $_SESSION['user'] = (array)$user_data;
-    //         return true;
-    //     }
-    //     if (isset($_SESSION['user'])) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    public static function checkLogin():bool{
+        if (isset($_COOKIE['user'])) {
+            $user = $_COOKIE['user'];
+            $user_data = json_decode($user);
+            $_SESSION['user'] = (array)$user_data;
+            return true;
+        }
+        if (isset($_SESSION['user'])) {
+            return true;
+        }
+        return false;
+    }
     public static function logout(){
         AuthHelper::logout();
         NotificationHelper::success('logout','Đăng xuất thành công!');

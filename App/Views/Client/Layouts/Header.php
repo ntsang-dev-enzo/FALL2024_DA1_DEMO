@@ -68,34 +68,9 @@ class Header extends BaseView
                         <div class="navbar-nav ms-auto py-0">
                             <a href="/" class="nav-item nav-link  <?= $_SERVER['REQUEST_URI'] == '/' ? 'active' : '' ?>">Trang chủ</a>
                             <a href="/products" class="nav-item nav-link  <?= $_SERVER['REQUEST_URI'] == '/products' ? 'active' : '' ?>">Sản phẩm</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Liên hệ</a>
-                                <div class="dropdown-menu m-0">
-                                    <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                    <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                                </div>
-                            </div>
-                            <a href="about.html" class="nav-item nav-link">Giới thiệu</a>
-
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Góp ý</a>
-                                <div class="dropdown-menu m-0">
-                                    <div class="dropdown-submenu">
-                                        <a href="price.html" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Pricing Plan</a>
-                                        <div class="dropdown-menu">
-                                            <a href="basic.html" class="dropdown-item">Basic Plan</a>
-                                            <a href="premium.html" class="dropdown-item">Premium Plan</a>
-                                            <a href="enterprise.html" class="dropdown-item">Enterprise Plan</a>
-                                        </div>
-                                    </div>
-                                    <a href="feature.html" class="dropdown-item">Our Features</a>
-                                    <a href="team.html" class="dropdown-item">Team Members</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="quote.html" class="dropdown-item">Free Quote</a>
-                                </div>
-                            </div>
-
-
+                            <a href="/contact" class="nav-item nav-link <?= $_SERVER['REQUEST_URI'] == '/contact' ? 'active' : '' ?>">Liên hệ</a>
+                            <a href="/blogs" class="nav-item nav-link <?= $_SERVER['REQUEST_URI'] == '/blogs' ? 'active' : '' ?>">Tin tức</a>
+                            <a href="" class="nav-item nav-link">Giới thiệu</a>
                             <a href="/cart" class="nav-item nav-link">Giỏ hàng</a>
                         </div>
 

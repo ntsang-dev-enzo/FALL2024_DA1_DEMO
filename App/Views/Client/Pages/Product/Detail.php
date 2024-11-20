@@ -66,7 +66,7 @@ class Detail extends BaseView
     </div>
 
  
-    <div class="mt-5 mx-4">
+    <div class="mt-5 mx-4 col-3">
         <h4>Thông tin chi tiết</h4>
         <table class="table table-striped">
             <tbody>
@@ -76,15 +76,11 @@ class Detail extends BaseView
                 </tr>
                 <tr>
                     <th scope="row">Tên Nhà Cung Cấp</th>
-                    <td>Viện Quản lý PACE</td>
+                    <td><?= $data['product']['supplier'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Tác giả</th>
                     <td><?= $data['product']['author'] ?></td>
-                </tr>
-                <tr>
-                    <th scope="row">Người Dịch</th>
-                    <td>Nhiều Người Dịch</td>
                 </tr>
                 <tr>
                     <th scope="row">NXB</th>

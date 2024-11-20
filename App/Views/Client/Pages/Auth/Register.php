@@ -21,7 +21,7 @@ class Register extends BaseView
 <body>
     <div class="container-register">
         <div class="signup-form-register">
-            <h2>Đăng ký tài khoản TS Store</h2>
+            <h2>Đăng ký</h2>
             <form action="/registerform" method="POST" enctype="multipart/form-data" >
             <div class="form-group-register">
                 <input type="hidden" name="method" value="POST" id="">

@@ -1,3 +1,17 @@
+<?php
+
+namespace App\Views\Client\Pages\Blogs;
+
+use App\Views\BaseView;
+
+class Index extends BaseView
+{
+  public static function render($data = null)
+  {
+
+
+?>
+<div class="container">
 <div class="row mt-4">
             <!-- Left Column -->
             <div class="col-lg-8">
@@ -135,3 +149,10 @@
             </div>
         
         </div>
+        </div>
+        </div>
+        <?php
+
+
+}
+}
