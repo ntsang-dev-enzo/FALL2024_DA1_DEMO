@@ -77,13 +77,13 @@ class AuthValidation{
         return $is_valid;
     }
     public static function uploadAvatar(){
-        if (!file_exists($_FILES['avatar']['tmp_name'])||!is_uploaded_file($_FILES['avatar']['tmp_name'])) {
+        if (!file_exists($_FILES['image']['tmp_name'])||!is_uploaded_file($_FILES['image']['tmp_name'])) {
             return false;
         }
         // nơi lưu trữ hình ảnh trong sourcecode 
         $target_dir='public/uploads/users/';
         // kiểm tra loại file có hợp lệ không
-        $imageFileType = strtolower(pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION));
+        $imageFileType = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
         if ($imageFileType!= 'jpg' && $imageFileType!='png' && $imageFileType !='webp' && $imageFileType != 'gif' && $imageFileType!= 'jpeg') {
             NotificationHelper::error('type_upload','Chỉ nhận file JPG, WEBP, PNG, GIF, JPEG');
             return false;
@@ -93,7 +93,7 @@ class AuthValidation{
 
         // đường dẫn đày đủ để di chuyển file
         $target_file = $target_dir. $nameImage;
-        if (!move_uploaded_file($_FILES['avatar']['tmp_name'],$target_file)) {
+        if (!move_uploaded_file($_FILES['image']['tmp_name'],$target_file)) {
             NotificationHelper::error('move_upload','Không thể tải ảnh vào thư mục lưu trữ!');
             return false;
         }

@@ -13,15 +13,16 @@ class Index extends BaseView
 
 ?>
 
-    <section class="banner container mt-4">
-      <div class="row">
-        <div class="col-12">
-          <img src="./img/banner.jpg" alt="Promo Banner" class="img-fluid w-100">
+    <section class="banner container mt-4 mb-4">
+      <div class="col-12">
+        <div class="row">
+          <img src="./img/banner.jpg" alt="Promo Banner" class=" text-start w-100">
         </div>
       </div>
     </section>
 
     <div class="container">
+      <div class="d-flex justify-content-between mb-5">
       <aside class="sidebar col-3">
         <nav class="navbar category-list col-12 navbar-expand-lg navbar-light">
           <div class="menu col-md-12">
@@ -114,6 +115,7 @@ class Index extends BaseView
           ?>
         </div>
       </main>
+      </div>
     </div>
 
 

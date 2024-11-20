@@ -58,9 +58,9 @@ class Myaccount extends BaseView
             <div class="row">
                 <div class="col-md-4 text-center">
                 <?php
-if (isset($data) && isset($data['avatar']) && $data['avatar']):
+if (isset($data) && isset($data['image']) && $data['image']):
 ?>
-    <img id="profilePic" src="<?=APP_URL?>/public/uploads/users/<?=$data['avatar']?>" alt="Ảnh Đại Diện" class="profile-pic">
+    <img id="profilePic" src="<?=APP_URL?>/public/uploads/users/<?=$data['image']?>" alt="Ảnh Đại Diện" class="profile-pic">
 <?php else: ?>
     <img id="profilePic" src="https://via.placeholder.com/150" alt="Ảnh Đại Diện" class="profile-pic">
 <?php endif; ?>
@@ -84,14 +84,16 @@ if (isset($data) && isset($data['avatar']) && $data['avatar']):
                         </div>
                         
                         <div class="form-group">
-                            <label for="avatar">Ảnh đại diện:</label>
-                            <input name="avatar" type="file" class="form-control-file mt-2" id="avatar">
+                            <label for="image">Ảnh đại diện:</label>
+                            <input name="image" type="file" class="form-control-file mt-2" id="image">
                         </div>
                         <p></p>
-                        <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                        <button type="submit" class="btn btn-primary w-100">Lưu Thay Đổi</button>
                     </form>
-                    <p></p>
-                    <p><a  style="color: red; text-align: left;" href="/change-password">Đổi mật khẩu</a></p>
+                    <div class="mt-3"><a  class="btn btn-danger me-2" href="/change-password">Đổi mật khẩu</a>
+                    <a href="/" class="btn btn-secondary" >Quay lại</a>
+                
+                </div>
                 </div>
             </div>
         </div>
