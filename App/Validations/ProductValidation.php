@@ -7,12 +7,12 @@ public static function create(): bool{
     $is_valid=true;
 
     //tên loại
-    if (!isset(($_POST['productname']))||$_POST['productname']==='') {
-        NotificationHelper::error('productname','Tên sản phẩm không được trống!');
+    if (!isset(($_POST['name']))||$_POST['name']==='') {
+        NotificationHelper::error('name','Tên sản phẩm không được trống!');
         $is_valid=false;
     } 
-    if (!isset(($_POST['idcategory']))||$_POST['idcategory']==='') {
-        NotificationHelper::error('idcategory','Tên loại không được trống!');
+    if (!isset(($_POST['category_id']))||$_POST['category_id']==='') {
+        NotificationHelper::error('category_id','Tên loại không được trống!');
         $is_valid=false;
     } 
     // giá
