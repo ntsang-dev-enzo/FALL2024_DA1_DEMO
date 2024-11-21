@@ -76,8 +76,10 @@ class ProductController
             'price' => $_POST['price'],
             'discount_price' => $_POST['discount_price'],
             'description' => $_POST['description'],
-            'is_featured' => $_POST['is_featured'],
+            // 'is_featured' => $_POST['is_featured'],
             'idcategory' => $_POST['idcategory'],
+            'author' => $_POST['author'],
+            'publisher' => $_POST['publisher'],
             'status' => $_POST['status'],
         ];
         $is_upload=ProductValidation::uploadImage();
@@ -165,8 +167,10 @@ class ProductController
             'price' => $_POST['price'],
             'discount_price' => $_POST['discount_price'],
             'description' => $_POST['description'],
-            'is_featured' => $_POST['is_featured'],
+            // 'is_featured' => $_POST['is_featured'],
             'idcategory' => $_POST['idcategory'],
+            'author' => $_POST['author'],
+            'publisher' => $_POST['publisher'],
             'status' => $_POST['status'],
         ];
         $is_upload=ProductValidation::uploadImage();

@@ -33,10 +33,10 @@ public static function create(): bool{
         NotificationHelper::error('discount_price','Giá giảm phải nhỏ hơn giá tiền!');
         $is_valid=false;
     }
-    if (!isset(($_POST['is_featured']))||$_POST['is_featured']==='') {
-        NotificationHelper::error('is_featured','Nổi bật không được trống!');
-        $is_valid=false;
-    } 
+    // if (!isset(($_POST['is_featured']))||$_POST['is_featured']==='') {
+    //     NotificationHelper::error('is_featured','Nổi bật không được trống!');
+    //     $is_valid=false;
+    // } 
     //trạng thái
     if (!isset(($_POST['status']))||$_POST['status']==='') {
         NotificationHelper::error('status','Trạng thái không được trống!');
