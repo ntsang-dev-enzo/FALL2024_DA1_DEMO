@@ -51,7 +51,7 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT * FROM $this->table WHERE productname=?";
+            $sql = "SELECT * FROM $this->table WHERE name=?";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->bind_param('s', $name);
@@ -67,7 +67,7 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT products.*,categories.name AS category_name FROM products INNER JOIN categories ON products.idcategory=categories.id;";
+            $sql = "SELECT products.*,categories.name AS category_name FROM products INNER JOIN categories ON products.category_id=categories.id;";
             $result = $this->_conn->MySQLi()->query($sql);
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {
@@ -80,9 +80,9 @@ class Product extends BaseModel
         $result = [];
         try {
             $sql = "SELECT products.*, categories.name AS category_name FROM products 
-            INNER JOIN categories ON products.idcategory = categories.id 
+            INNER JOIN categories ON products.category_id = categories.id 
             WHERE products.status = " . self::STATUS_ENABLE . " 
-            AND categories.status = " . self::STATUS_ENABLE . " AND products.idcategory=?";
+            AND categories.status = " . self::STATUS_ENABLE . " AND products.category_id=?";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->bind_param('i', $id);
@@ -120,8 +120,8 @@ class Product extends BaseModel
         try {
             $sql = "SELECT COUNT(*) AS count, categories.name 
             FROM products INNER JOIN categories 
-            ON products.idcategory=categories.id 
-            GROUP BY products.idcategory;";
+            ON products.category_id=categories.id 
+            GROUP BY products.category_id;";
             $result = $this->_conn->MySQLi()->query($sql);
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {

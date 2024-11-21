@@ -50,7 +50,7 @@ class Create extends BaseView
                                     <input type="hidden" name="method" id="" value="POST">
                                     <div class="form-group">
                                         <label for="name">Tên*</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="productname" >
+                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="name" >
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Hình ảnh</label>
@@ -69,8 +69,8 @@ class Create extends BaseView
                                         <textarea class="form-control" id="editor" cols="50" rows="6" name="description" id="description"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="idcategory">Loại sản phẩm*</label>
-                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="idcategory" name="idcategory" >
+                                        <label for="category_id">Loại sản phẩm*</label>
+                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="category_id" name="category_id" >
                                             <option value="" selected disabled>Vui lòng chọn...</option>
                                             <?php foreach($data as $item): ?>
                                             <option value="<?= $item['id']?>"><?= $item['name']?></option>
@@ -80,11 +80,11 @@ class Create extends BaseView
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Tác giả*</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="productname" >
+                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="name" >
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Nhà xuất bản*</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="productname" >
+                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="name" >
                                     </div>
                                     <div class="form-group">
                                         <label for="status">Trạng thái*</label>

@@ -54,8 +54,8 @@ class Edit extends BaseView
                                         <input type="text" class="form-control" id="id" name="id" value="<?= $data['product']['id'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="productname">Tên*</label>
-                                        <input type="text" class="form-control" id="productname" placeholder="Nhập tên loại sản phẩm..." name="productname" value="<?= $data['product']['productname'] ?>">
+                                        <label for="name">Tên*</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên loại sản phẩm..." name="name" value="<?= $data['product']['name'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Hình ảnh</label>
@@ -74,11 +74,11 @@ class Edit extends BaseView
                                         <textarea class="form-control" cols="50" rows="6" name="description" id="description"><?= $data['product']['description'] ?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="idcategory">Loại sản phẩm*</label>
-                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="idcategory" name="idcategory">
+                                        <label for="category_id">Loại sản phẩm*</label>
+                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="category_id" name="category_id">
                                             <option value="" selected disabled>Vui lòng chọn...</option>
                                             <?php foreach ($data['category'] as $item): ?>
-                                                <option value="<?= $item['id'] ?>" <?= ($item['id'] == $data['product']['idcategory']) ? 'selected' : '' ?>><?= $item['name'] ?></option>
+                                                <option value="<?= $item['id'] ?>" <?= ($item['id'] == $data['product']['category_id']) ? 'selected' : '' ?>><?= $item['name'] ?></option>
                                             <?php endforeach; ?>
 
                                         </select>

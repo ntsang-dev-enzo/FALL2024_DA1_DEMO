@@ -68,14 +68,14 @@ class Index extends BaseView
                                                     <tr>
                                                         <td><?= $item['id'] ?></td>
                                                         <td><img src="<?=APP_URL?>/public/uploads/products/<?=$item['image']?>" alt="" width="100px"></td>
-                                                        <td><?= $item['productname'] ?></td>
+                                                        <td><?= $item['name'] ?></td>
                                                         <td><?= number_format($item['price'])  ?></td>
                                                         <td><?= number_format($item['discount_price'])  ?></td>
                                                         <td><?= $item['category_name']  ?></td>
                                                         <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                                         <td>
                                                             <a href="/admin/products/<?= $item['id'] ?>" class="btn btn-primary ">Sửa</a>
-                                                            <form action="/admin/products/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn chắc chắn muốn xóa sản phẩm <?= $item['productname'] ?> không?')">
+                                                            <form action="/admin/products/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn chắc chắn muốn xóa sản <?= $item['name'] ?> không?')">
                                                                 <input type="hidden" name="method" value="DELETE" id="">
                                                                 <button type="submit" class="btn btn-danger text-white">Xoá</button>
                                                             </form>

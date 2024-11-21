@@ -60,7 +60,7 @@ class ProductController
             exit;
         }
         // echo 'ucii';
-        $name = $_POST['productname'];
+        $name = $_POST['name'];
         //kiểm tra tên sp tồn tại chưa, không được trùng
         $product = new Product();
         $is_exist = $product->getOneProductByName($name);
@@ -72,12 +72,12 @@ class ProductController
 
         //thêm
         $data = [
-            'productname' => $name,
+            'name' => $name,
             'price' => $_POST['price'],
             'discount_price' => $_POST['discount_price'],
             'description' => $_POST['description'],
             // 'is_featured' => $_POST['is_featured'],
-            'idcategory' => $_POST['idcategory'],
+            'category_id' => $_POST['category_id'],
             'author' => $_POST['author'],
             'publisher' => $_POST['publisher'],
             'status' => $_POST['status'],
@@ -148,7 +148,7 @@ class ProductController
             exit;
         }
         // echo 'ucii';
-        $name = $_POST['productname'];
+        $name = $_POST['name'];
         //kiểm tra tên loại tồn tại chưa, không được trùng
         $product=new Product();
         $is_exist=$product->getOneProductByName($name);
@@ -163,12 +163,12 @@ class ProductController
 
         // cập nhật
         $data = [
-            'productname' => $name,
+            'name' => $name,
             'price' => $_POST['price'],
             'discount_price' => $_POST['discount_price'],
             'description' => $_POST['description'],
             // 'is_featured' => $_POST['is_featured'],
-            'idcategory' => $_POST['idcategory'],
+            'category_id' => $_POST['category_id'],
             'author' => $_POST['author'],
             'publisher' => $_POST['publisher'],
             'status' => $_POST['status'],
