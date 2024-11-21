@@ -73,11 +73,12 @@ class UserController
             'email' => $_POST['email'],
             'name' => $_POST['name'],
             'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+            're_password' => password_hash($_POST['re_password'], PASSWORD_DEFAULT),
             'status' => $_POST['status']
         ];
         $is_upload = UserValidation::uploadAvatar();
         if ($is_upload) {
-            $data['avatar'] = $is_upload;
+            $data['image'] = $is_upload;
         }
         $result = $user->createUser($data);
         if ($result) {
@@ -143,7 +144,7 @@ class UserController
         }
         $is_upload = UserValidation::uploadAvatar();
         if ($is_upload) {
-            $data['avatar'] = $is_upload;
+            $data['image'] = $is_upload;
         }
         $result = $user->updateUser($id, $data);
         if ($result) {
