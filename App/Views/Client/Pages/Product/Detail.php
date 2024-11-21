@@ -28,7 +28,7 @@ class Detail extends BaseView
         <div class="col-md-7">
             <h2 class="fw-bold"><?= $data['product']['name'] ?></h2>
             <p class="text-muted">Tác giả: <?= $data['product']['author'] ?></p>
-            <p class="text-muted">Hình thức bìa: Bìa Cứng</p>
+            <p class="text-muted">Hình thức bìa: <?= $data['product']['cover'] ?></p>
             <h3 class="text-danger"><?= $data['product']['price'] ?> <span class="text-muted text-decoration-line-through"><?= $data['product']['discount_price'] ?></span> <span class="badge bg-warning text-dark">-28%</span></h3>
 
             <div class="alert alert-danger d-flex align-items-center" role="alert">

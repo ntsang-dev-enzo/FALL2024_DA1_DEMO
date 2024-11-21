@@ -15,6 +15,8 @@ use App\Views\Client\Pages\Product\Category as ProductCategory;
 use App\Views\Client\Pages\Product\Detail;
 use App\Views\Client\Pages\Product\Cart;
 use App\Views\Client\Pages\Product\Index;
+use App\Views\Client\Pages\Product\ThanhToan;
+
 
 class ProductController
 {
@@ -103,6 +105,16 @@ class ProductController
         Notification::render();
         NotificationHelper::unset();
         Index::render($data);
+        Footer::render();
+    }
+
+    public static function ThanhToan()
+    {
+       
+        Header::render();
+        Notification::render();
+        NotificationHelper::unset();
+        ThanhToan::render();
         Footer::render();
     }
 }
