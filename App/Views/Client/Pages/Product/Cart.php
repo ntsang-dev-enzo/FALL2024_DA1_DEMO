@@ -83,7 +83,7 @@ class Cart extends BaseView
                     <p>Thành tiền: 0 đ</p>
                     <p><strong>Tổng Số Tiền (gồm VAT): 0 đ</strong></p>
                    
-                    <a href="/products/thanhtoan" class="btn btn-success col-12">Thanh Toán</a>
+                    <a href="/products/checkout" class="btn btn-success col-12">Thanh Toán</a>
                     <p class="note">Giảm giá trên web chỉ áp dụng cho bán lẻ</p>
                 </div>
             </div>

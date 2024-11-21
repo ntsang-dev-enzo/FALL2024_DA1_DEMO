@@ -5,7 +5,7 @@ namespace App\Views\Client\Pages\Product;
 use App\Views\BaseView;
 use App\Views\Client\Components\Category;
 
-class ThanhToan extends BaseView
+class Checkout extends BaseView
 {
   public static function render($data = null)
   {
@@ -103,7 +103,7 @@ class ThanhToan extends BaseView
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" checked>
                     <label class="form-check-label d-flex align-items-center" for="cashOnDelivery">
-                        <img width="40px" height="20px" src="https://nhualaysang.com/uploads/images/bai-viet/thanhtoan-vinlite1.png" alt="Cash" class="me-3">
+                        <img width="40px" height="20px" src="https://nhualaysang.com/uploads/images/bai-viet/Checkout-vinlite1.png" alt="Cash" class="me-3">
                         Thanh toán bằng tiền mặt khi nhận hàng
                     </label>
                 </div>
