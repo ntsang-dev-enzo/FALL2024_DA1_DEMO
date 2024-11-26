@@ -12,7 +12,7 @@ class Index extends BaseView
 
 
 ?>
-    <div class="col-8 mx-auto">
+    <div class="col-10 mx-auto">
       <section class="banner container mt-4 mb-4">
         <div class="col-12">
           <div class="row">

@@ -55,7 +55,7 @@ class Header extends BaseView
                     </div>
                 </div>
             </div>
-            <div class="col-8 mx-auto">
+            <div class="col-10 mx-auto">
             <!-- Topbar End -->
 
 

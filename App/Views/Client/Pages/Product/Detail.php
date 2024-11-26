@@ -13,7 +13,7 @@ class Detail extends BaseView
         $is_login = AuthHelper::checkLogin();
 ?>
         <div class="container">
-            <div class="container col-10 my-5">
+            <div class="container col-12 my-5">
                 <ol class="breadcrumb">
                     <li class="0">
                         <a href="https://www.fahasa.com/sach-trong-nuoc.html" title="Sách tiếng Việt">Sách tiếng Việt</a>

@@ -33,6 +33,7 @@
 // JavaScript để hỗ trợ hover trên các menu dropdowndocument.addEventListener('DOMContentLoaded', function () {
     // Chọn tất cả các menu con cấp 2
 
+    
 document.addEventListener('DOMContentLoaded', function() {
     var myCarousel = document.querySelector('#header-carousel');
     

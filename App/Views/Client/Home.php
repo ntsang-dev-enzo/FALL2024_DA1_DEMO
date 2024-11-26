@@ -9,7 +9,7 @@ class Home extends BaseView
     public static function render($data = null)
     {
 ?>
-        <div class="col-8 mx-auto">
+        <div class="col-10 mx-auto">
             <main role="main" class="  py-4 bg-light">
                 <div class="col-md-12 d-flex flex-column">
                     <div class="container">

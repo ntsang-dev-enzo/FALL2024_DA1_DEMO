@@ -38,6 +38,7 @@ Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 Route::get('/cart', 'App\Controllers\Client\ProductController@cart');
 Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
+Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
 
 
 // blog
