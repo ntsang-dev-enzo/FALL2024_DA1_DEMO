@@ -98,10 +98,12 @@ class Detail extends BaseView
                                         </tr>
 
                                     </tbody>
-
+                                    
                                 </table>
                             </div>
+                            
                         </div>
+                        <div class=" mt-2 bg-white rounded-3 p-2"><h3>Thông tin sản phẩm: <br></h3><?= $data['product']['description'] ?></div>
                     </div>
 
                 </div>
@@ -211,7 +213,7 @@ class Detail extends BaseView
                                 </ul>
                             </div>
                         </div>
-                        <p class="text-center mt-4">Chỉ có thành viên mới có thể viết nhận xét. Vui lòng <a href="#">đăng nhập</a> hoặc <a href="#">đăng ký</a>.</p>
+                        <div class="text-center mt-4">Chỉ có thành viên mới có thể viết nhận xét. Vui lòng <a href="#">đăng nhập</a> hoặc <a href="#">đăng ký</a>.</div>
                     </div>
                 </div>
             </div>

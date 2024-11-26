@@ -111,7 +111,8 @@ class Product extends BaseModel
             return $result;
         }
     }
-    public function countTotalProduct(){
+    public function countTotalProduct()
+    {
         return $this->countTotal();
     }
     public function countProductByCategory()
@@ -126,6 +127,26 @@ class Product extends BaseModel
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {
             error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
+    public function getAllProductByCategoryAndMiniCategoryAndStatus($id)
+    {
+        $result = [];
+        try {
+            $sql = "SELECT categories.id 
+            AS category_id, categories.name AS category_name,
+                mini_categories.id AS mini_category_id,
+                mini_categories.name AS mini_category_name 
+                FROM categories 
+                LEFT JOIN mini_categories ON categories.id = mini_categories.id;";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy dữ liệu theo category và status: ' . $th->getMessage());
             return $result;
         }
     }

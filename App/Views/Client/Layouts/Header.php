@@ -32,6 +32,7 @@ class Header extends BaseView
 
         <body>
             <!-- Topbar Start -->
+            
             <div class="bg-dark ">
                 <div class="container">
                     <div class="col-12 d-flex justify-content-between">
@@ -54,6 +55,7 @@ class Header extends BaseView
                     </div>
                 </div>
             </div>
+            <div class="col-8 mx-auto">
             <!-- Topbar End -->
 
 
@@ -114,6 +116,7 @@ class Header extends BaseView
                 </nav>
 
 
+            </div>
             </div>
             <!-- Navbar & Carousel End -->
 
