@@ -33,10 +33,10 @@ class Comment extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT comments.*, products.productname AS product_name, users.username 
+            $sql = "SELECT comments.*, products.name AS product_name, customers.username 
             FROM comments 
             INNER JOIN products ON comments.product_id=products.id 
-            INNER JOIN users ON comments.user_id=users.id";
+            INNER JOIN customers ON comments.user_id=customers.id";
             $result = $this->_conn->MySQLi()->query($sql);
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {
@@ -48,10 +48,10 @@ class Comment extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT comments.*, products.productname AS product_name, users.username 
+            $sql = "SELECT comments.*, products.name AS product_name, customers.username 
             FROM comments 
             INNER JOIN products ON comments.product_id=products.id 
-            INNER JOIN users ON comments.user_id=users.id
+            INNER JOIN customers ON comments.user_id=customers.id
             WHERE comments.id=?";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
@@ -68,9 +68,9 @@ class Comment extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT comments.*,users.username, users.name, users.avatar 
+            $sql = "SELECT comments.*,customers.username, customers.name, customers.image 
             FROM comments INNER JOIN 
-            users ON comments.user_id=users.id 
+            customers ON comments.user_id=customers.id 
             WHERE comments.product_id=? 
             AND comments.status=".self::STATUS_ENABLE." 
             ORDER BY date DESC LIMIT 5;";
@@ -93,7 +93,7 @@ class Comment extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT COUNT(*) AS count, products.productname 
+            $sql = "SELECT COUNT(*) AS count, products.name 
             FROM comments INNER JOIN products 
             ON comments.product_id=products.id 
             GROUP BY comments.product_id 

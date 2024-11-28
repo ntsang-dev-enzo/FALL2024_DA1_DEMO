@@ -29,28 +29,9 @@ class Index extends BaseView
                 <h6 style="padding: 10px;background-color: orange;color: black;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
                   </svg></i>DANH MỤC</h6>
-                <?php
-                if (count($data) && count($data['categories'])):
-                  foreach ($data['categories'] as $item):
-                ?>
-                    <div class="nav-item dropdown dropend">
-                      <div class="dropdown-button">
-                        <button class="dropdown-item-button">
-                          <a class="dropdown-toggle" href="/products" id="navbarDropdown1" role="button" aria-expanded="false">
-                            <?= $item['name'] ?> <i class="fas fa-chevron-right">&nbsp;</i>
-                          </a>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
-                          <li><a class="dropdown-item" href="#">iPhone</a></li>
-                          <li><a class="dropdown-item" href="#">Samsung</a></li>
-                          <li><a class="dropdown-item" href="#">Xiaomi</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                <?php
-                  endforeach;
-                endif;
-                ?>
+                  <?php
+                    Category::render($data['categories']);
+                    ?>
               </div>
             </nav>
             <div class="fill">
@@ -96,17 +77,16 @@ class Index extends BaseView
 
 
             <div class="product-grid" id="product-grid">
-
               <?php
               if (count($data) && count($data['products'])):
                 foreach ($data['products'] as $item):
               ?>
-                  <div class="product" data-price="70520">
+                  <div class="product" data-price="<?= $item['price'] ?>">
                     <div class="discount">18%</div>
                     <a href="/products/<?= $item['id'] ?>">
                       <img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?? '' ?>"></a>
                     <h5 class="text-start mt-2"><a class="text-decoration-none" href="/products/<?= $item['id'] ?>"><?= $item['name'] ?? '' ?></a></h5>
-                    <div class="price text-start"><span class="old-price"><?= $item['discount_price'] ?> đ<br></span><?= $item['price'] ?> đ</div>
+                    <div class="price text-start"><span class="old-price"><?= $item['discount_price'];?> đ<br></span><?= $item['price'] ?> đ</div>
                     <div class=" mt-3 progress-container-cart">
                       <div class="progress-bar-cart">
                         Đã bán 165

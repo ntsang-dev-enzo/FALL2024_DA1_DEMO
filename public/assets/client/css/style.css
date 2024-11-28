@@ -41,7 +41,7 @@ h6,
     position: relative;
     margin-left: 15px;
     color: #6d6d6d;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     outline: none;
     transition: .5s;
@@ -1519,7 +1519,7 @@ button.see-more:hover {
 .product-grid {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
 }
 
