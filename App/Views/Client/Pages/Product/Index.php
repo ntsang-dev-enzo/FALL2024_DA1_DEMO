@@ -81,9 +81,10 @@ class Index extends BaseView
                   <option>24 sản phẩm</option>
                 </select>
 
-                <form class="d-flex col-5 ms-4">
-                  <input class="form-control me-2" type="search" placeholder="Search for books" aria-label="Search">
-                  <button class="btn btn-success" type="button">Search</button>
+                <form action="/client/products/search" class="d-flex col-5 ms-4">
+                <input type="hidden"  method="GET" >
+                  <input name="keyword" class="form-control me-2" type="search" placeholder="Search for books" aria-label="Search">
+                  <button class="btn btn-success" type="submit">Search</button>
                 </form>
               </div>
             </div>

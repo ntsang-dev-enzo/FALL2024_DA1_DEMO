@@ -39,6 +39,7 @@ Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 Route::get('/cart', 'App\Controllers\Client\ProductController@cart');
 Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
 Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
+Route::get('/client/products/search', 'App\Controllers\Client\ProductController@search'); 
 
 
 // blog
@@ -87,7 +88,7 @@ Route::post('/admin/products', 'App\Controllers\Admin\ProductController@store');
 Route::get('/admin/products/{id}', 'App\Controllers\Admin\ProductController@edit');
 Route::put('/admin/products/{id}', 'App\Controllers\Admin\ProductController@update');
 Route::delete('/admin/products/{id}', 'App\Controllers\Admin\ProductController@delete');
-Route::get('/admin/products/search', 'App\Controllers\Admin\ProductController@search'); // huy
+Route::get('/admin/products/search', 'App\Controllers\Admin\ProductController@search'); 
 
 
 // user
