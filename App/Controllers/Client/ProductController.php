@@ -137,5 +137,45 @@ class ProductController
         Index::render($data);
         Footer::render();
     }
+    public static function search() {
+        $category = new Category();
+        $categories = $category->getAllCategoryByStatus();
+    
+        $keyword = $_GET['keyword'] ?? '';
+        $keyword = trim($keyword); // Loại bỏ khoảng trắng đầu/cuối
+    
+        // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+        if (empty($keyword)) {
+            $_SESSION['keyword'] = null;
+            $product = new Product();
+            $products = $product->getAllProductByStatus(); // Lấy tất cả sản phẩm
+            $data = [
+                'products' => $products,
+                'categories' => $categories,
+            ];
+            Header::render();
+            Index::render($data);
+            Footer::render();
+            return;
+        }
+    
+        // Lưu từ khóa tìm kiếm vào session
+        $_SESSION['keyword'] = $keyword;
+    
+        // Tìm kiếm sản phẩm theo từ khóa
+        $product = new Product();
+        $products = $product->search($keyword); // Gọi phương thức search()
+    
+        // Hiển thị kết quả tìm kiếm
+        $data = [
+            'products' => $products,
+            'categories' => $categories,
+        ];
+        Header::render();
+        Index::render($data);
+        Footer::render();
+    }
+    
+    
     
 }
