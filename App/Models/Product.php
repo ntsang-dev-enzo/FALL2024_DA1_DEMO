@@ -150,4 +150,15 @@ class Product extends BaseModel
             return $result;
         }
     }
-}
+
+    public function search($keyword){
+
+        $sql = "SELECT products.* , categories.name AS category_name
+        FROM products
+        INNER JOIN categories ON products.category_id = categories.id
+        WHERE products.name REGEXP '$keyword' ";
+        $result = $this->_conn->MySQLi()->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    }
+

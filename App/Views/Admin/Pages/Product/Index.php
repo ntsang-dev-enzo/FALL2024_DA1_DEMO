@@ -33,6 +33,7 @@ class Index extends BaseView
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Container fluid  -->
+
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
@@ -44,6 +45,11 @@ class Index extends BaseView
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Danh sách sản phẩm</h5>
+                                <form action="/admin/products/search" class="d-flex" role="search" method="get">
+                                    <input type="hidden"  method="GET" >
+                                    <input class="form-control me-2" name="keyword" type="search" placeholder="Search..." aria-label="Search">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </form>
                                 <?php
                                 if (count($data)) :
                                 ?>
@@ -67,7 +73,7 @@ class Index extends BaseView
                                                 ?>
                                                     <tr>
                                                         <td><?= $item['id'] ?></td>
-                                                        <td><img src="<?=APP_URL?>/public/uploads/products/<?=$item['image']?>" alt="" width="100px"></td>
+                                                        <td><img src="<?= APP_URL ?>/public/uploads/products/<?= $item['image'] ?>" alt="" width="100px"></td>
                                                         <td><?= $item['name'] ?></td>
                                                         <td><?= number_format($item['price'])  ?></td>
                                                         <td><?= number_format($item['discount_price'])  ?></td>

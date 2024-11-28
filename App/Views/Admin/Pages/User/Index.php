@@ -38,6 +38,11 @@ class Index extends BaseView
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Danh sách người dùng</h5>
+                                <form action="/admin/User/search" class="d-flex" role="search" method="get">
+                                    <input type="hidden"  method="GET  " >
+                                    <input class="form-control me-2" name="keyword" type="search" placeholder="Search..." aria-label="Search">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </form>
                                 <?php
                                 if (count($data)) :
                                 ?>
@@ -50,6 +55,7 @@ class Index extends BaseView
                                                     <th>Tên đăng nhập</th>
                                                     <th>Họ và tên</th>
                                                     <th>Email</th>
+                                                    <th>SDT</th>
                                                     <th>Quyền</th>
                                                     <th>Trạng thái</th>
                                                     <th></th>
@@ -65,6 +71,7 @@ class Index extends BaseView
                                                         <td><?= $item['username'] ?></td>
                                                         <td><?= $item['name'] ?></td>
                                                         <td><?= $item['email'] ?></td>
+                                                        <td><?= $item['phone'] ?></td>
                                                         <td><?= ($item['role'] == 1) ? 'Quản trị viên' : 'Khách hàng' ?></td>
                                                         <td><?= ($item['status'] == 1) ? 'Hoạt đông' : 'Khóa' ?></td>
                                                         <td>

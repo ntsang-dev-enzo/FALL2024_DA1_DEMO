@@ -213,4 +213,29 @@ class ProductController
         }
 
     }
+    public static function search() {
+
+       
+        $keyword = $_GET['keyword'] ?? '';
+        $keyword = trim( $keyword);
+        
+
+        if (empty($keyword)){
+            $_SESSION['keyword'] = null;
+            
+            $data = [];
+            Header::render();
+            Index::render();
+            Footer::render();
+            return ;
+    }
+
+    $_SESSION ['keywords'] = $keyword;
+    $product = new Product();
+    $data = $product->search( $keyword);
+    Header::render();
+    Index::render( $data);
+    Footer::render();
+
+}
 }
