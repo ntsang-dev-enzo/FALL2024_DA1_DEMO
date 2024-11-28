@@ -72,4 +72,12 @@ class User extends BaseModel
     public function countTotalUser(){
         return $this->countTotal();
     }
+    public function search($keyword){
+
+        $sql = "SELECT customers.* 
+        FROM customers
+        WHERE customers.phone REGEXP '$keyword' OR customers.email  REGEXP '$keyword' ";
+        $result = $this->_conn->MySQLi()->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
