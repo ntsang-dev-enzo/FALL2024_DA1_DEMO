@@ -54,7 +54,7 @@ class Edit extends BaseView
                                         <input type="text" class="form-control" id="id" name="id" value="<?= $data['product']['id'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="name">Tên*</label>
+                                        <label for="name">Tên</label>
                                         <input type="text" class="form-control" id="name" placeholder="Nhập tên loại sản phẩm..." name="name" value="<?= $data['product']['name'] ?>">
                                     </div>
                                     <div class="form-group">
@@ -62,19 +62,35 @@ class Edit extends BaseView
                                         <input type="file" placeholder="Chọn hình ảnh" class="form-control" id="image" name="image">
                                     </div>
                                     <div class="form-group">
-                                        <label for="price">Giá tiền*</label>
+                                        <label for="price">Giá tiền</label>
                                         <input type="number" class="form-control" id="price" name="price" placeholder="Nhập giá tiền" value="<?= $data['product']['price'] ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="discount_price">Giá giảm*</label>
+                                        <label for="discount_price">Giá giảm</label>
                                         <input type="number" class="form-control" id="discount_price" name="discount_price" placeholder="Nhập giá giảm" value="<?= $data['product']['discount_price'] ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">Mô tả*</label>
+                                        <label for="description">Mô tả</label>
                                         <textarea class="form-control" cols="50" rows="6" name="description" id="description"><?= $data['product']['description'] ?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="category_id">Loại sản phẩm*</label>
+                                        <label for="publisher">Nhà xuất bản</label>
+                                        <input type="text" class="form-control" id="publisher" placeholder="Nhập tên nhà xuất bản" name="publisher" value="<?= $data['product']['publisher'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="author">Tác giả</label>
+                                        <input type="text" class="form-control" id="author" placeholder="Nhập tên nhà xuất bản" name="author" value="<?= $data['product']['author'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="supplier">Nhà cung cấp</label>
+                                        <input type="text" class="form-control" id="supplier" placeholder="Nhập tên nhà xuất bản" name="supplier" value="<?= $data['product']['supplier'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cover">Hình thức bìa</label>
+                                        <input type="text" class="form-control" id="cover" placeholder="Nhập tên nhà xuất bản" name="cover" value="<?= $data['product']['cover'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category_id">Loại sản phẩm</label>
                                         <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="category_id" name="category_id">
                                             <option value="" selected disabled>Vui lòng chọn...</option>
                                             <?php foreach ($data['category'] as $item): ?>
@@ -84,7 +100,7 @@ class Edit extends BaseView
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="is_featured">Nổi bật*</label>
+                                        <label for="is_featured">Nổi bật</label>
                                         <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="is_featured" name="is_featured">
                                             <option value="" selected disabled>Vui lòng chọn...</option>
                                             <option value="1" <?= ($data['product']['is_featured'] == 1 ? 'selected' : '') ?>>Nổi bật</option>
@@ -93,7 +109,7 @@ class Edit extends BaseView
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="status">Trạng thái*</label>
+                                        <label for="status">Trạng thái</label>
                                         <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="status" name="status" value="<?= $data['product']['status'] ?>">
                                             <option value="" selected disabled>Vui lòng chọn...</option>
                                             <option value="1" <?= ($data['product']['status'] == 1 ? 'selected' : '') ?>>Hiển thị</option>

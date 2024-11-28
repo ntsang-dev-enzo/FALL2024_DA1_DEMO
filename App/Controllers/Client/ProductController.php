@@ -7,6 +7,7 @@ use App\Helpers\NotificationHelper;
 use App\Helpers\ViewProductHelper;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\MiniCategory;
 use App\Models\Product;
 use App\Views\Client\Components\Notification;
 use App\Views\Client\Layouts\Footer;
@@ -21,22 +22,25 @@ class ProductController
 {
     // hiển thị danh sách
     public static function index()
-    {
-        $category = new Category();
-        $categories = $category->getAllCategoryByStatus();
-        $product = new Product();
-        $products = $product->getAllProductByStatus();
+{
+    $category = new Category();
+    $categories = $category->getAllCategoryByStatus();
 
-        $data = [
-            'products' => $products,
-            'categories' => $categories,
-        ];
-        Header::render();
-        Notification::render();
-        NotificationHelper::unset();
-        Index::render($data);
-        Footer::render();
-    }
+    $product = new Product();
+    $products = $product->getAllProductByStatus();
+
+    $data = [
+        'products' => $products,
+        'categories' => $categories,
+    ];
+
+    Header::render();
+    Notification::render();
+    NotificationHelper::unset();
+    Index::render($data);
+    Footer::render();
+}
+
     public static function detail($id)
     {
         $product = new Product();
@@ -53,7 +57,7 @@ class ProductController
             'comments' => $comments
         ];
 
-        // $view_result=ViewProductHelper::cookieView($id, $product_detail['view']);
+        $view_result=ViewProductHelper::cookieView($id, $product_detail['view']);
 
 
         Header::render();
@@ -121,6 +125,7 @@ class ProductController
         $categories = $category->getAllCategoryByStatus();
         $product = new Product();
         $products = $product->getAllProductByCategoryAndStatus($id);
+        
 
         $data = [
             'products' => $products,
@@ -132,4 +137,5 @@ class ProductController
         Index::render($data);
         Footer::render();
     }
+    
 }

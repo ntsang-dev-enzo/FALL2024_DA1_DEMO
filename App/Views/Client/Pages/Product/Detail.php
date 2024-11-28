@@ -35,7 +35,7 @@ class Detail extends BaseView
 
                     <div class="col-md-5 bg-white rounded-3 p-2">
                         <div class="card">
-                            <img src="<?= $data['product']['image'] ?>" class="card-img-top" alt="Product Image">
+                            <img src="/public/uploads/products/<?= $data['product']['image'] ?>" class="card-img-top" alt="Product Image">
                         </div>
                         <div class="mt-3 d-flex">
                             <button class="btn btn-outline-danger btn-lg w-100 mb-3">Thêm vào giỏ hàng</button>
@@ -57,7 +57,7 @@ class Detail extends BaseView
                             <p class="text-muted">Tác giả: <?= $data['product']['author'] ?></p>
                             <p class="text-muted">Hình thức bìa: <?= $data['product']['cover'] ?></p>
                             <p class="text-muted">Lượt xem: <?= $data['product']['view'] ?></p>
-                            <h3 class="text-danger"><?= $data['product']['price'] ?> <span class="text-muted text-decoration-line-through"><?= $data['product']['discount_price'] ?></span> <span class="badge bg-warning text-dark">-28%</span></h3>
+                            <h3 class="text-danger"><?= number_format($data['product']['price']) ?> <span class="text-muted text-decoration-line-through"><?= number_format($data['product']['discount_price']) ?></span> <span class="badge bg-warning text-dark">-28%</span></h3>
 
                             <div class="alert alert-danger d-flex align-items-center" role="alert">
                                 <span class="me-2">Flash Sale</span>

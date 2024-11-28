@@ -2,6 +2,8 @@
 
 namespace App\Views\Client\Components;
 
+use App\Models\MiniCategory;
+use App\Views\Client\Components\Mini_Category;
 use App\Views\BaseView;
 
 class Category extends BaseView
@@ -9,18 +11,28 @@ class Category extends BaseView
     public static function render($data = null)
     {
 ?>
-        <h5 class="text-center mb-3">Danh mục</h5>
-        <nav class="nav flex-column border-right">
-            <a class="nav-link active" href="/products">Tất cả</a>
-            <?php
-            foreach ($data as $item) :
-            ?>
-                <a class="nav-link" href="/products/categories/<?= $item['id'] ?>"><?= $item['name'] ?></a>
-            <?php
-            endforeach;
-            ?>
-        </nav>
+        <div class="nav-item dropdown dropend">
+            <div class="dropdown-button">
+                <a href="/products">
+                <button class="dropdown-item-button">
+                        Tất cả
+                </button></a>
+                <?php
+                foreach ($data as $item) :
+                ?><a href="/products/categories/<?= $item['id'] ?>">
+                    <button class="dropdown-item-button">
+                            <?= $item['name'] ?>
+                    </button></a>
+                <?php
+                endforeach;
+                ?>
+
+
+            </div>
+        </div>
 
 <?php
+
+
     }
 }

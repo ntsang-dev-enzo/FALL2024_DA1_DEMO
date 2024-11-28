@@ -50,12 +50,17 @@ h6,
 .fill {
     ul {
         margin-left: 0;
+        padding: 0;
+
 
         li {
             list-style: none;
+            padding: 2px 0;
 
             a {
+                color: #000000;
                 text-decoration: none !important;
+                font-size: 16px;
             }
         }
     }
@@ -456,11 +461,7 @@ aside {
     .dropdown-item-button:hover {
 
         background-color: black;
-
-        a {
-            color: orange;
-            text-decoration: none;
-        }
+        color: orange;
     }
 
     .nav-item:hover .dropdown-menu {
@@ -1539,16 +1540,26 @@ button.see-more:hover {
     }
 
     img {
+        object-fit: contain;
         max-width: 100%;
-        height: auto;
+        height: 160px;
         border-radius: 8px;
     }
 
     h5 {
+        display: -webkit-box;            
+        -webkit-line-clamp: 4;           
+        -webkit-box-orient: vertical;    
+        overflow: hidden;               
+        text-overflow: ellipsis;       
+        white-space: normal;            
         font-size: 16px;
         color: #333;
         font-weight: 500;
-    }
+        height: 78px !important;         
+      }
+      
+
 }
 
 .price {

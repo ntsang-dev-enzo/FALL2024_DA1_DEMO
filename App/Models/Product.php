@@ -79,10 +79,10 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT products.*, categories.name AS category_name FROM products 
-            INNER JOIN categories ON products.category_id = categories.id 
+            $sql = "SELECT products.*, mini_categories.name AS mini_category_name FROM products 
+            INNER JOIN mini_categories ON products.category_id = mini_categories.id 
             WHERE products.status = " . self::STATUS_ENABLE . " 
-            AND categories.status = " . self::STATUS_ENABLE . " AND products.category_id=?";
+            AND mini_categories.status = " . self::STATUS_ENABLE . " AND products.category_id=?";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->bind_param('i', $id);

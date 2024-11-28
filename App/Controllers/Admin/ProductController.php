@@ -76,10 +76,12 @@ class ProductController
             'price' => $_POST['price'],
             'discount_price' => $_POST['discount_price'],
             'description' => $_POST['description'],
-            // 'is_featured' => $_POST['is_featured'],
+            'is_featured' => $_POST['is_featured'],
             'category_id' => $_POST['category_id'],
             'author' => $_POST['author'],
             'publisher' => $_POST['publisher'],
+            'cover' => $_POST['cover'],
+            'supplier' => $_POST['supplier'],
             'status' => $_POST['status'],
         ];
         $is_upload=ProductValidation::uploadImage();
@@ -93,6 +95,7 @@ class ProductController
             exit;
         } else {
             NotificationHelper::error('store', 'Thêm sản phẩm thất bại!');
+            var_dump($data);
             header('location: /admin/products/create');
             exit;
         }
@@ -167,10 +170,12 @@ class ProductController
             'price' => $_POST['price'],
             'discount_price' => $_POST['discount_price'],
             'description' => $_POST['description'],
-            // 'is_featured' => $_POST['is_featured'],
+            'is_featured' => $_POST['is_featured'],
             'category_id' => $_POST['category_id'],
             'author' => $_POST['author'],
             'publisher' => $_POST['publisher'],
+            'cover' => $_POST['cover'],
+            'supplier' => $_POST['supplier'],
             'status' => $_POST['status'],
         ];
         $is_upload=ProductValidation::uploadImage();

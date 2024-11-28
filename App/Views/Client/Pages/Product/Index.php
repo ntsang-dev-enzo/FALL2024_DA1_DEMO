@@ -52,10 +52,23 @@ class Index extends BaseView
                 <label><input type="checkbox" data-min="500000" data-max="700000"> 500,000đ - 700,000đ</label><br>
                 <label><input type="checkbox" data-min="700000"> 700,000đ - Trở Lên</label>
               </form>
+              <h3 class="mt-2">NHÀ XUẤT BẢN</h3>
+              <ul>
+                <li><a href="#">Tất Cả Nhóm Sản Phẩm</a></li>
+                <li><a href="#">Văn Phòng Phẩm - Dụng Cụ Học Sinh</a></li>
+                <li><a href="#">Lịch Agenda</a></li>
+                <li><a href="#">Lịch Bloc</a></li>
+                <li><a href="#">Lịch Tờ, Lịch Lò Xo</a></li>
+                <li><a href="#">Lịch Khác</a></li>
+              </ul>
+              <h3 class="mt-2">LOẠI BÌA</h3>
+              <ul>
+                <li><a href="#">Cứng</a></li>
+                <li><a href="#">Mềm</a></li>
+              </ul>
             </div>
           </aside>
           <main class="main-content">
-            <!-- Tìm kiếm form nhỏ nằm ở góc phải -->
             <div class="col-12 d-flex ">
               <div class="sorting col-12">
                 <label for="sort" class="col-2">Sắp xếp theo:</label>
@@ -84,9 +97,10 @@ class Index extends BaseView
                   <div class="product" data-price="<?= $item['price'] ?>">
                     <div class="discount">18%</div>
                     <a href="/products/<?= $item['id'] ?>">
-                      <img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?? '' ?>"></a>
+                      <img src="/public/uploads/products/<?= $item['image'] ?>" alt="<?= $item['name'] ?? '' ?>"></a>
                     <h5 class="text-start mt-2"><a class="text-decoration-none" href="/products/<?= $item['id'] ?>"><?= $item['name'] ?? '' ?></a></h5>
-                    <div class="price text-start"><span class="old-price"><?= $item['discount_price'];?> đ<br></span><?= $item['price'] ?> đ</div>
+                    <div class="">
+                    <div class="price text-start"><span class="old-price"><?=  number_format($item['discount_price'])?> đ<br></span><?= number_format($item['price']) ?> đ</div>
                     <div class=" mt-3 progress-container-cart">
                       <div class="progress-bar-cart">
                         Đã bán 165
@@ -97,7 +111,7 @@ class Index extends BaseView
                     </div>
                     <div class="mt-1">
                       <a href="/products/<?= $item['id'] ?>" class="btn btn-cart btn-danger w-100">Xem thêm</a>
-                    </div>
+                    </div></div>
                   </div>
 
               <?php
