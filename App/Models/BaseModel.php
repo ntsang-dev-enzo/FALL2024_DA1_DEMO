@@ -34,7 +34,7 @@ abstract class BaseModel implements CrudInterface
             return $result;
         }
     }
-    public function getOne(int $id)
+    public function getOne(int|string $id)
     {
         $result = [];
         try {
