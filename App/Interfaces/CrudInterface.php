@@ -16,7 +16,7 @@ interface CrudInterface
      * @param int $id
      * @return $record
      */
-    public function getOne(int $id);
+    public function getOne(int|string $id);
 
     /**
      * Phương thức create dùng để tạo mới dữ liệu
