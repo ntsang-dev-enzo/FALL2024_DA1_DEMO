@@ -19,19 +19,33 @@ class ProductController
 
     // hiển thị danh sách
     public static function index()
-    {
+{
+    $product = new Product();
 
+    // Lấy danh sách sản phẩm kèm thông tin category
+    $data = $product->getAllProductJoinCategory();
 
-        $product = new Product();
-        $data = $product->getAllProductJoinCategory();
+    // Lấy lựa chọn sắp xếp từ form, mặc định là 'default'
+    $sortOption = $_GET['sort'] ?? 'default'; 
 
-        Header::render();
-        Notification::render();
-        NotificationHelper::unset();
-        // hiển thị giao diện danh sách
-        Index::render($data);
-        Footer::render();
-    }
+    // Sắp xếp sản phẩm dựa trên lựa chọn
+    $products = $product->sortProducts($sortOption);
+
+    // Truyền dữ liệu vào view
+    $viewData = [
+        'products' => $products, // Sản phẩm đã sắp xếp
+        'sortOption' => $sortOption,  // Lựa chọn sắp xếp
+    ];
+
+    // Render giao diện
+    Header::render();
+    Notification::render();
+    NotificationHelper::unset();
+    Index::render($viewData); // Truyền dữ liệu vào view
+    Footer::render();
+}
+
+    
 
 
     // hiển thị giao diện form thêm

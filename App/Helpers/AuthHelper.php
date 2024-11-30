@@ -68,7 +68,7 @@ class AuthHelper{
             $_SESSION['user'] = $result;
         }
     }
-    public static function updateSession(int $id){
+    public static function updateSession(int|string $id){
         $user = new User();
         $result=$user->getOneUser($id);
         if ($result) {
@@ -108,10 +108,6 @@ class AuthHelper{
             self::updateCookie($user_id);
         }
         self::updateSession($user_id);
-        if ($user_id!=$id) {
-            NotificationHelper::error('user_id','Không có quyền xem thông tin!');
-            return false;
-        }
         return true;
     
     }

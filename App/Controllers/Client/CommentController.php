@@ -25,17 +25,25 @@ class CommentController
 
             exit;
         }
-        $product_id = $_POST['product_id'];
+        $product_id = $_POST['product_id']; 
+               echo '<pre>';
+            var_dump($product_id);
+            echo '</pre>';
         $data = [
             'content' => $_POST['content'],
             'product_id' => $product_id,
             'user_id' => $_POST['user_id'],
-        ];
+        ];            
+
         $comment = new Comment();
         $result = $comment->createComment($data);
-        if ($result) {
+        if(!empty($_SESSION['access_token'])){
+            NotificationHelper::error('store', 'Vui lòng đăng nhập tài khoản TSBooks để bình luận!');
+        }
+        elseif ($result) {
             NotificationHelper::success('store', 'Thêm bình luận thành công!');
         } else {
+
             NotificationHelper::error('store', 'Thêm bình luận thất bại!');
         }
         header("location: /products/$product_id");

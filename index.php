@@ -67,6 +67,11 @@ Route::get('/forgot-password', 'App\Controllers\Client\AuthController@forgotPass
 Route::post('/forgot-password', 'App\Controllers\Client\AuthController@forgotPasswordAction');
 Route::get('/reset-password', 'App\Controllers\Client\AuthController@resetPassword');
 Route::put('/reset-password', 'App\Controllers\Client\AuthController@resetPasswordAction');
+// Route đăng nhập với Google
+Route::get('/login-google', 'App\Controllers\Client\AuthController@googleLogin');
+
+// Route callback từ Google
+Route::get('/google-callback', 'App\Controllers\Client\AuthController@googleCallback');
 
 
 

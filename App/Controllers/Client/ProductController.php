@@ -26,12 +26,21 @@ class ProductController
     $category = new Category();
     $categories = $category->getAllCategoryByStatus();
 
+    // Lấy giá trị từ form sắp xếp, mặc định là 'default'
+    $sortOption = $_GET['sort'] ?? 'default'; 
+
+    // Lấy danh sách sản phẩm theo sắp xếp
     $product = new Product();
-    $products = $product->getAllProductByStatus();
+    $products = $product->sortProducts($sortOption);
+    $totalProductData = $product->countTotal();
+
+    // Lấy tổng số sản phẩm từ mảng
+    $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
 
     $data = [
         'products' => $products,
         'categories' => $categories,
+        'totalProducts' => $totalProducts,  // Truyền giá trị tổng số sản phẩm
     ];
 
     Header::render();
@@ -149,9 +158,15 @@ class ProductController
             $_SESSION['keyword'] = null;
             $product = new Product();
             $products = $product->getAllProductByStatus(); // Lấy tất cả sản phẩm
+            $totalProductData = $product->countTotal();
+
+            // Lấy tổng số sản phẩm từ mảng
+            $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
+        
             $data = [
                 'products' => $products,
                 'categories' => $categories,
+                'totalProducts' => $totalProducts,  // Truyền giá trị tổng số sản phẩm
             ];
             Header::render();
             Index::render($data);
@@ -165,11 +180,15 @@ class ProductController
         // Tìm kiếm sản phẩm theo từ khóa
         $product = new Product();
         $products = $product->search($keyword); // Gọi phương thức search()
+        $totalProductData = $product->countTotal();
+
+        // Lấy tổng số sản phẩm từ mảng
+        $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
     
-        // Hiển thị kết quả tìm kiếm
         $data = [
             'products' => $products,
             'categories' => $categories,
+            'totalProducts' => $totalProducts,  // Truyền giá trị tổng số sản phẩm
         ];
         Header::render();
         Index::render($data);

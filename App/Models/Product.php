@@ -79,10 +79,10 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT products.*, mini_categories.name AS mini_category_name FROM products 
-            INNER JOIN mini_categories ON products.category_id = mini_categories.id 
+            $sql = "SELECT products.*, categories.name AS category_name FROM products 
+            INNER JOIN categories ON products.category_id = categories.id 
             WHERE products.status = " . self::STATUS_ENABLE . " 
-            AND mini_categories.status = " . self::STATUS_ENABLE . " AND products.category_id=?";
+            AND categories.status = " . self::STATUS_ENABLE . " AND products.category_id=?";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->bind_param('i', $id);
@@ -150,13 +150,50 @@ class Product extends BaseModel
             return $result;
         }
     }
+    public function sortProducts($option)
+{
+    $result = [];
+    try {
+        $orderBy = 'price ASC'; // Mặc định là sắp xếp giá từ thấp đến cao
 
+        if ($option == 'lowToHigh') {
+            $orderBy = 'price ASC'; // Giá thấp đến cao
+        } elseif ($option == 'highToLow') {
+            $orderBy = 'price DESC'; // Giá cao đến thấp
+        } elseif ($option == 'default') {
+            // Bạn có thể thêm các tiêu chí mặc định khác nếu cần, ví dụ như theo ngày thêm sản phẩm
+            $orderBy = 'created_at DESC'; // Sắp xếp theo ngày thêm (từ mới nhất)
+        }
+
+        // Truy vấn sản phẩm và sắp xếp theo tiêu chí
+        $sql = "SELECT products.*, categories.name AS category_name 
+                FROM products 
+                INNER JOIN categories ON products.category_id = categories.id 
+                WHERE products.status = " . self::STATUS_ENABLE . " 
+                ORDER BY $orderBy";
+        $result = $this->_conn->MySQLi()->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } catch (\Throwable $th) {
+        error_log('Lỗi khi sắp xếp sản phẩm: ' . $th->getMessage());
+        return $result;
+    }
+}
+    
     public function search($keyword){
 
         $sql = "SELECT products.* , categories.name AS category_name
         FROM products
         INNER JOIN categories ON products.category_id = categories.id
         WHERE products.name REGEXP '$keyword' ";
+        $result = $this->_conn->MySQLi()->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function asc(){
+
+        $sql = "SELECT products.* , categories.name AS category_name
+        FROM products
+        INNER JOIN categories ON products.category_id = categories.id
+         ORDER BY price ASC";
         $result = $this->_conn->MySQLi()->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
