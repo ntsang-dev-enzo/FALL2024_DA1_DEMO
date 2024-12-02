@@ -23,6 +23,7 @@ class Index extends BaseView
                                     <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Danh sách loại sản phẩm</li>
                                 </ol>
+                                
                             </nav>
                         </div>
                     </div>
@@ -44,6 +45,12 @@ class Index extends BaseView
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Danh sách loại sản phẩm</h5>
+                                <form action="/admin/products/search" class="d-flex" role="search" method="get">
+                                    <input type="hidden"  method="GET" >
+                                    <input class="form-control me-2" name="keyword" type="search" placeholder="Search..." aria-label="Search">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </form>
+                                
                                 <?php
                                 if (count($data)) :
                                 ?>
