@@ -85,10 +85,9 @@ class Index extends BaseView
                   <option>Tổng sản phẩm: <?php echo $data['totalProducts']; ?></option>
                 </select>
 
-                <form action="/client/products/search" class="d-flex col-4 ms-4">
-                  <input type="hidden" method="GET">
-                  <input name="keyword" class="form-control me-2" type="search" placeholder="Search for books" aria-label="Search">
-                  <button class="btn btn-success" type="submit">Search</button>
+                <form class="d-flex col-5 ms-4">
+                  <input class="form-control me-2" type="search" placeholder="Search for books" aria-label="Search">
+                  <button class="btn btn-success" type="button">Search</button>
                 </form>
               </div>
             </div>
@@ -105,7 +104,14 @@ class Index extends BaseView
                       <img src="/public/uploads/products/<?= $item['image'] ?>" alt="<?= $item['name'] ?? '' ?>"></a>
                     <h5 class="text-start mt-2"><a class="text-decoration-none" href="/products/<?= $item['id'] ?>"><?= $item['name'] ?? '' ?></a></h5>
                     <div class="">
-                    <div class="price text-start"><span class="old-price"><?=  number_format($item['discount_price'])?> đ<br></span><?= number_format($item['price']) ?> đ</div>
+                    <div class="price text-start">
+   
+    <span class="old-price" style="text-decoration: line-through;">
+        <?= number_format($item['price']) ?> đ<br>
+    </span>
+   
+    <span class="discount-price"><?= number_format($item['discount_price']) ?> đ</span>
+</div>
                     <div class=" mt-3 progress-container-cart">
                       <div class="progress-bar-cart">
                         Đã bán 165
