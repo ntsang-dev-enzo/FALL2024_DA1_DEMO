@@ -103,7 +103,7 @@ class Index extends BaseView
                     <div class="">
                     <div class="price text-start">
    
-    <span class="old-price" style="text-decoration: line-through; color: red;">
+    <span class="old-price" style="text-decoration: line-through;">
         <?= number_format($item['price']) ?> đ<br>
     </span>
     <!-- Hiển thị giá sau giảm -->

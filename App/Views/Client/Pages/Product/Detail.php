@@ -62,7 +62,7 @@ class Detail extends BaseView
             <?php if ($data['product']['discount_price'] < $data['product']['price']): ?>
                 <span class="text-muted text-decoration-line-through"><?= number_format($data['product']['price']) ?></span> 
                 <?= number_format($data['product']['discount_price']) ?>
-                <span class="badge bg-warning text-dark">-<?= round(100 - ($data['product']['discount_price'] / $data['product']['price'] * 100)) ?>%</span>
+                <span class="badge bg-warning text-dark">-<?= round(28 - ($data['product']['discount_price'] / $data['product']['price'] * 28)) ?>%</span>
             <?php else: ?>
                 <?= number_format($data['product']['price']) ?>
             <?php endif; ?>
