@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Models;
 
 class OrderDetail extends BaseModel
@@ -10,25 +10,32 @@ class OrderDetail extends BaseModel
     public function createOrderDetail($data)
     {
         try {
-            $sql = "INSERT INTO order_detail (order_id, product_id, quantity, price) 
-                    VALUES (?, ?, ?, ?)";
+            // Câu lệnh SQL để thêm dữ liệu vào bảng order_detail
+            $sql = "INSERT INTO order_detail (order_id, product_id, quantity, price, name, email, phone, address) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
+            // Kết nối cơ sở dữ liệu
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
 
-            // Kiểm tra ràng buộc các tham số
+            // Kiểm tra câu lệnh chuẩn bị
             if (!$stmt) {
                 throw new \Exception('Lỗi chuẩn bị câu lệnh SQL: ' . $conn->error);
             }
 
-            $stmt->bind_param('iiid', 
+            // Gán các tham số vào câu lệnh SQL
+            $stmt->bind_param('iiidssss', 
                 $data['order_id'],  // order_id
                 $data['product_id'], // product_id
                 $data['quantity'],   // quantity
-                $data['price']       // price
+                $data['price'],      // price
+                $data['name'],       // name
+                $data['email'],      // email
+                $data['phone'],      // phone
+                $data['address']     // address
             );
 
-            // Thực thi câu lệnh SQL và kiểm tra
+            // Thực thi câu lệnh SQL
             if (!$stmt->execute()) {
                 throw new \Exception('Lỗi khi thực thi câu lệnh SQL: ' . $stmt->error);
             }
@@ -45,13 +52,17 @@ class OrderDetail extends BaseModel
     public function getOrderDetailsByOrderId($orderId)
     {
         try {
-            // Câu lệnh SQL để lấy chi tiết đơn hàng
-            $sql = "SELECT od.order_detail_id, od.product_id, od.quantity, od.price, p.name, p.image 
-                    FROM order_detail od
-                    LEFT JOIN products p ON od.product_id = p.id
-                    WHERE od.order_id = ?";
+            $sql = "SELECT od.product_id, 
+               SUM(od.quantity) AS total_quantity, 
+               od.price, 
+               p.name AS product_name, 
+               p.image
+        FROM order_detail od
+        LEFT JOIN products p ON od.product_id = p.id
+        WHERE od.order_id = ?
+        GROUP BY od.product_id, od.price, p.name, p.image";
 
-            // Lấy kết nối cơ sở dữ liệu từ lớp cha (BaseModel)
+            // Kết nối cơ sở dữ liệu
             $conn = $this->_conn->MySQLi();
 
             // Chuẩn bị câu lệnh SQL
@@ -60,6 +71,7 @@ class OrderDetail extends BaseModel
                 throw new \Exception('Lỗi chuẩn bị câu lệnh SQL: ' . $conn->error);
             }
 
+            // Gán tham số vào câu lệnh
             $stmt->bind_param('i', $orderId);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -77,4 +89,7 @@ class OrderDetail extends BaseModel
             return []; // Trả về mảng rỗng nếu có lỗi
         }
     }
+
+   
 }
+

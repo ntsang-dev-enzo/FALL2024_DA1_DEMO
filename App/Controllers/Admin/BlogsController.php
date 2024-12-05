@@ -5,13 +5,13 @@ namespace App\Controllers\Admin;
 use App\Helpers\NotificationHelper;
 use App\Models\Blogs;
 use App\Models\news;
-use App\Validations\NewValidation;
+use App\Validations\BlogsValidation;
 use App\Views\Admin\Layouts\Footer;
 use App\Views\Admin\Layouts\Header;
 use App\Views\Admin\Components\Notification;
-use App\Views\Admin\Pages\News\Create;
-// use App\Views\Admin\Pages\New\Edit;
-use App\Views\Admin\Pages\News\index;
+use App\Views\Admin\Pages\Blogs\Create;
+use App\Views\Admin\Pages\Blogs\Index;
+
 
 class BlogsController
 {
@@ -27,8 +27,7 @@ class BlogsController
         Header::render();
         Notification::render();
         NotificationHelper::unset();
-        // hiển thị giao diện danh sách
-        index::render($data);
+        Index::render($data);
         Footer::render();
     }
 
@@ -49,7 +48,7 @@ class BlogsController
     public static function store()
     {
         // Validation các trường dữ liệu
-        $is_valid = NewValidation::create();
+        $is_valid = BlogsValidation::create();
         // Nếu không hợp lệ, thông báo lỗi và chuyển hướng
         if (!$is_valid) {
             NotificationHelper::error('store', 'Thêm bài viết thất bại!');

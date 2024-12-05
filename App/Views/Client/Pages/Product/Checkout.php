@@ -12,11 +12,26 @@ class Checkout extends BaseView
 {
     public static function render($data = null)
     {
+        // Kiểm tra nếu người dùng đã đăng nhập
         $is_login = AuthHelper::checkLogin();
+
+        // Lấy thông tin giỏ hàng từ cookie
+        $cartItems = [];
+        if (isset($_COOKIE['cart']) && !empty($_COOKIE['cart'])) {
+            $cookie_data = json_decode($_COOKIE['cart'], true);
+
+            // Kiểm tra xem có lỗi giải mã JSON không
+            if (json_last_error() === JSON_ERROR_NONE) {
+                $cartItems = $cookie_data;
+            }
+        }
+        $totalAmount = 0;
+
 ?>
         <div class="container">
             <form method="POST" action="/order/create/action">
-                <input type="hidden" name="method" value="POST" id="">
+                <input type="hidden" name="method" value="POST">
+
                 <!-- Địa chỉ giao hàng -->
                 <fieldset class="border p-4 mb-4">
                     <legend class="w-auto px-3">
@@ -25,9 +40,9 @@ class Checkout extends BaseView
                     <hr>
 
                     <div class="row mb-3">
-                        <label for="fullName" class="col-sm-3 col-form-label">Họ và tên người nhận</label>
+                        <label for="name" class="col-sm-3 col-form-label">Họ và tên người nhận</label>
                         <div class="col-sm-9">
-                            <input type="text" name="fullName" class="form-control" id="fullName" placeholder="Nhập họ và tên người nhận" required>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Nhập họ và tên người nhận" required>
                         </div>
                     </div>
 
@@ -46,27 +61,33 @@ class Checkout extends BaseView
                     </div>
 
                     <div>
-                        <select class="form-select form-select-sm mb-3" id="city" name="city" aria-label=".form-select-sm">
-                            <option value="" selected>Chọn tỉnh thành</option>
-                            <!-- Tỉnh thành sẽ được điền động từ cơ sở dữ liệu -->
-                        </select>
+                        <input type="hidden" id="cityName" name="cityName">
+                        <input type="hidden" id="districtName" name="districtName">
+                        <input type="hidden" id="wardName" name="wardName">
 
-                        <select class="form-select form-select-sm mb-3" id="district" name="district" aria-label=".form-select-sm">
-                            <option value="" selected>Chọn quận huyện</option>
-                            <!-- Quận huyện sẽ được điền động từ API -->
-                        </select>
+                        <!-- Các dropdown cho địa chỉ -->
+                        <div>
+                            <select class="form-select form-select-sm mb-3" id="city" name="city" aria-label=".form-select-sm">
+                                <option value="" selected>Chọn tỉnh thành</option>
+                                <!-- Tỉnh thành sẽ được điền động từ cơ sở dữ liệu -->
+                            </select>
 
-                        <select class="form-select form-select-sm" id="ward" name="ward" aria-label=".form-select-sm">
-                            <option value="" selected>Chọn phường xã</option>
-                            <!-- Phường xã sẽ được điền động từ API -->
-                        </select>
-                    </div> <br>
-                    <div class="row mb-3">
-                        <label for="street" class="col-sm-3 col-form-label">Địa chỉ nhận hàng</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="street" class="form-control" id="street" placeholder="Nhập địa chỉ nhận hàng" required>
+                            <select class="form-select form-select-sm mb-3" id="district" name="district" aria-label=".form-select-sm">
+                                <option value="" selected>Chọn quận huyện</option>
+                                <!-- Quận huyện sẽ được điền động từ API -->
+                            </select>
+
+                            <select class="form-select form-select-sm" id="ward" name="ward" aria-label=".form-select-sm">
+                                <option value="" selected>Chọn phường xã</option>
+                                <!-- Phường xã sẽ được điền động từ API -->
+                            </select>
+                        </div><br>
+                        <div class="row mb-3">
+                            <label for="street" class="col-sm-3 col-form-label">Địa chỉ nhận hàng</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="street" class="form-control" id="street" placeholder="Nhập địa chỉ nhận hàng" required>
+                            </div>
                         </div>
-                    </div>
                 </fieldset>
 
                 <!-- Phương thức vận chuyển -->
@@ -120,53 +141,21 @@ class Checkout extends BaseView
                     </div>
                     <ul class="list-group list-group-flush">
                         <?php
-                        // Mảng sản phẩm gắn cứng
-                        $products = [
-                            [
-                                'image' => '2.jpg',
-                                'name' => 'Dám Nghĩ Lại',
-                                'quantity' => 1,
-                                'price' => 126000
-                            ],
-                            [
-                                'image' => '3.jpg',
-                                'name' => 'Sản phẩm 2',
-                                'quantity' => 2,
-                                'price' => 100000
-                            ]
-                        ];
-
-                        // Tính tổng tiền
-                        $totalAmount = 0;
-
-                        // Tạo mảng các hàng đơn hàng để hiển thị
-                        $productItems = array_map(function ($product) use (&$totalAmount) {
-                            // Tính tổng tiền của sản phẩm
-                            $productTotal = $product['price'] * $product['quantity'];
-                            // Cộng tổng tiền vào tổng chung
-                            $totalAmount += $productTotal;
-
-                            // Trả về dữ liệu sản phẩm dưới dạng mảng để dễ dàng hiển thị sau này
-                            return [
-                                'image' => $product['image'],
-                                'name' => $product['name'],
-                                'quantity' => $product['quantity'],
-                                'price' => number_format($productTotal),
-                            ];
-                        }, $products);
-
-                        // Hiển thị thông tin sản phẩm
-                        foreach ($productItems as $item) {
+                        // Hiển thị các sản phẩm từ giỏ hàng
+                        foreach ($cartItems as $item) {
+                            // Tính toán thành tiền của sản phẩm
+                            $itemTotal = $item['price'] * $item['quantity'];
+                            $totalAmount += $itemTotal; // Cộng vào tổng tiền giỏ hàng
                         ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="d-flex">
-                                    <img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?>" style="width: 80px; height: auto;" class="me-3 border rounded">
+                                    <img src="/public/uploads/products/<?= $item['image'] ?>" alt="<?= $item['name'] ?>" style="width: 80px; height: auto;" class="me-3 border rounded">
                                     <div>
                                         <h6 class="mb-1"><?= $item['name'] ?></h6>
                                         <small class="text-muted">Số lượng <?= $item['quantity'] ?></small>
                                     </div>
                                 </div>
-                                <span class="fw-bold text-danger"><?= $item['price'] ?> đ</span>
+                                <span class=" fw-bold text-end col-1 text-danger"><?= number_format($itemTotal) ?> đ</span>
                             </li>
                         <?php
                         }
@@ -191,7 +180,6 @@ class Checkout extends BaseView
                         </li>
                     </ul>
                 </div>
-
 
                 <div class="form-check mt-4">
                     <input class="form-check-input" type="checkbox" id="termsCheckbox" required>

@@ -36,10 +36,15 @@ AuthHelper::middleware();
 Route::get('/', 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
-Route::get('/cart', 'App\Controllers\Client\ProductController@cart');
+Route::get('/cart', 'App\Controllers\Client\CartController@index');
+Route::post('/add-to-cart', 'App\Controllers\Client\CartController@addToCart');
+Route::post('/update-cart-item', 'App\Controllers\Client\CartController@updateCartItem');
+Route::post('/remove-cart-item', 'App\Controllers\Client\CartController@removeCartItem');
+Route::post('/clear-cart', 'App\Controllers\Client\CartController@clearCart');
 Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
 Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
 Route::get('/client/products/search', 'App\Controllers\Client\ProductController@search'); 
+Route::get('/history-orders', 'App\Controllers\Client\OrderController@orderHistory');
 
 
 // blog

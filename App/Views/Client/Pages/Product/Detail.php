@@ -57,7 +57,9 @@ class Detail extends BaseView
                             <p class="text-muted">Tác giả: <?= $data['product']['author'] ?></p>
                             <p class="text-muted">Hình thức bìa: <?= $data['product']['cover'] ?></p>
                             <p class="text-muted">Lượt xem: <?= $data['product']['view'] ?></p>
-                            <h3 class="text-danger"><?= number_format($data['product']['price']) ?> <span class="text-muted text-decoration-line-through"><?= number_format($data['product']['discount_price']) ?></span> <span class="badge bg-warning text-dark">-28%</span></h3>
+                            <h3 class="text-danger"><?= number_format($data['product']['price']) ?> 
+                            <span class="badge bg-warning text-dark">-<?= round((($data['product']['discount_price'] - $data['product']['price'])/$data['product']['discount_price'] * 100)) ?>%</span>
+                            <span class="text-muted text-decoration-line-through"><?= number_format($data['product']['discount_price']) ?></span> </h3>
 
                             <div class="alert alert-danger d-flex align-items-center" role="alert">
                                 <span class="me-2">Flash Sale</span>

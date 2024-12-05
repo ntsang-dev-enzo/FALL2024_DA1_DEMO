@@ -481,7 +481,12 @@ aside {
 }
 
 .btn-cart {
-    font-size: 10px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+}
+
+.banner-product-img{
+    height: 250px;
 }
 
 .container-banner-nav {

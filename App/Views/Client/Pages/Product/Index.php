@@ -16,7 +16,7 @@ class Index extends BaseView
       <section class="banner container mt-4 mb-4">
         <div class="col-12">
           <div class="row">
-            <img src="./img/banner.jpg" alt="Promo Banner" class=" text-start w-100">
+            <img  src="/public/assets/client/images/banner.jpg" alt="Promo Banner" class=" text-start banner-product-img w-100">
           </div>
         </div>
       </section>
@@ -100,24 +100,30 @@ class Index extends BaseView
                 foreach ($data['products'] as $item):
               ?>
                   <div class="product" data-price="<?= $item['price'] ?>">
-                    <div class="discount">18%</div>
+                    <div class="discount">-<?= round((($item['discount_price'] - $item['price'])/$item['discount_price'] * 100)) ?>%</div>
                     <a href="/products/<?= $item['id'] ?>">
                       <img src="/public/uploads/products/<?= $item['image'] ?>" alt="<?= $item['name'] ?? '' ?>"></a>
                     <h5 class="text-start mt-2"><a class="text-decoration-none" href="/products/<?= $item['id'] ?>"><?= $item['name'] ?? '' ?></a></h5>
                     <div class="">
-                      <div class="price text-start"><span class="old-price"><?= number_format($item['discount_price']) ?> đ<br></span><?= number_format($item['price']) ?> đ</div>
-                      <div class=" mt-3 progress-container-cart">
-                        <div class="progress-bar-cart">
-                          Đã bán 165
-                        </div>
-                      </div>
-                      <div class="mt-2">
-                        <button class="btn btn-cart btn-outline-danger w-100">Thêm vào giỏ hàng</button>
-                      </div>
-                      <div class="mt-1">
-                        <a href="/products/<?= $item['id'] ?>" class="btn btn-cart btn-danger w-100">Xem thêm</a>
+                    <div class="price text-start"><span class="old-price"><?=  number_format($item['discount_price'])?> đ<br></span><?= number_format($item['price']) ?> đ</div>
+                    <div class=" mt-3 progress-container-cart">
+                      <div class="progress-bar-cart">
+                        Đã bán 165
                       </div>
                     </div>
+                    <div class="d-flex justify-content-between">
+                    <div class="mt-2">
+                      <form method="post" action="/add-to-cart">
+                      <input type="hidden" name="method" id="" value="POST">
+                        <input type="hidden" name="id" value="<?= $item['id'] ?>" id="">
+                      <button type="submit" name="add-to-cart" class="btn btn-cart btn-outline-danger w-100">Thêm vào giỏ hàng</button>
+                    </form>
+                  </div>
+                    <div class="mt-2">
+                      <a href="/products/<?= $item['id'] ?>" class="btn btn-cart btn-danger w-100">Xem thêm</a>
+                    </div>
+                  </div>
+                  </div>
                   </div>
 
               <?php
