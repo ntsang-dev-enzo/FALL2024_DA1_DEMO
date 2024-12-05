@@ -51,18 +51,29 @@ class Detail extends BaseView
 
                     </div>
 
-                    <div class="col-md-7  ">
-                        <div class="bg-white rounded-3 p-2">
-                            <h2 class="fw-bold"><?= $data['product']['name'] ?></h2>
-                            <p class="text-muted">Tác giả: <?= $data['product']['author'] ?></p>
-                            <p class="text-muted">Hình thức bìa: <?= $data['product']['cover'] ?></p>
-                            <p class="text-muted">Lượt xem: <?= $data['product']['view'] ?></p>
-                            <h3 class="text-danger"><?= number_format($data['product']['price']) ?> <span class="text-muted text-decoration-line-through"><?= number_format($data['product']['discount_price']) ?></span> <span class="badge bg-warning text-dark">-28%</span></h3>
+                    <div class="col-md-7">
+    <div class="bg-white rounded-3 p-2">
+        <h2 class="fw-bold"><?= $data['product']['name'] ?></h2>
+        <p class="text-muted">Tác giả: <?= $data['product']['author'] ?></p>
+        <p class="text-muted">Hình thức bìa: <?= $data['product']['cover'] ?></p>
+        <p class="text-muted">Lượt xem: <?= $data['product']['view'] ?></p>
+        
+        <h3 class="text-danger">
+            <?php if ($data['product']['discount_price'] < $data['product']['price']): ?>
+                <span class="text-muted text-decoration-line-through"><?= number_format($data['product']['price']) ?></span> 
+                <?= number_format($data['product']['discount_price']) ?>
+                <span class="badge bg-warning text-dark">-<?= round(100 - ($data['product']['discount_price'] / $data['product']['price'] * 100)) ?>%</span>
+            <?php else: ?>
+                <?= number_format($data['product']['price']) ?>
+            <?php endif; ?>
+        </h3>
 
-                            <div class="alert alert-danger d-flex align-items-center" role="alert">
-                                <span class="me-2">Flash Sale</span>
-                                <div><span id="countdown">01:47:41</span></div>
-                            </div>
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <span class="me-2">Flash Sale</span>
+            <div><span id="countdown">01:47:41</span></div>
+        </div>
+    </div>
+</div>
 
                             <div class="mt-4 bg-white rounded-3  p-2">
                                 <h5>Thông tin vận chuyển</h5>

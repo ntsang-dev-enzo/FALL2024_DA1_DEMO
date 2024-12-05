@@ -29,9 +29,9 @@ class Index extends BaseView
                 <h6 style="padding: 10px;background-color: orange;color: black;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
                   </svg></i>DANH MỤC</h6>
-                <?php
-                Category::render($data['categories']);
-                ?>
+                  <?php
+                    Category::render($data['categories']);
+                    ?>
               </div>
             </nav>
             <div class="fill">
@@ -72,22 +72,19 @@ class Index extends BaseView
             <div class="col-12 d-flex ">
               <div class="sorting col-12">
                 <label for="sort" class="col-2">Sắp xếp theo:</label>
-                <form action="/products" class=" d-flex col-3 me-2" method="GET">
-                  <select name="sort" id="sort" class="form-select me-3">
-                    <option value="default" <?php echo ($_GET['sort'] ?? '') == 'default' ? 'selected' : ''; ?>>Mặc định</option>
-                    <option value="lowToHigh" <?php echo ($_GET['sort'] ?? '') == 'lowToHigh' ? 'selected' : ''; ?>>Giá: Thấp đến Cao</option>
-                    <option value="highToLow" <?php echo ($_GET['sort'] ?? '') == 'highToLow' ? 'selected' : ''; ?>>Giá: Cao đến Thấp</option>
-                  </select>
-                  <button type="submit" class="btn btn-success">Chọn</button>
-                </form>
-
+                <select id="sort" class="form-select me-3">
+                  <option value="default">Bán Chạy Tuần</option>
+                  <option value="lowToHigh">Giá: Thấp đến Cao</option>
+                  <option value="highToLow">Giá: Cao đến Thấp</option>
+                </select>
                 <select class="form-select">
-                  <option>Tổng sản phẩm: <?php echo $data['totalProducts']; ?></option>
+                  <option>24 sản phẩm</option>
                 </select>
 
-                <form class="d-flex col-5 ms-4">
-                  <input class="form-control me-2" type="search" placeholder="Search for books" aria-label="Search">
-                  <button class="btn btn-success" type="button">Search</button>
+                <form action="/client/products/search" class="d-flex col-5 ms-4">
+                <input type="hidden"  method="GET" >
+                  <input name="keyword" class="form-control me-2" type="search" placeholder="Search for books" aria-label="Search">
+                  <button class="btn btn-success" type="submit">Search</button>
                 </form>
               </div>
             </div>
@@ -106,10 +103,10 @@ class Index extends BaseView
                     <div class="">
                     <div class="price text-start">
    
-    <span class="old-price" style="text-decoration: line-through;">
+    <span class="old-price" style="text-decoration: line-through; color: red;">
         <?= number_format($item['price']) ?> đ<br>
     </span>
-   
+    <!-- Hiển thị giá sau giảm -->
     <span class="discount-price"><?= number_format($item['discount_price']) ?> đ</span>
 </div>
                     <div class=" mt-3 progress-container-cart">
