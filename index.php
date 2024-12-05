@@ -105,5 +105,11 @@ Route::get('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@edit
 Route::put('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@update');
 Route::delete('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@delete');
 
+
+Route::get('/admin/news', 'App\Controllers\Admin\Newcontrollers@index');
+Route::get('/admin/news/create', 'App\Controllers\Admin\Newcontrollers@create');
+Route::post('/admin/news', 'App\Controllers\Admin\Newcontrollers@store');
+
+
 Route::dispatch($_SERVER['REQUEST_URI']);
 

@@ -110,12 +110,17 @@ class Index extends BaseView
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="<?= APP_URL ?>/public/assets/client/images/<?= $item['img'] ?>" class="img-fluid rounded-start" alt="News Image 1">
+                            <img src="<?= APP_URL ?>/public/assets/client/images/<?= $item['image_url'] ?>" class="img-fluid rounded-start" alt="News Image 1">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $item['title'] ?></h5>
+                                <h5 class="card-title"><?= $item['name'] ?></h5>
+                                <p class="card-text"><?= $item['image_url'] ?></p>
+                                <p class="card-text"><?= $item['short_description'] ?></p>
+                                <p class="card-text"><?= $item['publish_date'] ?></p>
+                                <p class="card-text"><?= $item['status'] ?></p>
                                 <p class="card-text"><?= $item['content'] ?></p>
+
                                 <a href="#" class="btn btn-primary btn-sm">Đọc thêm</a>
                             </div>
                         </div>

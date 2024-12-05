@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class News extends BaseModel
+class news extends BaseModel
 {
     protected $table = 'news';
     protected $id = 'id';
@@ -30,7 +30,21 @@ class News extends BaseModel
         return $this->delete($id);
     }
 
-
+    public function getOneNewsByName($name)
+    {
+        $result = [];
+        try {
+            $sql = "SELECT * FROM $this->table WHERE name=?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('s', $name);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_assoc();
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy loại sản phẩm bằng tên: ' . $th->getMessage());
+            return $result;
+        }
+    }
 
 
     public function search($keyword){
