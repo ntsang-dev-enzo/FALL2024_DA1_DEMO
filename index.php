@@ -110,5 +110,14 @@ Route::get('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@edit
 Route::put('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@update');
 Route::delete('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@delete');
 
+// *** Đơn hàng (Order)
+Route::post('/order/create/action', 'App\Controllers\Client\OrderController@createOrder');  // Xử lý tạo đơn hàng
+Route::get('/order/detail/{id}', 'App\Controllers\Client\OrderController@orderDetail');  // Chi tiết đơn hàng
+
+// *** Admin - Quản lý đơn hàng
+Route::get('/admin/orders', 'App\Controllers\Admin\OrderController@index');  // Danh sách đơn hàng
+Route::get('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@detail');  // Chi tiết đơn hàng
+Route::put('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@update');  // Cập nhật trạng thái đơn hàng
+
 Route::dispatch($_SERVER['REQUEST_URI']);
 

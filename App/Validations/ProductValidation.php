@@ -39,16 +39,6 @@ public static function create(): bool{
         NotificationHelper::error('price','Giá tiền phải lớn hơn 0!');
         $is_valid=false;
     }
-    if (!isset(($_POST['discount_price']))||$_POST['discount_price']==='') {
-        NotificationHelper::error('discount_price','Giá giảm sản phẩm không được trống!');
-        $is_valid=false;
-    } elseif((int)$_POST['discount_price']<0){
-        NotificationHelper::error('discount_price','Giá giảm phải lớn hơn hoặc bằng 0!');
-        $is_valid=false;
-    }elseif((int)$_POST['discount_price']>(int)$_POST['price']){
-        NotificationHelper::error('discount_price','Giá giảm phải nhỏ hơn giá tiền!');
-        $is_valid=false;
-    }
     if (!isset(($_POST['is_featured']))||$_POST['is_featured']==='') {
         NotificationHelper::error('is_featured','Nổi bật không được trống!');
         $is_valid=false;
