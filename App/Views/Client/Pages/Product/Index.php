@@ -16,7 +16,7 @@ class Index extends BaseView
       <section class="banner container mt-4 mb-4">
         <div class="col-12">
           <div class="row">
-            <img src="./img/banner.jpg" alt="Promo Banner" class=" text-start w-100">
+            <img src="./public/assets/client/images/banner.jpg" alt="Promo Banner" class=" text-start w-100">
           </div>
         </div>
       </section>
@@ -101,7 +101,14 @@ class Index extends BaseView
                       <img src="/public/uploads/products/<?= $item['image'] ?>" alt="<?= $item['name'] ?? '' ?>"></a>
                     <h5 class="text-start mt-2"><a class="text-decoration-none" href="/products/<?= $item['id'] ?>"><?= $item['name'] ?? '' ?></a></h5>
                     <div class="">
-                    <div class="price text-start"><span class="old-price"><?=  number_format($item['discount_price'])?> đ<br></span><?= number_format($item['price']) ?> đ</div>
+                    <div class="price text-start">
+   
+    <span class="old-price" style="text-decoration: line-through;">
+        <?= number_format($item['price']) ?> đ<br>
+    </span>
+   
+    <span class="discount-price"><?= number_format($item['discount_price']) ?> đ</span>
+</div>
                     <div class=" mt-3 progress-container-cart">
                       <div class="progress-bar-cart">
                         Đã bán 165
