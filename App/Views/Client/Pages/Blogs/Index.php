@@ -104,48 +104,31 @@ class Index extends BaseView
         <div class="row mt-4">
             <div class="col-md-8">
                 <h2 class="mb-4">Tin Tức Mới Nhất</h2>
+                <?php
+                foreach($data as $item):
+                ?>
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_49918.jpg" class="img-fluid rounded-start" alt="News Image 1">
+                            <img src="<?= APP_URL ?>/public/assets/client/images/<?= $item['image_url'] ?>" class="img-fluid rounded-start" alt="News Image 1">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Tổng thống Mỹ năm 2024 là Donald Trump</h5>
-                                <p class="card-text">Gần đây, Donald Trump đã giành chiến thắng trong cuộc bầu cử tổng thống Hoa Kỳ năm 2024, đánh bại Phó Tổng thống Kamala Harris.</p>
+                                <h5 class="card-title"><?= $item['name'] ?></h5>
+                                <p class="card-text"><?= $item['image_url'] ?></p>
+                                <p class="card-text"><?= $item['short_description'] ?></p>
+                                <p class="card-text"><?= $item['publish_date'] ?></p>
+                                <p class="card-text"><?= $item['status'] ?></p>
+                                <p class="card-text"><?= $item['content'] ?></p>
+
                                 <a href="#" class="btn btn-primary btn-sm">Đọc thêm</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://cdn0.fahasa.com/media/catalog/product/i/m/image_235002.jpg" class="img-fluid rounded-start" alt="News Image 2">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Top 10 Cuốn Sách Đáng Đọc Nhất</h5>
-                                <p class="card-text">Đừng bao giờ ngừng học hỏi. Những người học hỏi không ngừng mới chính là những người thành công.</p>
-                                <a href="#" class="btn btn-primary btn-sm">Đọc thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://cdn0.fahasa.com/media/catalog/product/i/m/image_215302.jpg" class="img-fluid rounded-start" alt="News Image 3">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Cách Nâng Cao Kỹ Năng Lãnh Đạo</h5>
-                                <p class="card-text">Lãnh đạo không chỉ là quản lý, mà là khả năng truyền cảm hứng và định hướng đội nhóm.</p>
-                                <a href="#" class="btn btn-primary btn-sm">Đọc thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                endforeach;
+                ?>
             </div>
         
         </div>

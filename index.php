@@ -119,5 +119,9 @@ Route::get('/admin/orders', 'App\Controllers\Admin\OrderController@index');  // 
 Route::get('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@detail');  // Chi tiết đơn hàng
 Route::put('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@update');  // Cập nhật trạng thái đơn hàng
 
+Route::get('/admin/news', 'App\Controllers\Admin\BlogsController@index');
+Route::get('/admin/news/create', 'App\Controllers\Admin\BlogsController@create');
+Route::post('/admin/news', 'App\Controllers\Admin\BlogsController@store');
+
 Route::dispatch($_SERVER['REQUEST_URI']);
 
