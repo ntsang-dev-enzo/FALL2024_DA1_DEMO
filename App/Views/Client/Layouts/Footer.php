@@ -15,7 +15,7 @@ class Footer extends BaseView
             <div class="container col-12">
                <div class="row border_bo1 col-12">
                   <div class="col-md-4">
-                     <a class="logof" href="index.html"><img src="/public/assets/client/images/logofooter.png" alt="#" /></a>
+                     <a class="logof" href="/"><img src="/public/assets/client/images/nendo-removebg-preview.png" alt="#" /></a>
                      <form class="form_subscri">
                         <div class="row">
                            <div class="col-md-12">

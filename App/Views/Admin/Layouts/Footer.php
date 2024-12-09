@@ -73,7 +73,7 @@ class Footer extends BaseView
                 <script src="<?= APP_URL ?>/public/assets/admin/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
                 <script src="<?= APP_URL ?>/public/assets/admin/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
                 <script src="<?= APP_URL ?>/public/assets/admin/libs/quill/dist/quill.min.js"></script>
-                <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+                <!-- <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
 
 
                 <script>
@@ -92,7 +92,7 @@ class Footer extends BaseView
                                         }
                                 ]
                         });
-                </script>
+                </script> -->
 
                 </body>
 

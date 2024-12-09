@@ -20,12 +20,12 @@ class Blogs extends BaseModel
     {
         return $this->create($data);
     }
-    public function updateNew($id, $data)
+    public function updateNews($id, $data)
     {
         return $this->update($id, $data);
     }
 
-    public function deleteNew($id)
+    public function deleteNews($id)
     {
         return $this->delete($id);
     }

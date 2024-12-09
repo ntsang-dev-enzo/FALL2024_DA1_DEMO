@@ -49,7 +49,7 @@ class Edit extends BaseView
                                     <h4 class="card-title">Sửa người dùng</h4>
                                     <input type="hidden" name="method" id="" value="PUT">
                                     <div class="form-group">
-                                    <div align="center"><img src="<?= APP_URL?>/public/uploads/users/<?=$data['avatar'] ?>" alt="" width="300px" ></div>
+                                    <div align="center"><img src="<?= APP_URL?>/public/uploads/users/<?=$data['image'] ?>" alt="" width="300px" ></div>
                                         <label for="id">ID</label>
                                         <input type="text" class="form-control" id="id"  name="id" value="<?= $data['id'] ?>" disabled>
                                     </div>

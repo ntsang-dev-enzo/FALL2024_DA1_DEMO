@@ -116,17 +116,22 @@ Route::put('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@upda
 Route::delete('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@delete');
 
 // *** Đơn hàng (Order)
-Route::post('/order/create/action', 'App\Controllers\Client\OrderController@createOrder');  // Xử lý tạo đơn hàng
-Route::get('/order/detail/{id}', 'App\Controllers\Client\OrderController@orderDetail');  // Chi tiết đơn hàng
+Route::post('/order/create/action', 'App\Controllers\Client\OrderController@createOrder'); 
+Route::get('/order/detail/{id}', 'App\Controllers\Client\OrderController@orderDetail');    
+Route::get('/admin/orders', 'App\Controllers\Admin\OrderController@index'); 
+Route::delete('/admin/order/{id}', 'App\Controllers\Admin\OrderController@deleteOrder'); 
+Route::get('/admin/order/{id}', 'App\Controllers\Admin\OrderController@edit'); 
+Route::get('/admin/order/detail/{id}', 'App\Controllers\Admin\OrderController@showOrderDetail');
+Route::put('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@update');
+Route::get('/admin/order/search', 'App\Controllers\Admin\OrderController@search');   
 
-// *** Admin - Quản lý đơn hàng
-Route::get('/admin/orders', 'App\Controllers\Admin\OrderController@index');  // Danh sách đơn hàng
-Route::get('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@detail');  // Chi tiết đơn hàng
-Route::put('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@update');  // Cập nhật trạng thái đơn hàng
 
 Route::get('/admin/news', 'App\Controllers\Admin\BlogsController@index');
+Route::get('/admin/news/edit/{id}', 'App\Controllers\Admin\BlogsController@edit');
+Route::put('/admin/news/update/{id}', 'App\Controllers\Admin\BlogsController@update');
 Route::get('/admin/news/create', 'App\Controllers\Admin\BlogsController@create');
 Route::post('/admin/news', 'App\Controllers\Admin\BlogsController@store');
+Route::delete('/admin/news/{id}', 'App\Controllers\Admin\BlogsController@delete');
 
 Route::dispatch($_SERVER['REQUEST_URI']);
 

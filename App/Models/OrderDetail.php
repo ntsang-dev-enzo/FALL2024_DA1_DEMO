@@ -89,7 +89,24 @@ class OrderDetail extends BaseModel
             return []; // Trả về mảng rỗng nếu có lỗi
         }
     }
+        // Lấy chi tiết đơn hàng theo order_id
+        public function getOrderDetailsByOrderIdAdmin($orderId)
+        {
+            $sql = "SELECT od.order_detail_id, od.order_id, od.name, od.email, od.phone, od.address, od.product_id, od.quantity, od.price, p.image, p.name AS product_name, p.price AS product_price
+                FROM order_detail od
+                JOIN products p ON od.product_id = p.id
+                WHERE od.order_id = ?";
+                
+                $conn = $this->_conn->MySQLi();
 
-   
+                // Chuẩn bị câu lệnh SQL
+                $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $orderId);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 }
+    
+    
+   
 

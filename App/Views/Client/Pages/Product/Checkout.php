@@ -42,21 +42,21 @@ class Checkout extends BaseView
                     <div class="row mb-3">
                         <label for="name" class="col-sm-3 col-form-label">Họ và tên người nhận</label>
                         <div class="col-sm-9">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Nhập họ và tên người nhận" required>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Nhập họ và tên người nhận" >
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="email" class="col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Nhập email" required>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Nhập email" >
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="phone" class="col-sm-3 col-form-label">Số điện thoại</label>
                         <div class="col-sm-9">
-                            <input type="text" name="phone" class="form-control" id="phone" placeholder="Ví dụ: 0979123xxx (10 ký tự số)" required>
+                            <input type="text" name="phone" class="form-control" id="phone" placeholder="Ví dụ: 0979123xxx (10 ký tự số)" >
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@ class Checkout extends BaseView
                         <div class="row mb-3">
                             <label for="street" class="col-sm-3 col-form-label">Địa chỉ nhận hàng</label>
                             <div class="col-sm-9">
-                                <input type="text" name="street" class="form-control" id="street" placeholder="Nhập địa chỉ nhận hàng" required>
+                                <input type="text" name="street" class="form-control" id="street" placeholder="Nhập địa chỉ nhận hàng" >
                             </div>
                         </div>
                 </fieldset>
@@ -182,7 +182,7 @@ class Checkout extends BaseView
                 </div>
 
                 <div class="form-check mt-4">
-                    <input class="form-check-input" type="checkbox" id="termsCheckbox" required>
+                    <input class="form-check-input" type="checkbox" required id="termsCheckbox" >
                     <label class="form-check-label" for="termsCheckbox">
                         Bạn đồng ý với <a href="#" class="text-decoration-none">Điều kiện và Điều khoản</a> của chúng tôi.
                     </label>

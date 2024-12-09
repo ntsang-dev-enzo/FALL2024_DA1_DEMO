@@ -5,11 +5,13 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Helpers\NotificationHelper;
 use App\Helpers\AuthHelper;
+use App\Validations\CheckoutValidation;
 use App\Views\Client\Components\Notification;
 use App\Views\Client\Layouts\Footer;
 use App\Views\Client\Layouts\Header;
 use App\Views\Client\Pages\Product\DetailCheckout;
 use App\Views\Client\Pages\Product\OrderHistory;
+
 
 class OrderController
 {
@@ -19,6 +21,10 @@ class OrderController
         // Kiểm tra xem người dùng đã đăng nhập chưa
         if (!AuthHelper::checkLogin()) {
             header('Location: /login');
+            exit;
+        }
+        if (!CheckoutValidation::validate()) {
+            header('Location: /checkout');
             exit;
         }
 
@@ -61,7 +67,7 @@ class OrderController
         $orderData = [
             'customer_id' => $_SESSION['user']['id'],
             'order_date' => date('Y-m-d H:i:s'),
-            'status' => 'pending',
+            'status' => 0,
             'shipping_address' =>  $_POST['street']. ' - ' . $_POST['wardName'] . ' - ' . $_POST['districtName'] . ' - ' . $_POST['cityName'] ,
             'payment_method' => $_POST['paymentMethod'],
             'total_amount' => $total_amount,

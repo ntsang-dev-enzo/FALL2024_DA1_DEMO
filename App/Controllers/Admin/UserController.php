@@ -48,49 +48,59 @@ class UserController
 
     // xử lý chức năng thêm
     public static function store()
-    {
-        //validation các trường dữ liệu
-        $is_valid = UserValidation::create();
-        if (!$is_valid) {
-            NotificationHelper::error('store', 'Thêm người dùng thất bại!');
-            header('location: /admin/users/create');
-            exit;
-        }
-        // echo 'ucii';
-        $username = $_POST['username'];
-        //kiểm tra tên loại tồn tại chưa, không được trùng
-        $user = new User();
-        $is_exist = $user->getOneUserByUsername($username);
-        if ($is_exist) {
-            NotificationHelper::error('store', 'Tên đăng nhập đã tồn tại!');
-            header('location: /admin/users/create');
-            exit;
-        }
-
-        //thêm
-        $data = [
-            'username' => $username,
-            'email' => $_POST['email'],
-            'name' => $_POST['name'],
-            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-            're_password' => password_hash($_POST['re_password'], PASSWORD_DEFAULT),
-            'status' => $_POST['status']
-        ];
-        $is_upload = UserValidation::uploadAvatar();
-        if ($is_upload) {
-            $data['image'] = $is_upload;
-        }
-        $result = $user->createUser($data);
-        if ($result) {
-            NotificationHelper::success('store', 'Thêm người dùng thành công!');
-            header('location: /admin/users');
-            exit;
-        } else {
-            NotificationHelper::error('store', 'Thêm người dùng thất bại!');
-            header('location: /admin/users/create');
-            exit;
-        }
+{
+    // validation các trường dữ liệu
+    $is_valid = UserValidation::create();
+    if (!$is_valid) {
+        NotificationHelper::error('store', 'Thông tin không hợp lệ! Vui lòng kiểm tra lại.');
+        header('location: /admin/users/create');
+        exit;
     }
+
+    // lấy tên đăng nhập
+    $username = $_POST['username'];
+
+    // kiểm tra tên đăng nhập đã tồn tại chưa
+    $user = new User();
+    $is_exist = $user->getOneUserByUsername($username);
+    if ($is_exist) {
+        NotificationHelper::error('store', 'Tên đăng nhập đã tồn tại!');
+        header('location: /admin/users/create');
+        exit;
+    }
+
+    // chuẩn bị dữ liệu
+    $data = [
+        'username' => $username,
+        'email' => $_POST['email'],
+        'name' => $_POST['name'],
+        'password' => password_hash($_POST['password'], PASSWORD_DEFAULT), // mã hóa mật khẩu
+        're_password' => password_hash($_POST['re_password'], PASSWORD_DEFAULT),
+        'status' => $_POST['status']
+    ];
+
+    // upload ảnh đại diện nếu có
+    $is_upload = UserValidation::uploadAvatar();
+    if ($is_upload) {
+        $data['image'] = $is_upload; // lưu đường dẫn ảnh nếu upload thành công
+    }
+
+    // thêm người dùng
+    $result = $user->createUserAdmin($data);
+
+//     echo '<pre>';
+//    var_dump($data,$result);
+    if ($result) {
+        NotificationHelper::success('store', 'Thêm người dùng thành công!');
+        header('location: /admin/users');
+        exit;
+    } else {
+        NotificationHelper::error('store', 'Thêm người dùng thất bại!');
+        header('location: /admin/users/create');
+        exit;
+    }
+}
+
 
 
     // // hiển thị chi tiết

@@ -11,6 +11,7 @@ use App\Views\Admin\Layouts\Header;
 use App\Views\Admin\Components\Notification;
 use App\Views\Admin\Pages\Blogs\Create;
 use App\Views\Admin\Pages\Blogs\Index;
+use App\Views\Admin\Pages\Blogs\Edit;
 
 
 class BlogsController
@@ -61,6 +62,7 @@ class BlogsController
         $short_description = $_POST['short_description'];
         $status = $_POST['status'];
         $content = $_POST['content'];
+        $publish_date = $_POST['publish_date'];
 
 
     
@@ -80,13 +82,18 @@ class BlogsController
             'short_description' => $short_description,
             // 'publish_date' => $publish_date,
             'status' => $status,
-            'content' => $content
+            'content' => $content,
+            'publish_date' => $publish_date
         ];
         
         // Gọi phương thức thêm bài viết
+        $is_upload=BlogsValidation::uploadImage();
+        if($is_upload){
+            $data['image_url'] = $is_upload;
+        }
         $result = $news->createNew($data);
-        // var_dump($result);
-        // die;
+
+        
         if ($result) {
             NotificationHelper::success('store', 'Thêm bài viết thành công!');
             header('location: /admin/news');
@@ -107,72 +114,100 @@ class BlogsController
 
 
     // hiển thị giao diện form sửa
-    // public static function edit(int $id)
-    // {
+    public static function edit(int $id)
+    {
 
-    //     $comment=new Comment();
-    //     $data = $comment->getOneCommentJoinProductAndUser($id);
-    //     if (!$data) {
-    //         NotificationHelper::error('edit','Không thể xem bình luận này!');
-    //         header('location: /admin/comments');
-    //         exit;
-    //     } 
-    //     Header::render();
-    //     Notification::render();
-    //     NotificationHelper::unset();
-    //     Edit::render($data);
-    //     Footer::render();
-    // }
-
-
-
-    // // xử lý chức năng sửa (cập nhật)
-    // public static function update(int $id)
-    // {
-    //     //validation các trường dữ liệu
-    //     $is_valid=CommentValidation::edit();
-    //     if(!$is_valid){
-    //         NotificationHelper::error('update','Cập nhật bình luận thất bại!');
-    //         header("location: /admin/comments/$id");
-    //         exit;
-    //     }
-    //     // echo 'ucii';
-    //     $status = $_POST['status'];
-    //     //kiểm tra tên loại tồn tại chưa, không được trùng
-    //     $comment=new Comment();
-    //     // cập nhật
-    //     $data=[
-    //        'status' => $status
-    //     ];
-    //     $result=$comment->updateComment($id, $data);
-    //     if ($result) {
-    //         NotificationHelper::success('update','Cập nhật bình luận thành công!');
-    //         header('location: /admin/comments');
-    //         exit;
-    //     }
-    //     else{
-    //         NotificationHelper::error('update','Cập nhật bình luận thất bại!');
-    //         header("location: /admin/comments/$id");
-    //         exit;
-    //     }
-
-    // }
+        $blogs=new Blogs();
+        $data = $blogs->getOneNew($id);
+        // echo '<pre>';
+        // var_dump($data);
+        if (!$data) {
+            NotificationHelper::error('edit','Không thể xem tin tức này!');
+            header('location: /admin/news');
+            exit;
+        } 
+        Header::render();
+        Notification::render();
+        NotificationHelper::unset();
+        Edit::render($data);
+        Footer::render();
+    }
 
 
-    // // thực hiện xoá
-    // public static function delete(int $id)
-    // {
-    //     $comment= new Comment();
-    //     $result=$comment->deleteComment($id);
-    //     if ($result) {
-    //         NotificationHelper::success('delete','Xóa bình luận thành công!');
-    //         header('location: /admin/comments');
-    //         exit;
-    //     }else{
-    //         NotificationHelper::error('delete','Xóa bình luận thất bại!');
-    //         header('location: /admin/comments');
-    //         exit;
-    //     }
+
+    // xử lý chức năng sửa (cập nhật)
+    public static function update(int $id)
+    {
+        // Validate dữ liệu
+        $is_valid = BlogsValidation::edit();
+        if (!$is_valid) {
+            NotificationHelper::error('update', 'Cập nhật tin tức thất bại do dữ liệu không hợp lệ!');
+            header("location: /admin/news/edit/$id");
+            exit;
+        }
+    
+        // Lấy tiêu đề từ form
+        $title = $_POST['name'];
+        $news = new Blogs();
+    
+        // Kiểm tra tiêu đề đã tồn tại hay chưa
+        $is_exist = $news->getOneNewsByName($title);
+        if ($is_exist && $is_exist['id'] != $id) {
+            NotificationHelper::error('update', 'Tiêu đề bài viết đã tồn tại!');
+            header("location: /admin/news/edit/$id");
+            exit;
+        }
+    
+        // Dữ liệu cập nhật
+        $data = [
+            'name' => $title,
+            'short_description' => $_POST['short_description'],
+            'content' => $_POST['content'],
+            'publish_date' => $_POST['publish_date'],
+            'status' => $_POST['status'],
+        ];
+    
+        // Kiểm tra và upload ảnh mới (nếu có)
+        $is_upload = BlogsValidation::uploadImage();
+        if ($is_upload) {
+            $data['image_url'] = $is_upload;
+        }
+
+        // echo '<pre>';
+        // var_dump($data);
+
+        // Thực hiện cập nhật
+        $result = $news->updateNews($id, $data);
+    
+        // Kiểm tra kết quả và phản hồi
+        if ($result) {
+            NotificationHelper::success('update', 'Cập nhật tin tức thành công!');
+            header('location: /admin/news');
+            exit;
+        } else {
+            NotificationHelper::error('update', 'Cập nhật tin tức thất bại!');
+            header("location: /admin/news/edit/$id");
+            exit;
+        }
+    }
+    
+
+
+    // thực hiện xoá
+    public static function delete(int $id)
+    {
+        $blogs= new Blogs();
+        $result=$blogs->deleteNews($id);
+
+        if ($result) {
+            NotificationHelper::success('delete','Xóa bài viết thành công!');
+            header('location: /admin/news');
+            exit;
+        }else{
+            NotificationHelper::error('delete','Xóa bài viết thất bại!');
+            header('location: /admin/news');
+            exit;
+        }
         
-    // }
+    }
 }

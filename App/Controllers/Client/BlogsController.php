@@ -11,7 +11,7 @@ class BlogsController{
     public static function index()
     {
         $news = new Blogs();
-        $data = $news->getAllNew();
+        $data = $news->getAllByStatus();
         // var_dump($data);
         Header::render();
         Notification::render();

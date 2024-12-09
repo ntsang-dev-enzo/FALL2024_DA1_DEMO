@@ -15,7 +15,7 @@ class Create extends BaseView
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-name">QUẢN tin tức</h4>
+                        <h4 class="page-name">Thêm bài viết</h4>
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -44,7 +44,7 @@ class Create extends BaseView
                                 </div>
                                 <div class="mb-3">
                                     <label for="short_description" class="form-label">Mô tả ngắn</label>
-                                    <textarea class="form-control" id="short_description" name="short_description" rows="3" placeholder="Nhập mô tả ngắn" required></textarea>
+                                    <textarea class="form-control" id="short_description" name="short_description" rows="3" placeholder="Nhập mô tả ngắn" ></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="publish_date" class="form-label">Ngày xuất bản</label>
@@ -52,10 +52,9 @@ class Create extends BaseView
                                 </div>
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Tình trạng</label>
-                                    <select class="form-select" id="status" name="status" required>
+                                    <select class="form-select" id="status" name="status" >
                                         <option value="0">Bản nháp</option>
                                         <option value="1">Đã xuất bản</option>
-                                        <option value="2">Đã lưu trữ</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">

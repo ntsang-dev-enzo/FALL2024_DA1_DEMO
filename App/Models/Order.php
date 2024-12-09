@@ -34,7 +34,73 @@ class Order extends BaseModel
 
         return $orderId;  // Trả về ID của đơn hàng vừa tạo
     }
+    public function getOneOrder($id)
+{
+    $sql = "SELECT * FROM orders WHERE id = ?";
+    $conn = $this->_conn->MySQLi();
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_assoc();
+}
+public function updateOrder($id, $data)
+{
+    $sql = "UPDATE orders SET 
+                status = ?, 
+                updated_at = NOW() 
+            WHERE id = ?";
 
+    $conn = $this->_conn->MySQLi();
+    $stmt = $conn->prepare($sql);
+    
+    // Đảm bảo số lượng tham số đúng
+    $stmt->bind_param(
+        'is', 
+        $data['status'], 
+        $id
+    );
+    
+    return $stmt->execute();
+}
+
+    public function deleteOrder($orderId)
+    {
+        try {
+            $conn = $this->_conn->MySQLi();
+    
+            // Bắt đầu giao dịch
+            $conn->begin_transaction();
+    
+            // Xóa dữ liệu liên quan trong bảng order_detail
+            $sqlDetail = "DELETE FROM order_detail WHERE order_id = ?";
+            $stmtDetail = $conn->prepare($sqlDetail);
+            $stmtDetail->bind_param('i', $orderId);
+    
+            if (!$stmtDetail->execute()) {
+                throw new \Exception('Lỗi khi xóa chi tiết đơn hàng: ' . $stmtDetail->error);
+            }
+    
+            // Xóa đơn hàng trong bảng orders
+            $sqlOrder = "DELETE FROM orders WHERE id = ?";
+            $stmtOrder = $conn->prepare($sqlOrder);
+            $stmtOrder->bind_param('i', $orderId);
+    
+            if (!$stmtOrder->execute()) {
+                throw new \Exception('Lỗi khi xóa đơn hàng: ' . $stmtOrder->error);
+            }
+    
+            // Commit giao dịch
+            $conn->commit();
+    
+            return true; // Xóa thành công
+        } catch (\Throwable $th) {
+            // Rollback nếu có lỗi
+            $conn->rollback();
+            error_log('Lỗi khi xóa đơn hàng: ' . $th->getMessage());
+            return false;
+        }
+    }
+    
     // Tính tổng tiền từ các sản phẩm trong đơn hàng
     private function calculateTotalAmount($items)
     {
@@ -198,5 +264,23 @@ ORDER BY o.order_date DESC;
             error_log('Lỗi khi lấy lịch sử đơn hàng của người dùng: ' . $th->getMessage());
             return []; // Trả về mảng rỗng nếu có lỗi
         }
+    }
+    public function searchOrderByKeyword(string $keyword)
+    {
+
+        // Truy vấn tìm kiếm dựa trên số điện thoại hoặc email
+        $sql = "SELECT * FROM orders WHERE phone LIKE ? OR email LIKE ?";
+        $conn = $this->_conn->MySQLi();
+
+        // Chuẩn bị câu lệnh SQL
+        $stmt = $conn->prepare($sql);
+
+        // Thêm ký tự `%` vào từ khóa để tìm kiếm
+        $like_keyword = '%' . $keyword . '%';
+        $stmt->bind_param('ss', $like_keyword, $like_keyword);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
