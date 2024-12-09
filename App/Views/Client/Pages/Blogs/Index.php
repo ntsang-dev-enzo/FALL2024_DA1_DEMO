@@ -121,8 +121,8 @@ class Index extends BaseView
                                 <p class="card-text"><?= $item['status'] ?></p>
                                 <p class="card-text"><?= $item['content'] ?></p>
 
-                                <a href="#" class="btn btn-primary btn-sm">Đọc thêm</a>
-                            </div>
+                                <a href="/Detail/<?= $item['id'] ?>" class="btn btn-cart btn-danger w-100">Xem thêm</a>
+                                </div>
                         </div>
                     </div>
                 </div>

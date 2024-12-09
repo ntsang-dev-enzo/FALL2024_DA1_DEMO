@@ -4,6 +4,7 @@ namespace App\Models;
 
 class Blogs extends BaseModel
 {
+    
     protected $table = 'news';
     protected $id = 'id';
 
