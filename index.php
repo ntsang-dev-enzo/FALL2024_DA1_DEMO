@@ -49,6 +49,8 @@ Route::get('/history-orders', 'App\Controllers\Client\OrderController@orderHisto
 
 // blog
 Route::get('/blogs', 'App\Controllers\Client\BlogsController@index');
+Route::get('/detail/{id}', 'App\Controllers\Client\BlogsController@detail');
+
 
 // contact
 Route::get('/contact', 'App\Controllers\Client\ContactController@index');

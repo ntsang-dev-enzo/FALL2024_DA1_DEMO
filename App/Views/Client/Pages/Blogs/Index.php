@@ -29,7 +29,7 @@ class Index extends BaseView
                                 <div class="card-text"><?= $item['short_description'] ?></div>
                                 <div class="card-text"><?= $item['publish_date'] ?></div>
                                 <div class="card-text"><?= $item['content'] ?></div>
-                                <a href="#" class="btn btn-primary btn-sm">Đọc thêm</a>
+                                <a href="/detail/<?= $item['id'] ?>" class="btn btn-primary btn-sm">Đọc thêm</a>
                             </div>
                         </div>
                     </div>
@@ -77,8 +77,7 @@ class Index extends BaseView
         </div>
 
         <!-- Latest News Section -->
-            
-        </div>
+</div>
         <?php
 
 
