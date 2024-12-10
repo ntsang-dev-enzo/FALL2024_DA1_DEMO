@@ -46,6 +46,7 @@ Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductControlle
 Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
 Route::get('/client/products/search', 'App\Controllers\Client\ProductController@search'); 
 Route::get('/history-orders', 'App\Controllers\Client\OrderController@orderHistory');
+Route::get('/admin/contact', 'App\Controllers\Admin\ContactController@index');
 
 
 
