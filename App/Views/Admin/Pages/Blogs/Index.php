@@ -24,10 +24,8 @@ class Index extends BaseView
                                                     <th>ID</th>
                                                     <th>Tiêu đề</th>
                                                     <th>Ảnh</th>
-                                                    <th>Mô tả ngắn</th>
                                                     <th>Ngày xuất bản</th>
                                                     <th>Trạng thái</th>
-                                                    <th>Nội dung</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
@@ -38,12 +36,10 @@ class Index extends BaseView
                                                         <td><?= $item['id'] ?></td>
                                                         <td><?= $item['name'] ?></td>
                                                         <td><img src="/public/uploads/blogs/<?= $item['image_url'] ?>" alt="Image" style="width: 100px; height: auto;"></td>
-                                                        <td><?= $item['short_description'] ?></td>
                                                         <td><?= $item['publish_date'] ?></td>
                                                         <td><?= $item['status'] == 1 ? 'Hiển thị' : 'Ẩn' ?></td>
-                                                        <td><?= $item['content'] ?></td>
                                                         <td>
-                                                            <a href="/admin/news/edit/<?= $item['id'] ?>" class="btn btn-primary">Sửa</a>
+                                                            <a href="/admin/news/edit/<?= $item['id'] ?>" class="btn btn-primary">Chi tiết</a>
                                                             <form action="/admin/news/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn chắc chắn muốn xóa <?= $item['name'] ?> không?')">
                                                                 <input type="hidden" name="method" value="DELETE">
                                                                 <button type="submit" class="btn btn-danger text-white">Xoá</button>

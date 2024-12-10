@@ -79,7 +79,7 @@ class Index extends BaseView
                                                         <td><?= $item['phone'] ?></td>
                                                         <td><?= $item['email'] ?></td>
                                                         
-                                                        <td><?= $item['tiile'] ?></td>
+                                                        <td><?= $item['title'] ?></td>
                                                         
                                                         
 

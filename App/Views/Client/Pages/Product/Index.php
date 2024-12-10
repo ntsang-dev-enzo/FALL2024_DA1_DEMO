@@ -108,7 +108,7 @@ class Index extends BaseView
                     <div class="price text-start"><span class="old-price"><?=  number_format($item['discount_price'])?> đ<br></span><?= number_format($item['price']) ?> đ</div>
                     <div class=" mt-3 progress-container-cart">
                       <div class="progress-bar-cart">
-                        Đã bán 165
+                        Lượt xem: <?= $item['view'] ?>
                       </div>
                     </div>
                     <div class="d-flex justify-content-between">
