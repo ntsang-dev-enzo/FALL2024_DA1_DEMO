@@ -52,12 +52,11 @@ Route::get('/admin/contact', 'App\Controllers\Admin\ContactController@index');
 
 // blog
 Route::get('/blogs', 'App\Controllers\Client\BlogsController@index');
-Route::get('/detail/{id}', 'App\Controllers\Client\BlogsController@detail');
+Route::get('/blogs/detail/{id}', 'App\Controllers\Client\BlogsController@detail');
 
 
 // contact
 Route::get('/contact', 'App\Controllers\Client\ContactController@index');
-Route::get('/Detail/{id}', 'App\Controllers\Client\BlogsController@Detail');
 
 
 Route::post('/comments', 'App\Controllers\Client\CommentController@store');

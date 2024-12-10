@@ -6,80 +6,70 @@ use App\Views\BaseView;
 
 class Index extends BaseView
 {
-  public static function render($data = null)
-  {
-
-
+    public static function render($data = null)
+    {
 ?>
-<div class="container d-flex mt-5">
-            <!-- Left Column -->
-            <div class="col-md-8 me-3">
-                <h2 class="mb-4">Tin tức mới nhất</h2>
-                <?php
-                foreach($data as $item):
-                ?>
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="<?= APP_URL ?>/public/uploads/blogs/<?= $item['image_url'] ?>" class="img-fluid rounded-start" alt="News Image 1">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $item['name'] ?></h5>
-                                <div class="card-text"><?= $item['short_description'] ?></div>
-                                <div class="card-text"><?= $item['publish_date'] ?></div>
-                                <div class="card-text"><?= $item['content'] ?></div>
-                                <a href="#" class="btn btn-primary btn-sm">Đọc thêm</a>
+        <div class="container mt-5">
+            <div class="row">
+                <!-- Left Column: Latest News -->
+                <div class="col-md-8">
+                    <h2 class="mb-4">Tin tức mới nhất</h2>
+                    <?php foreach ($data as $item): ?>
+                        <div class="card mb-4 shadow-sm">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="<?= APP_URL ?>/public/uploads/blogs/<?= $item['image_url'] ?>"
+                                        class="img-fluid rounded-start"
+                                        alt="<?= $item['name'] ?>"
+                                        style="object-fit: cover; height: 160px; width: 100%;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-truncate"><?= $item['name'] ?></h5>
+                                        <p class="card-text text-muted small"><?= $item['publish_date'] ?></p>
+                                        <p class="card-text"><?= $item['short_description'] ?></p>
+                                        <a href="/blogs/detail/<?= $item['id'] ?>" class="btn btn-danger btn-sm">Xem thêm</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <?php
-                endforeach;
-                ?>
-            </div>
 
-            <div class="col-4">
+                    <?php endforeach; ?>
+                </div>
 
-                <h2 class="mb-4">Khuyến Mãi</h2>
-                <div class="card bg-success text-white mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Giảm Giá 30%</h5>
-                        <p class="card-text">Áp dụng cho tất cả đơn hàng trên 500.000 VNĐ.</p>
-                        <a href="#" class="btn btn-light">Xem chi tiết</a>
-                    </div>
+                <!-- Right Column: Promotions -->
+                <div class="col-md-4">
+                    <h2 class="mb-4">Khuyến mãi</h2>
+
+                    <?php
+                    $promotions = [
+                        [
+                            "title" => "Giảm Giá 30%",
+                            "description" => "Áp dụng cho tất cả đơn hàng trên 500.000 VNĐ.",
+                            "button" => "Xem chi tiết",
+                            "color" => "success"
+                        ],
+                        [
+                            "title" => "Mua 2 Tặng 1",
+                            "description" => "Chương trình áp dụng cho sách thiếu nhi.",
+                            "button" => "Xem thêm",
+                            "color" => "warning"
+                        ]
+                    ];
+                    ?>
+
+                    <?php foreach ($promotions as $promo): ?>
+                        <div class="card bg-<?= $promo['color'] ?> text-white mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $promo['title'] ?></h5>
+                                <p class="card-text"><?= $promo['description'] ?></p>
+                                <a href="#" class="btn btn-light"><?= $promo['button'] ?></a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-                <div class="card bg-warning text-dark mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Mua 2 Tặng 1</h5>
-                        <p class="card-text">Chương trình áp dụng cho sách thiếu nhi.</p>
-                        <a href="#" class="btn btn-dark">Xem thêm</a>
-                    </div>
-                    
-                <!-- Promotion -->
-                
             </div>
-            <div class="card bg-success text-white mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Giảm Giá 30%</h5>
-                    <p class="card-text">Áp dụng cho tất cả đơn hàng trên 500.000 VNĐ.</p>
-                    <a href="#" class="btn btn-light">Xem chi tiết</a>
-                </div>
-            </div>
-            <div class="card bg-warning text-dark mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Mua 2 Tặng 1</h5>
-                    <p class="card-text">Chương trình áp dụng cho sách thiếu nhi.</p>
-                    <a href="#" class="btn btn-dark">Xem thêm</a>
-                </div>
-            </div>
-           
         </div>
-
-        <!-- Latest News Section -->
-</div>
-        <?php
-
-
-}
+<?php
+    }
 }
