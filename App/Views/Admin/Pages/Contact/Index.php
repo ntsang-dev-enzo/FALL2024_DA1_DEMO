@@ -46,8 +46,8 @@ class Index extends BaseView
                             <div class="card-body">
                                 <h5 class="card-title">Danh sách sản phẩm</h5>
                                 <div class="d-flex">
-                                    <form action="/admin/products/search" class="d-flex" role="search" method="get">
-                                        <input type="hidden" method="GET">
+                                    <form action="/admin/contact/search" class="d-flex" role="search" method="get">
+                                        <input type="hidden"  method="GET">
                                         <input class="form-control me-2" name="keyword" type="search" placeholder="Search..." aria-label="Search">
                                         <button class="btn btn-primary" type="submit">Search</button>
                                     </form>
@@ -79,7 +79,7 @@ class Index extends BaseView
                                                         <td><?= $item['phone'] ?></td>
                                                         <td><?= $item['email'] ?></td>
                                                         
-                                                        <td><?= $item['tiile'] ?></td>
+                                                        <td><?= $item['title'] ?></td>
                                                         
                                                         
 

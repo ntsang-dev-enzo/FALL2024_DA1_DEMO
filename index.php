@@ -61,6 +61,8 @@ Route::post('/comments', 'App\Controllers\Client\CommentController@store');
 Route::put('/comments/{id}', 'App\Controllers\Client\CommentController@update');
 Route::delete('/comments/{id}', 'App\Controllers\Client\CommentController@delete');
 
+Route::get('/admin/contact/search', 'App\Controllers\Admin\ContactController@search'); 
+
 
 Route::get('/login', 'App\Controllers\Client\AuthController@login');
 Route::post('/loginform', 'App\Controllers\Client\AuthController@loginAction');
@@ -86,6 +88,7 @@ Route::get('/google-callback', 'App\Controllers\Client\AuthController@googleCall
 
 // *** Admin
 Route::get('/admin', 'App\Controllers\Admin\HomeController@index');
+
 
 //  *** Category
 Route::get('/admin/categories', 'App\Controllers\Admin\CategoryController@index');
@@ -130,6 +133,9 @@ Route::put('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@update')
 Route::get('/admin/news', 'App\Controllers\Admin\BlogsController@index');
 Route::get('/admin/news/create', 'App\Controllers\Admin\BlogsController@create');
 Route::post('/admin/news', 'App\Controllers\Admin\BlogsController@store');
+
+
+Route::get('/admin', 'App\Controllers\Admin\ContactController@index'); 
 
 Route::dispatch($_SERVER['REQUEST_URI']);
 
