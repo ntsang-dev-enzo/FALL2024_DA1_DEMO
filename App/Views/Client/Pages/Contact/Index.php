@@ -39,6 +39,12 @@ class Index extends BaseView
                                 required>
                             <div class="invalid-feedback">Vui lòng nhập họ và tên.</div>
                         </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn"
+                                required>
+                            <div class="invalid-feedback">Vui lòng nhập số điện thoại hợp lệ.</div>
+                        </div>
 
                         <!-- Trường Email -->
                         <div class="mb-3">
@@ -46,6 +52,12 @@ class Index extends BaseView
                             <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email của bạn"
                                 required>
                             <div class="invalid-feedback">Vui lòng nhập email hợp lệ.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Tiêu đề</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Nhập tiêu đề của bạn"
+                                required>
+                            <div class="invalid-feedback">Vui lòng nhập tiêu đề.</div>
                         </div>
 
                         <!-- Trường Tin Nhắn -->
