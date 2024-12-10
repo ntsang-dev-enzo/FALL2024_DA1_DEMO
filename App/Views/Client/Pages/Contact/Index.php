@@ -29,8 +29,10 @@ class Index extends BaseView
             <div class="col-lg-6 mb-4">
                 <div class="bg-white p-4 rounded shadow-sm">
                     <h2 class="mb-4">Gửi Thông Tin</h2>
-                    <form id="contactForm" class="needs-validation" novalidate>
+                    <form action="/addcontact" method="post" id="contactForm" class="needs-validation" novalidate>
                         <!-- Trường Họ và Tên -->
+                         <input   type="hidden" name="method" value="POST">
+
                         <div class="mb-3">
                             <label for="name" class="form-label">Họ và Tên</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Nhập họ và tên của bạn"

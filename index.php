@@ -41,10 +41,12 @@ Route::post('/add-to-cart', 'App\Controllers\Client\CartController@addToCart');
 Route::post('/update-cart-item', 'App\Controllers\Client\CartController@updateCartItem');
 Route::post('/remove-cart-item', 'App\Controllers\Client\CartController@removeCartItem');
 Route::post('/clear-cart', 'App\Controllers\Client\CartController@clearCart');
+Route::post('/addcontact', 'App\Controllers\Client\ContactController@addcontact');
 Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
 Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
 Route::get('/client/products/search', 'App\Controllers\Client\ProductController@search'); 
 Route::get('/history-orders', 'App\Controllers\Client\OrderController@orderHistory');
+
 
 
 // blog
