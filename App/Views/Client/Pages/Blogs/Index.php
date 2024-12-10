@@ -28,9 +28,8 @@ class Index extends BaseView
                                 <h5 class="card-title"><?= $item['name'] ?></h5>
                                 <div class="card-text"><?= $item['short_description'] ?></div>
                                 <div class="card-text"><?= $item['publish_date'] ?></div>
-                                <div class="card-text"><?= $item['content'] ?></div>
-                                <a href="#" class="btn btn-primary btn-sm">Đọc thêm</a>
-                            </div>
+                                
+                                <a href="/Detail/<?= $item['id'] ?>" class="btn btn-cart btn-danger w-100">Xem thêm</a>                            </div>
                         </div>
                     </div>
                 </div>

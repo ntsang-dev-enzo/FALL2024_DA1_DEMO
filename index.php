@@ -52,6 +52,7 @@ Route::get('/blogs', 'App\Controllers\Client\BlogsController@index');
 
 // contact
 Route::get('/contact', 'App\Controllers\Client\ContactController@index');
+Route::get('/Detail/{id}', 'App\Controllers\Client\BlogsController@Detail');
 
 
 Route::post('/comments', 'App\Controllers\Client\CommentController@store');
