@@ -76,7 +76,7 @@ class Header extends BaseView
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sản phẩm</a>
                                 <div class="dropdown-menu bg-transparent border-0">
                                     <a href="/admin/products" class="dropdown-item">Danh sách</a>
-                                    <a href="/add-product" class="dropdown-item">Thêm sản phẩm</a>
+                                    <a href="/admin/products/create" class="dropdown-item">Thêm sản phẩm</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">

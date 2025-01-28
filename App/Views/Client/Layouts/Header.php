@@ -126,18 +126,10 @@ class Header extends BaseView
             <div class="navbar-nav mx-auto p-4 p-lg-0">
                 <a href="/" class="nav-item nav-link <?= $_SERVER['REQUEST_URI'] == '/' ? 'active' : '' ?>">Trang chủ</a>
                 <a href="/products" class="nav-item <?= $_SERVER['REQUEST_URI'] == '/products' ? 'active' : '' ?> nav-link">Sản phẩm</a>
-                <a href="about.html" class="nav-item nav-link <?= $_SERVER['REQUEST_URI'] == '/abouts' ? 'active' : '' ?>">Giới thiệu</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-                <a href="login" style="font-size: 12px;" class="login_mobile d-none  btn btn-outline-warning nav-item nav-link" ><img style="width: 18px" class="me-1" src="/public/assets/client/img/icons8-login-50.png" alt="">Đăng nhập</a>
+                <a href="/blogs" class="nav-item nav-link <?= $_SERVER['REQUEST_URI'] == '/abouts' ? 'active' : '' ?>">Giới thiệu</a>
+                <a href="" class="nav-item nav-link">Dịch vụ</a>
+                <a href="/contact" class="nav-item nav-link">Liên hệ</a>
+                <a href="/login" style="font-size: 12px;" class="login_mobile d-none  btn btn-outline-warning nav-item nav-link" ><img style="width: 18px" class="me-1" src="/public/assets/client/img/icons8-login-50.png" alt="">Đăng nhập</a>
             </div>
             <div class=" d-none d-lg-flex">
                 <div class="flex-shrink-0 btn-lg-square border border-light rounded-circle">
