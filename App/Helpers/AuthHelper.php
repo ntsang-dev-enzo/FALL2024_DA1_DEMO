@@ -4,10 +4,11 @@ namespace App\Helpers;
 use App\Models\User;
 
 class AuthHelper{
+
     public static function register($data){
         $user = new User();
         // bắt đầu tồn tại username
-        $is_exist=$user->getOneUserByUsername($data['username']);
+        $is_exist=$user->getOneUserByUsername($data['email']);
 
         if ($is_exist) {
             NotificationHelper::error('exist_register', 'Tên đăng nhập đã tồn tại!');
@@ -24,13 +25,13 @@ class AuthHelper{
     public static function login($data){
         // kiểm tra có tồn tại username trong dtb không > không thông báo tài khoản không tồn tại > trả về false
         $user = new User();
-        $is_exist = $user->getOneUserByUsername($data['username']);
+        $is_exist = $user->getOneUserByUsername($data['email']);
         if (!$is_exist){
-            NotificationHelper::error('username', 'Tài khoản không tồn tại!');
+            NotificationHelper::error('email', 'Tài khoản không tồn tại!');
             return false;
         }
         
-        
+
         // có thì kiểm tra pass nếu k trùng trả về false
         // nhập trong $data ['pasword']
         //pass trong cldl $is exist trường password

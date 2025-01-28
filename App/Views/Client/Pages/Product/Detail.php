@@ -12,6 +12,18 @@ class Detail extends BaseView
     {
         $is_login = AuthHelper::checkLogin();
 ?>
+<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;">
+            <div class="container text-center pt-5 pb-3">
+                <h1 class="display-4 text-white  slideInDown mb-3"><?= $data['product']['name'] ?></h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb justify-content-center mb-0">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                        <li class="breadcrumb-item text-primary active" aria-current="page">Products</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
         <div class="container">
             <div class="container col-12 my-5">
                 <ol class="breadcrumb">
@@ -38,7 +50,13 @@ class Detail extends BaseView
                             <img src="/public/uploads/products/<?= $data['product']['image'] ?>" class="card-img-top" alt="Product Image">
                         </div>
                         <div class="mt-3 d-flex">
-                            <button class="btn btn-outline-danger btn-lg w-100 mb-3">Thêm vào giỏ hàng</button>
+                        <form method="post" action="/add-to-cart" class="w-50 pe-1">
+                                                    <input type="hidden" name="method" value="POST">
+                                                    <input type="hidden" name="id" value="<?= $data['product']['id'] ?>">
+                                                    <button type="submit" name="add-to-cart" class="btn btn_mobile btn-outline-danger w-100">
+                                                        Thêm vào giỏ hàng
+                                                    </button>
+                                                </form>
                             <button class="btn btn-danger btn-lg mb-3 ms-1 w-100">Mua ngay</button>
                         </div>
 

@@ -44,13 +44,11 @@ class AuthController
 
 
         //lấy data ng dùng nhập
-        $username = $_POST['username'];
         $password = $_POST['password'];
         $hash_password = password_hash($password, PASSWORD_DEFAULT);
         $email = $_POST['email'];
         $name = $_POST['name'];
         $data = [
-            'username' => $username,
             'password' => $hash_password,
             'email' => $email,
             'name' => $name
@@ -80,10 +78,13 @@ class AuthController
             exit();
         }
         $data = [
-            'username' => $_POST['username'],
+            'email' => $_POST['email'],
             'password' => $_POST['password'],
             'remember' => isset($_POST['remember'])
         ];
+        echo "<pre>";
+        var_dump($data);
+        echo "</pre>";
         $result = AuthHelper::login($data);
         if ($result) {
             // NotificationHelper::success('login','Đăng nhập thành công!');
@@ -150,7 +151,7 @@ class AuthController
     }
 
 
-    public static function edit($id)
+/*     public static function edit($id)
     {
         $result = AuthHelper::edit($id);
         if (!$result) {
@@ -171,6 +172,14 @@ class AuthController
         Notification::render();
         NotificationHelper::unset();
         Myaccount::render($data);
+    } */
+
+    public static function edit()
+    {
+        
+        Notification::render();
+        NotificationHelper::unset();
+        Myaccount::render();
     }
 
     public static function update($id)

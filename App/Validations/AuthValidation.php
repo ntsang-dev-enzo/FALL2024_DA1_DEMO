@@ -4,8 +4,8 @@ use App\Helpers\NotificationHelper;
 class AuthValidation{
     public static function register():bool{
         $is_valid=true;
-        if (!isset(($_POST['username']))||$_POST['username']==='') {
-            NotificationHelper::error('username','Tên đăng nhập không được trống!');
+        if (!isset(($_POST['email']))||$_POST['email']==='') {
+            NotificationHelper::error('email','Email không được trống!');
             $is_valid=false;
         } 
         if (!isset(($_POST['password']))||$_POST['password']==='') {
@@ -47,8 +47,8 @@ class AuthValidation{
 
     public static function login():bool{
         $is_valid=true;
-        if (!isset(($_POST['username']))||$_POST['username']==='') {
-            NotificationHelper::error('username','Tên đăng nhập không được trống!');
+        if (!isset(($_POST['email']))||$_POST['email']==='') {
+            NotificationHelper::error('email','Email không được trống!');
             $is_valid=false;
         } 
         if (!isset(($_POST['password']))||$_POST['password']==='') {

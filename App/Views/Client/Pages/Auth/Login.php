@@ -10,79 +10,96 @@ class Login extends BaseView
     {
         // var_dump($_SESSION);
 ?>
-        <!doctype html>
+        <!DOCTYPE html>
         <html lang="en">
 
         <head>
-            <title>Đăng nhập</title>
-            <!-- Required meta tags -->
-            <meta charset="utf-8" />
-            <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-            <link rel="stylesheet" href="/public/assets/client/css/register.css">
-            <!-- Bootstrap CSS v5.2.1 -->
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-            <link
-                href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-                rel="stylesheet"
-                integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-                crossorigin="anonymous" />
+            <!-- link css -->
+            <link rel="stylesheet" href="/public/assets/client/css/login-logout.css">
+
+            <!-- link icon -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Đăng nhập - Đăng ký</title>
         </head>
 
         <body>
-            <header>
-                <!-- place navbar here -->
-            </header>
-            <main>
-                <div class="container-register">
-                    <div class="signup-form-register">
-                        <form action="/loginform" method="post" enctype="multipart/form-data">
-                            <h2>Đăng Nhập</h2>
-                            <div class="form-group-register">
+            <div class="container">
+                <div class="box">
+                    <div class="form sign_in">
+                        <h3>Đăng nhập</h3>
+                        <span>Thanh Xuân CAKE</span>
+                        <form action="/loginform" method="post" enctype="multipart/form-data" id="form_input">
+                            <div class="type">
                                 <input type="hidden" name="method" value="POST" id="">
-                                <input type="text" class="form-control-register" name="username" placeholder="Tên người dùng">
+                                <input type="email" placeholder="Email" name="email" id="email">
                             </div>
-                            <div class="form-group-register">
-                                <input type="password" class="form-control-register" autocomplete="current-password" name="password" placeholder="Mật khẩu">
+                            <div class="type">
+                                <input type="password" placeholder="Mật khẩu" name="password" id="password">
                             </div>
-                            <div class="form-group-register">
+                            <div class="forgot">
                                 <input type="checkbox" name="remember" id="rememberMe">
                                 <label for="rememberMe">Nhớ mật khẩu</label>
+                                <span><?php if (isset($error) && ($error != "")) {
+                                            echo '<h6 style="color:red;">' . $error . '</h6>';
+                                        } ?></span>
                             </div>
-                            <span><?php if (isset($error) && ($error != "")) {
-                                        echo '<h6 style="color:red;">' . $error . '</h6>';
-                                    } ?></span>
-                            <div class="text-center">
-                                <button style="width:50%" type="submit" name="submit" class="btn btn-primary">Đăng Nhập</button>
+                            <div class="forgot">
+                                <a href="/forgot-password"><span>Quên mật khẩu?</span></a>
                             </div>
-                            <div class="text-footer text-center">
-                                <p class="mt-4">Chưa có tài khoản? <a href="/register" class="text-primary">Đăng ký</a></p>
-                                <p><a href="/forgot-password" class="text-primary">Quên mật khẩu?</a></p>
-                                <a href="/login-google" class="btn-google-login">
-                                    <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" alt="Đăng nhập với Google">
-                                </a>
-                            </div>
+                            <button class="btn bkg">Đăng nhập</button>
                         </form>
-                        <div class="card-footer bg-transparent text-muted text-center">
-                            <a href="/" class="text-secondary"><button style="width:35%" class="btn btn-secondary">Đóng</button></a>
-                        </div>
+                        <br>
+                        <a href="/login-google" class="btn-google-login">
+                            <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" alt="Đăng nhập với Google">
+                        </a>
+                    </div>
+                    <a href="/" class="text-secondary"><button style="width:35%" class="btn btn-secondary">Đóng</button></a>
+                    <div class="form sign_up">
+                        <h3>Đăng ký</h3>
+                        <span>Thanh Xuân CAKE</span>
+                        <form action="/registerform" method="POST" enctype="multipart/form-data"  id="form_input">
+                            <div class="type">
+                            <input type="hidden" name="method" value="POST" id="">
+                                <input type="text" name="name" placeholder="Name" id="name">
+                            </div>
+                            <div class="type">
+                                <input type="email" name="email" placeholder="Email" id="email">
+                            </div>
+                            <div class="type">
+                                <input type="password" name="password" placeholder="Mật khẩu" id="password">
+                            </div>
+                            <div class="type">
+                                <input type="password" name="re_password" placeholder="Xác nhận mật khẩu" id="password">
+                            </div>
+                            <span><?php  if (isset($error) && ($error != "")) {
+                            echo '<h3 style="color:red;">' . $error . '</h3>';
+                        } ?></span>
+                            <button type="submit" class="btn bkg">Đăng ký</button>
+                        </form>
                     </div>
                 </div>
-            </main>
-            <footer>
-                <!-- place footer here -->
-            </footer>
-            <!-- Bootstrap JavaScript Libraries -->
-            <script
-                src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-                crossorigin="anonymous"></script>
+                <div class="overlay">
+                    <div class="page page_signIn">
+                        <h3>Chào mừng trở lại!</h3>
+                        <p>Để theo dõi Thanh Xuân CAKE vui lòng đăng nhập bằng tài khoản của bạn!</p>
+                        <button class="btn btnSign-in">Đăng ký <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                    <div class="page page_signUp">
+                        <h3>Chào bạn!</h3>
+                        <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi!</p>
+                        <button class="btn btnSign-up">
+                            <i class="bi bi-arrow-left"></i>Đăng nhập</button>
+                    </div>
+                </div>
+            </div>
 
-            <script
-                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-                integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-                crossorigin="anonymous"></script>
+            <script src="/public/assets/client/app.js"></script>
         </body>
 
         </html>

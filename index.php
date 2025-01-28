@@ -17,20 +17,10 @@ use App\Route;
 // Tạo đối tượng Dotenv và chỉ định thư mục chứa tệp .env
 $dotenv =  Dotenv::createImmutable(paths: __DIR__);/* Dotenv::createImmutable(__DIR__); */
 $echo=$dotenv->load();
-// if ($echo){
-//     echo "<p> ok</p>";
-// }
-// $db = new Database();
-// $conn = $db->MySQLi();
-// if ($conn) {
-//     $echo= "Kết nối MySQLi thành công!";
-// }
 
 
-// In ra đối tượng Dotenv để kiểm tra
-// var_dump($echo);
-require_once 'config.php';
-AuthHelper::middleware();
+// require_once 'config.php';
+// AuthHelper::middleware();
 
 // *** Client
 Route::get('/', 'App\Controllers\Client\HomeController@index');
@@ -69,7 +59,8 @@ Route::post('/loginform', 'App\Controllers\Client\AuthController@loginAction');
 Route::get('/register', 'App\Controllers\Client\AuthController@register');
 Route::post('/registerform', 'App\Controllers\Client\AuthController@registerAction');
 Route::get('/logout', 'App\Controllers\Client\AuthController@logout');
-Route::get('/users/{id}', 'App\Controllers\Client\AuthController@edit');
+/* Route::get('/users/{id}', 'App\Controllers\Client\AuthController@edit'); */
+Route::get('/myaccount', 'App\Controllers\Client\AuthController@edit');
 Route::put('/users/{id}', 'App\Controllers\Client\AuthController@update');
 Route::get('/change-password', 'App\Controllers\Client\AuthController@changePassword');
 Route::put('/change-password', 'App\Controllers\Client\AuthController@changePasswordAction');

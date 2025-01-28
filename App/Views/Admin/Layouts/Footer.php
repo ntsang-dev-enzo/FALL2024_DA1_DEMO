@@ -10,90 +10,41 @@ class Footer extends BaseView
         {
 
 ?>
-
-                <!-- footer -->
-                <!-- ============================================================== -->
-                <footer class="footer text-center">
-                        Copyright &copy; by NguyenTrungSang
-                </footer>
-                <!-- ============================================================== -->
-                <!-- End footer -->
-                <!-- ============================================================== -->
+<div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Page wrapper  -->
-                <!-- ============================================================== -->
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Wrapper -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- All Jquery -->
-                <!-- ============================================================== -->
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/jquery/dist/jquery.min.js"></script>
-                <!-- Bootstrap tether Core JavaScript -->
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/extra-libs/sparkline/sparkline.js"></script>
-                <!--Wave Effects -->
-                <script src="<?= APP_URL ?>/public/assets/admin/dist/js/waves.js"></script>
-                <!--Menu sidebar -->
-                <script src="<?= APP_URL ?>/public/assets/admin/dist/js/sidebarmenu.js"></script>
-                <!--Custom JavaScript -->
-                <script src="<?= APP_URL ?>/public/assets/admin/dist/js/custom.min.js"></script>
-                <!--This page JavaScript -->
-                <!-- <script src="<?= APP_URL ?>/public/assets/admin/dist/js/pages/dashboards/dashboard1.js"></script> -->
-                <!-- Charts js Files -->
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/flot/excanvas.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/flot/jquery.flot.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/flot/jquery.flot.pie.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/flot/jquery.flot.time.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/flot/jquery.flot.stack.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/flot/jquery.flot.crosshair.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/dist/js/pages/chart/chart-page-init.js"></script>
-
-                <script src="<?= APP_URL ?>/public/assets/admin/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/extra-libs/multicheck/jquery.multicheck.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/extra-libs/DataTables/datatables.min.js"></script>
-                <script>
-                        /****************************************
-                         *       Basic Table                   *
-                         ****************************************/
-                        $('#zero_config').DataTable();
-                </script>
-
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/dist/js/pages/mask/mask.init.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/select2/dist/js/select2.full.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/select2/dist/js/select2.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-                <script src="<?= APP_URL ?>/public/assets/admin/libs/quill/dist/quill.min.js"></script>
-                <!-- <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
 
 
-                <script>
-                        CKEDITOR.replace('editor', {
-                                toolbar: [{
-                                                name: 'insert',
-                                                items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar']
-                                        },
-                                        {
-                                                name: 'basicstyles',
-                                                items: ['Bold', 'Italic']
-                                        },
-                                        {
-                                                name: 'paragraph',
-                                                items: ['NumberedList', 'BulletedList']
-                                        }
-                                ]
-                        });
-                </script> -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/assets/admin/lib/chart/chart.min.js"></script>
+    <script src="/public/assets/admin/lib/easing/easing.min.js"></script>
+    <script src="/public/assets/admin/lib/waypoints/waypoints.min.js"></script>
+    <script src="/public/assets/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/public/assets/admin/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/public/assets/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/public/assets/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/public/assets/admin/js/main.js"></script>
                 </body>
 
                 </html>

@@ -9,268 +9,204 @@ class Header extends BaseView
     public static function render($data = null)
     {
 
-        ?>
+?>
         <!DOCTYPE html>
-        <html dir="ltr" lang="en">
+        <html lang="en">
 
         <head>
             <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <!-- Tell the browser to be responsive to screen width -->
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Admin</title>
-            <!-- Favicon icon -->
-            <link rel="icon" type="image/png" sizes="16x16" href="<?= APP_URL ?>/public/assets/admin/images/favicon.png">
-            <!-- CSS -->
-            <link href="<?= APP_URL ?>/public/assets/admin/libs/flot/css/float-chart.css" rel="stylesheet">
-            <link rel="stylesheet" type="text/css"
-                href="<?= APP_URL ?>/public/assets/admin/extra-libs/multicheck/multicheck.css">
-            <link href="<?= APP_URL ?>/public/assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
-                rel="stylesheet">
+            <title>DarkPan - Bootstrap 5 Admin Template</title>
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta content="" name="keywords">
+            <meta content="" name="description">
 
-            <link rel="stylesheet" type="text/css"
-                href="<?= APP_URL ?>/public/assets/admin/libs/select2/dist/css/select2.min.css">
-            <link rel="stylesheet" type="text/css"
-                href="<?= APP_URL ?>/public/assets/admin/libs/jquery-minicolors/jquery.minicolors.css">
-            <link rel="stylesheet" type="text/css"
-                href="<?= APP_URL ?>/public/assets/admin/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-            <link rel="stylesheet" type="text/css" href="<?= APP_URL ?>/public/assets/admin/libs/quill/dist/quill.snow.css">
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <!-- Favicon -->
+            <link href="img/favicon.ico" rel="icon">
 
+            <!-- Google Web Fonts -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
 
-            <!-- Custom CSS -->
-            <link href="<?= APP_URL ?>/public/assets/admin/dist/css/style.min.css" rel="stylesheet">
+            <!-- Icon Font Stylesheet -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
+            <!-- Libraries Stylesheet -->
+            <link href="/public/assets/admin/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+            <link href="/public/assets/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+            <!-- Customized Bootstrap Stylesheet -->
+            <link href="/public/assets/admin/css/bootstrap.min.css" rel="stylesheet">
+
+            <!-- Template Stylesheet -->
+            <link href="/public/assets/admin/css/style.css" rel="stylesheet">
         </head>
 
         <body>
+            <div class="container-fluid position-relative d-flex p-0">
+                <!-- Spinner Start -->
+                <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+                    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <!-- Spinner End -->
 
-            <!-- ============================================================== -->
-            <!-- Main wrapper - style you can find in pages.scss -->
-            <!-- ============================================================== -->
-            <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-                data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-                <!-- ============================================================== -->
-                <!-- Topbar header - style you can find in pages.scss -->
-                <!-- ============================================================== -->
-                <header class="topbar" data-navbarbg="skin5">
-                    <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                        <div class="navbar-header" data-logobg="skin5">
 
-                            <!-- ============================================================== -->
-                            <!-- Logo -->
-                            <!-- ============================================================== -->
-                            <a class="navbar-brand" href="/admin">
-                                <!-- Logo icon -->
-                                <b class="logo-icon ps-2">
-                                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                                    <!-- Dark Logo icon -->
-                                    <img src="<?= APP_URL ?>/public/assets/admin/images/logo-icon.png" alt="homepage"
-                                        class="light-logo" />
-
-                                </b>
-                                <!--End Logo icon -->
-                                <!-- Logo text -->
-                                <span class="logo-text">
-                                    <!-- dark Logo text -->
-                                    <img src="<?= APP_URL ?>/public/assets/admin/images/logo-text.png" alt="homepage"
-                                        class="light-logo" />
-
-                                </span>
-                                <!-- Logo icon -->
-                                <!-- <b class="logo-icon"> -->
-                                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                                <!-- Dark Logo icon -->
-                                <!-- <img src="<?= APP_URL ?>/public/assets/admin/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-
-                                <!-- </b> -->
-                                <!--End Logo icon -->
-                            </a>
-                            <!-- ============================================================== -->
-                            <!-- End Logo -->
-                            <!-- ============================================================== -->
-                            <!-- ============================================================== -->
-                            <!-- Toggle which is visible on mobile only -->
-                            <!-- ============================================================== -->
-                            <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
-                                    class="ti-menu ti-close"></i></a>
+                <!-- Sidebar Start -->
+                <div class="sidebar pe-4 pb-3">
+                    <nav class="navbar bg-secondary navbar-dark">
+                        <a href="index.html" class="navbar-brand mx-4 mb-3">
+                            <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+                        </a>
+                        <div class="d-flex align-items-center ms-4 mb-4">
+                            <div class="position-relative">
+                                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                            </div>
+                            <div class="ms-3">
+                                <h6 class="mb-0">Jhon Doe</h6>
+                                <span>Admin</span>
+                            </div>
                         </div>
-                        <!-- ============================================================== -->
-                        <!-- End Logo -->
-                        <!-- ============================================================== -->
-                        <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                            <!-- ============================================================== -->
-                            <!-- toggle and nav items -->
-                            <!-- ============================================================== -->
-                            <ul class="navbar-nav float-start me-auto">
-                                <li class="nav-item d-none d-lg-block"><a
-                                        class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)"
-                                        data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
-                                <!-- ============================================================== -->
-                            </ul>
-                            <!-- ============================================================== -->
-                            <!-- Right side toggle and nav items -->
-                            <!-- ============================================================== -->
-                            <ul class="navbar-nav float-end">
-                                <!-- ============================================================== -->
-                                <!-- User profile and search -->
-                                <!-- ============================================================== -->
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
-                                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="<?= APP_URL ?>/public/assets/admin/images/users/1.jpg" alt="user"
-                                            class="rounded-circle" width="31">
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end user-dd animated"
-                                        aria-labelledby="navbarDropdown">
-
-                                        <a class="dropdown-item" href="/logout"><i class="fa fa-power-off me-1 ms-1"></i> Đăng
-                                            xuất</a>
-                                    </ul>
-                                </li>
-                                <!-- ============================================================== -->
-                                <!-- User profile and search -->
-                                <!-- ============================================================== -->
-                            </ul>
+                        <div class="navbar-nav w-100">
+                            <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sản phẩm</a>
+                                <div class="dropdown-menu bg-transparent border-0">
+                                    <a href="/admin/products" class="dropdown-item">Danh sách</a>
+                                    <a href="/add-product" class="dropdown-item">Thêm sản phẩm</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Danh mục</a>
+                                <div class="dropdown-menu bg-transparent border-0">
+                                    <a href="button.html" class="dropdown-item">Danh sách</a>
+                                    <a href="typography.html" class="dropdown-item">Thêm danh mục</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Bình luận</a>
+                                <div class="dropdown-menu bg-transparent border-0">
+                                    <a href="button.html" class="dropdown-item">Danh sách</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Khách hàng</a>
+                                <div class="dropdown-menu bg-transparent border-0">
+                                    <a href="button.html" class="dropdown-item">Danh sách</a>
+                                    <a href="typography.html" class="dropdown-item">Thêm khách hàng</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Hóa đơn</a>
+                                <div class="dropdown-menu bg-transparent border-0">
+                                    <a href="button.html" class="dropdown-item">Danh sách</a>
+                                    <a href="typography.html" class="dropdown-item">Thêm hóa đơn</a>
+                                </div>
+                            </div>
                         </div>
                     </nav>
-                </header>
-                <!-- ============================================================== -->
-                <!-- End Topbar header -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Left Sidebar - style you can find in sidebar.scss  -->
-                <!-- ============================================================== -->
-                <aside class="left-sidebar" data-sidebarbg="skin5">
-                    <!-- Sidebar scroll-->
-                    <div class="scroll-sidebar">
-                        <!-- Sidebar navigation-->
-                        <nav class="sidebar-nav">
-                            <ul id="sidebarnav" class="pt-4">
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin"
-                                        aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                            class="hide-menu">Thống kê</span></a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                        aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Loại sản
-                                            phẩm </span></a>
-                                    <ul aria-expanded="false" class="collapse  first-level">
-                                        <li class="sidebar-item">
-                                            <a href="/admin/categories" class="sidebar-link"><i
-                                                    class="mdi mdi-note-outline"></i><span class="hide-menu"> Danh sách
-                                                </span></a>
-                                        </li>
-                                        <li class="sidebar-item">
-                                            <a href="/admin/categories/create" class="sidebar-link"><i
-                                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Thêm mới </span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                        aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Sản phẩm
-                                        </span></a>
-                                    <ul aria-expanded="false" class="collapse  first-level">
-                                        <li class="sidebar-item">
-                                            <a href="/admin/products" class="sidebar-link"><i
-                                                    class="mdi mdi-note-outline"></i><span class="hide-menu"> Danh sách
-                                                </span></a>
-                                        </li>
-                                        <li class="sidebar-item">
-                                            <a href="/admin/products/create" class="sidebar-link"><i
-                                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Thêm mới </span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                        aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Người
-                                            dùng</span></a>
-                                    <ul aria-expanded="false" class="collapse  first-level">
-                                        <li class="sidebar-item">
-                                            <a href="/admin/users" class="sidebar-link"><i
-                                                    class="mdi mdi-note-outline"></i><span class="hide-menu"> Danh sách
-                                                </span></a>
-                                        </li>
-                                        <li class="sidebar-item">
-                                            <a href="/admin/users/create" class="sidebar-link"><i
-                                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Thêm mới </span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                        aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Bình luận
-                                        </span></a>
-                                    <ul aria-expanded="false" class="collapse  first-level">
-                                        <li class="sidebar-item">
-                                            <a href="/admin/comments" class="sidebar-link"><i
-                                                    class="mdi mdi-note-outline"></i><span class="hide-menu"> Danh sách
-                                                </span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                        aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu"> Tin
-                                            Tức</span></a>
-                                    <ul aria-expanded="false" class="collapse  first-level">
-                                        <li class="sidebar-item">
-                                            <a href="/admin/news" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span
-                                                    class="hide-menu"> Danh sách </span></a>
-                                        </li>
-                                        <li class="sidebar-item">
-                                            <a href="/admin/news/create" class="sidebar-link"><i
-                                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Thêm mới </span></a>
-                                        </li>
-                                    </ul>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                        aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu"> Liên hệ</span></a>
-                                    <ul aria-expanded="false" class="collapse  first-level">
-                                        <li class="sidebar-item">
-                                            <a href="/admin/contact" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span
-                                                    class="hide-menu"> Danh sách </span></a>
-                                        </li>
-                                        <li class="sidebar-item">
-                                            <a href="/admin/news/create" class="sidebar-link"><i
-                                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Thêm mới </span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Đơn hàng</span></a>
-                                    <ul aria-expanded="false" class="collapse  first-level">
-                                        <li class="sidebar-item">
-                                            <a href="/admin/orders" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Danh sách </span></a>
-                                        </li>
-                                    </ul>
-                                </li>
+                </div>
+                <!-- Sidebar End -->
 
 
-                                <li class="sidebar-item p-3">
-                                    <a href="https://github.com/wrappixel/matrix-admin-lite" target="_blank"
-                                        class="w-100 btn btn-cyan d-flex align-items-center text-white"><i
-                                            class="mdi mdi-cloud-download font-20 me-2"></i>Theme</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <!-- End Sidebar navigation -->
-                    </div>
-                    <!-- End Sidebar scroll-->
-                </aside>
-                <!-- ============================================================== -->
-                <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
+                <!-- Content Start -->
+                <div class="content">
+                    <!-- Navbar Start -->
+                    <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                        <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                            <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                        </a>
+                        <a href="#" class="sidebar-toggler flex-shrink-0">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <form class="d-none d-md-flex ms-4">
+                            <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                        </form>
+                        <div class="navbar-nav align-items-center ms-auto">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="fa fa-envelope me-lg-2"></i>
+                                    <span class="d-none d-lg-inline-flex">Message</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                                    <a href="#" class="dropdown-item">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                            <div class="ms-2">
+                                                <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                                <small>15 minutes ago</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                            <div class="ms-2">
+                                                <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                                <small>15 minutes ago</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                            <div class="ms-2">
+                                                <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                                <small>15 minutes ago</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item text-center">See all message</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="fa fa-bell me-lg-2"></i>
+                                    <span class="d-none d-lg-inline-flex">Notificatin</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                                    <a href="#" class="dropdown-item">
+                                        <h6 class="fw-normal mb-0">Profile updated</h6>
+                                        <small>15 minutes ago</small>
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item">
+                                        <h6 class="fw-normal mb-0">New user added</h6>
+                                        <small>15 minutes ago</small>
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item">
+                                        <h6 class="fw-normal mb-0">Password changed</h6>
+                                        <small>15 minutes ago</small>
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item text-center">See all notifications</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                    <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <span class="d-none d-lg-inline-flex">John Doe</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                                    <a href="#" class="dropdown-item">My Profile</a>
+                                    <a href="#" class="dropdown-item">Settings</a>
+                                    <a href="#" class="dropdown-item">Log Out</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
 
-                <?php
+            <?php
 
+        }
     }
-}
 
-?>
+            ?>

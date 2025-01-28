@@ -1,3 +1,19 @@
+const container = document.querySelector('.container')
+const btnSignIn = document.querySelector('.btnSign-in')
+const btnSignUp = document.querySelector('.btnSign-up')
+
+btnSignIn.addEventListener('click', () => {
+    container.classList.add('active')
+})
+
+btnSignUp.addEventListener('click', () => {
+    container.classList.remove('active')
+})
+
+
+
+
+
 var citis = document.getElementById("city");
 var districts = document.getElementById("district");
 var wards = document.getElementById("ward");
@@ -81,4 +97,5 @@ function displaySelection() {
             });
         });
     });
+
    

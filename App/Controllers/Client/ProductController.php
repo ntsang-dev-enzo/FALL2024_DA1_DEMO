@@ -17,38 +17,42 @@ use App\Views\Client\Pages\Product\Detail;
 use App\Views\Client\Pages\Product\Cart;
 use App\Views\Client\Pages\Product\Checkout;
 use App\Views\Client\Pages\Product\Index;
+use Google\Cloud\Speech\V1\SpeechClient;
+use Google\Cloud\Speech\V1\RecognitionConfig;
+use Google\Cloud\Speech\V1\RecognitionAudio;
+use Google\Cloud\Core\ExponentialBackoff;
 
 class ProductController
 {
     // hiển thị danh sách
     public static function index()
-{
-    $category = new Category();
-    $categories = $category->getAllCategoryByStatus();
+    {
+        $category = new Category();
+        $categories = $category->getAllCategoryByStatus();
 
-    // Lấy giá trị từ form sắp xếp, mặc định là 'default'
-    $sortOption = $_GET['sort'] ?? 'default'; 
+        // Lấy giá trị từ form sắp xếp, mặc định là 'default'
+        $sortOption = $_GET['sort'] ?? 'default';
 
-    // Lấy danh sách sản phẩm theo sắp xếp
-    $product = new Product();
-    $products = $product->sortProducts($sortOption);
-    $totalProductData = $product->countTotal();
+        // Lấy danh sách sản phẩm theo sắp xếp
+        $product = new Product();
+        $products = $product->sortProducts($sortOption);
+        $totalProductData = $product->countTotal();
 
-    // Lấy tổng số sản phẩm từ mảng
-    $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
+        // Lấy tổng số sản phẩm từ mảng
+        $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
 
-    $data = [
-        'products' => $products,
-        'categories' => $categories,
-        'totalProducts' => $totalProducts,  // Truyền giá trị tổng số sản phẩm
-    ];
+        $data = [
+            'products' => $products,
+            'categories' => $categories,
+            'totalProducts' => $totalProducts,  // Truyền giá trị tổng số sản phẩm
+        ];
 
-    Header::render();
-    Notification::render();
-    NotificationHelper::unset();
-    Index::render($data);
-    Footer::render();
-}
+        Header::render();
+        Notification::render();
+        NotificationHelper::unset();
+        Index::render($data);
+        Footer::render();
+    }
 
     public static function detail($id)
     {
@@ -66,7 +70,7 @@ class ProductController
             'comments' => $comments
         ];
 
-        $view_result=ViewProductHelper::cookieView($id, $product_detail['view']);
+        $view_result = ViewProductHelper::cookieView($id, $product_detail['view']);
 
 
         Header::render();
@@ -109,7 +113,7 @@ class ProductController
         $categories = $category->getAllCategoryByStatus();
         $product = new Product();
         $products = $product->getAllProductByCategoryAndStatus($id);
-        
+
 
         $data = [
             'products' => $products,
@@ -121,13 +125,15 @@ class ProductController
         Index::render($data);
         Footer::render();
     }
-    public static function search() {
+    public static function search()
+    {
         $category = new Category();
         $categories = $category->getAllCategoryByStatus();
-    
-        $keyword = $_GET['keyword'] ?? '';
+
+        // Kiểm tra xem từ khóa có được gửi từ giọng nói không (từ AJAX hoặc HTTP request)
+        $keyword = $_GET['keyword'] ?? $_POST['keyword'] ?? ''; // Có thể là từ khóa từ GET hoặc POST
         $keyword = trim($keyword); // Loại bỏ khoảng trắng đầu/cuối
-    
+
         // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
         if (empty($keyword)) {
             $_SESSION['keyword'] = null;
@@ -137,7 +143,7 @@ class ProductController
 
             // Lấy tổng số sản phẩm từ mảng
             $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
-        
+
             $data = [
                 'products' => $products,
                 'categories' => $categories,
@@ -148,10 +154,10 @@ class ProductController
             Footer::render();
             return;
         }
-    
+
         // Lưu từ khóa tìm kiếm vào session
         $_SESSION['keyword'] = $keyword;
-    
+
         // Tìm kiếm sản phẩm theo từ khóa
         $product = new Product();
         $products = $product->search($keyword); // Gọi phương thức search()
@@ -159,7 +165,7 @@ class ProductController
 
         // Lấy tổng số sản phẩm từ mảng
         $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
-    
+
         $data = [
             'products' => $products,
             'categories' => $categories,
@@ -169,7 +175,4 @@ class ProductController
         Index::render($data);
         Footer::render();
     }
-    
-    
-    
 }

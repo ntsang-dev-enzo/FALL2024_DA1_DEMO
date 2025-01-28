@@ -75,7 +75,7 @@ class User extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT * FROM customers WHERE username=?";
+            $sql = "SELECT * FROM customers WHERE email=?";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->bind_param('s', $username);
