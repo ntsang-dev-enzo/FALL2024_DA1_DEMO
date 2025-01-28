@@ -34,7 +34,9 @@ class ContactController{
             $customer_id = $_SESSION["user"];
             $data = [
                 'name' => $_POST['name'],
+                'phone' => $_POST['phone'],
                 'email' => $_POST['email'],
+                'title' => $_POST['title'],
                 'message' => $_POST['message'],
                 'customer_id' => $customer_id['id'],
 

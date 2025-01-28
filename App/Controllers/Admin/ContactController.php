@@ -33,4 +33,34 @@ class ContactController
     Footer::render();
 }
 
+public static function search() {
+    // Lấy từ khóa từ $_GET, xử lý dữ liệu nhập
+    $keyword = $_GET['keyword'] ?? '';
+    $keyword = trim($keyword);
+
+    if (empty($keyword)){
+        $_SESSION['keyword'] = null;
+        
+        $contact = new Contact();
+        $data = $contact->getAllContact();
+        Header::render();
+        Index::render($data);
+        Footer::render();
+        return ;
+}
+
+    // Lưu từ khóa vào session
+    $_SESSION['keyword'] = $keyword;
+
+    // Thực hiện tìm kiếm
+    $contact = new Contact();
+    $data = $contact->search($keyword);
+
+    // Hiển thị giao diện với kết quả
+    Header::render();
+    Index::render($data);
+    Footer::render();
+}
+
+
 }
