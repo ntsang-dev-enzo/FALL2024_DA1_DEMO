@@ -35,7 +35,7 @@ class Index extends BaseView
                 <div class="row">
                     <div class="col-12">
 
-                        <div class="card">
+                        <div class="card bg-dark">
                             <div class="card-body">
                                 <h5 class="card-title">Danh sách người dùng</h5>
                                 <form action="/admin/User/search" class="d-flex" role="search" method="get">
@@ -46,13 +46,12 @@ class Index extends BaseView
                                 <?php
                                 if (count($data)) :
                                 ?>
-                                    <div class="table-responsive">
+                                    <div class="table-responsive bg-dark">
                                         <table id="" class="table table-striped ">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Ảnh đại diện</th>
-                                                    <th>Tên đăng nhập</th>
                                                     <th>Họ và tên</th>
                                                     <th>Email</th>
                                                     <th>SDT</th>
@@ -67,8 +66,8 @@ class Index extends BaseView
                                                 ?>
                                                     <tr>
                                                         <td><?= $item['id'] ?></td>
-                                                        <td><img src="<?=APP_URL?>/public/uploads/users/<?=$item['image'] ?>" alt="" width="100px"></td>
-                                                        <td><?= $item['username'] ?></td>
+                                                        <td><img src="/public/uploads/users/<?=$item['image'] ?>" alt="" width="100px"></td>
+                                                
                                                         <td><?= $item['name'] ?></td>
                                                         <td><?= $item['email'] ?></td>
                                                         <td><?= $item['phone'] ?></td>

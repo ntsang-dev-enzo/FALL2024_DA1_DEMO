@@ -9,17 +9,11 @@ class Edit extends BaseView
     public static function render($data = null)
     {
 ?>
-
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">QUẢN LÝ LOẠI SẢN PHẨM</h4>
+                        <h4 class="page-title">QUẢN LÝ SẢN PHẨM</h4>
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -31,24 +25,15 @@ class Edit extends BaseView
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
-                            <form class="form-horizontal" action="/admin/products/<?= $data['product']['id'] ?>" method="POST" enctype="multipart/form-data" >
+                        <div class="card bg-secondary">
+                            <form class="form-horizontal" action="/admin/products/<?= $data['product']['id'] ?>" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <h4 class="card-title">Sửa loại sản phẩm</h4>
                                     <input type="hidden" name="method" id="" value="PUT">
-                                    <div align="center"><img src="<?= APP_URL?>/public/uploads/products/<?=$data['product']['image'] ?>" alt="" width="300px" ></div>
+                                    <div align="center"><img src="/public/uploads/products/<?= $data['product']['image'] ?>" alt="" width="300px"></div>
                                     <div class="form-group">
                                         <label for="id">ID</label>
                                         <input type="text" class="form-control" id="id" name="id" value="<?= $data['product']['id'] ?>" disabled>
@@ -66,28 +51,12 @@ class Edit extends BaseView
                                         <input type="number" class="form-control" id="price" name="price" placeholder="Nhập giá tiền" value="<?= $data['product']['price'] ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="discount_price">Giá giảm</label>
-                                        <input type="number" class="form-control" id="discount_price" name="discount_price" placeholder="Nhập giá giảm" value="<?= $data['product']['discount_price'] ?>">
+                                        <label for="to_price">Giá giảm</label>
+                                        <input type="number" class="form-control" id="to_price" name="to_price" placeholder="Nhập giá giảm" value="<?= $data['product']['to_price'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Mô tả</label>
                                         <textarea class="form-control" cols="50" rows="6" name="description" id="description"><?= $data['product']['description'] ?></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="publisher">Nhà xuất bản</label>
-                                        <input type="text" class="form-control" id="publisher" placeholder="Nhập tên nhà xuất bản" name="publisher" value="<?= $data['product']['publisher'] ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="author">Tác giả</label>
-                                        <input type="text" class="form-control" id="author" placeholder="Nhập tên nhà xuất bản" name="author" value="<?= $data['product']['author'] ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="supplier">Nhà cung cấp</label>
-                                        <input type="text" class="form-control" id="supplier" placeholder="Nhập tên nhà xuất bản" name="supplier" value="<?= $data['product']['supplier'] ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cover">Hình thức bìa</label>
-                                        <input type="text" class="form-control" id="cover" placeholder="Nhập tên nhà xuất bản" name="cover" value="<?= $data['product']['cover'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="category_id">Loại sản phẩm</label>
@@ -99,13 +68,13 @@ class Edit extends BaseView
 
                                         </select>
                                     </div>
+                                    <div class="main-container">
                                     <div class="form-group">
                                         <label for="is_featured">Nổi bật</label>
                                         <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="is_featured" name="is_featured">
                                             <option value="" selected disabled>Vui lòng chọn...</option>
                                             <option value="1" <?= ($data['product']['is_featured'] == 1 ? 'selected' : '') ?>>Nổi bật</option>
                                             <option value="0" <?= ($data['product']['is_featured'] == 0 ? 'selected' : '') ?>>Bình thường</option>
-
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -126,27 +95,9 @@ class Edit extends BaseView
                                 </div>
                             </form>
                         </div>
-
                     </div>
-
                 </div>
-
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-
     <?php
     }
 }

@@ -43,7 +43,7 @@ class Create extends BaseView
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card bg-secondary">
                             <form class="form-horizontal" action="/admin/categories" method="POST">
                                 <div class="card-body">
                                     <h4 class="card-title">Thêm loại sản phẩm</h4>

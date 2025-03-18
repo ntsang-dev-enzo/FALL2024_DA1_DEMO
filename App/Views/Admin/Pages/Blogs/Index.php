@@ -13,10 +13,12 @@ class Index extends BaseView
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card bg-dark">
                             <div class="card-body">
                                 <h5 class="card-title">Danh sách tin tức</h5>
-                                <?php if (count($data)) : ?>
+                                <?php
+
+                                if (count($data)) : ?>
                                     <div class="table-responsive">
                                         <table id="" class="table table-striped">
                                             <thead>

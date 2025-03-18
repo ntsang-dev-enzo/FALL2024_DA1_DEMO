@@ -28,7 +28,7 @@ class Index extends BaseView
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card bg-secondary">
                             <div class="card-body">
                                 <h5 class="card-title">Danh sách đơn hàng</h5>
                                 <form action="/admin/order/search" class="d-flex" role="search" method="get">
@@ -75,7 +75,7 @@ class Index extends BaseView
                                                             <a href="/admin/order/<?= $item['id'] ?>" class="btn btn-primary">Trạng thái</a>
                                                             <form action="/admin/order/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn chắc chắn muốn xóa đơn hàng này không?')">
                                                                 <input type="hidden" name="method" value="DELETE">
-                                                                <button type="submit" class="btn btn-danger text-white">Xoá</button>
+                                                                <button type="submit" class="btn btn-danger text-white">Hủy đơn hàng</button>
                                                             </form>
                                                         </td>
                                                     </tr>

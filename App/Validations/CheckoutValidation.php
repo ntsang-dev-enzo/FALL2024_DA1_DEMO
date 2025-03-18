@@ -37,17 +37,6 @@ class CheckoutValidation {
             $is_valid = false;
         }
 
-        // Kiểm tra phương thức vận chuyển
-        if (!isset($_POST['shippingMethod']) || $_POST['shippingMethod'] === '') {
-            NotificationHelper::error('shippingMethod', 'Phương thức vận chuyển không được trống!');
-            $is_valid = false;
-        }
-
-        // Kiểm tra phương thức thanh toán
-        if (!isset($_POST['paymentMethod']) || $_POST['paymentMethod'] === '') {
-            NotificationHelper::error('paymentMethod', 'Phương thức thanh toán không được trống!');
-            $is_valid = false;
-        }
 
         return $is_valid;
     }

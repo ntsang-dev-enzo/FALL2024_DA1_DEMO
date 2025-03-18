@@ -15,13 +15,13 @@ class Header extends BaseView
 
         <head>
             <meta charset="utf-8">
-            <title>DarkPan - Bootstrap 5 Admin Template</title>
+            <title>Admin - Thanh Xuan CAKE</title>
             <meta content="width=device-width, initial-scale=1.0" name="viewport">
             <meta content="" name="keywords">
             <meta content="" name="description">
 
             <!-- Favicon -->
-            <link href="img/favicon.ico" rel="icon">
+            <link href="/public/assets/client/img/Borcelle_Cookies-removebg-preview (1).png" rel="icon">
 
             <!-- Google Web Fonts -->
             <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,20 +41,12 @@ class Header extends BaseView
 
             <!-- Template Stylesheet -->
             <link href="/public/assets/admin/css/style.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet"
+type="text/css" />
         </head>
 
         <body>
             <div class="container-fluid position-relative d-flex p-0">
-                <!-- Spinner Start -->
-                <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-                    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                </div>
-                <!-- Spinner End -->
-
-
-                <!-- Sidebar Start -->
                 <div class="sidebar pe-4 pb-3">
                     <nav class="navbar bg-secondary navbar-dark">
                         <a href="index.html" class="navbar-brand mx-4 mb-3">
@@ -71,39 +63,46 @@ class Header extends BaseView
                             </div>
                         </div>
                         <div class="navbar-nav w-100">
-                            <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                            <a href="/admin" class="nav-item nav-link <?= $_SERVER['REQUEST_URI'] == '/admin' ? 'active' : '' ?>"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sản phẩm</a>
+                                <a href="#" class="nav-link dropdown-toggle <?= $_SERVER['REQUEST_URI'] == '/admin/products' ? 'active' : '' ?>" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sản phẩm</a>
                                 <div class="dropdown-menu bg-transparent border-0">
                                     <a href="/admin/products" class="dropdown-item">Danh sách</a>
                                     <a href="/admin/products/create" class="dropdown-item">Thêm sản phẩm</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Danh mục</a>
+                                <a href="#" class="nav-link dropdown-toggle <?= $_SERVER['REQUEST_URI'] == '/admin/categories' ? 'active' : '' ?>" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Danh mục</a>
                                 <div class="dropdown-menu bg-transparent border-0">
-                                    <a href="button.html" class="dropdown-item">Danh sách</a>
-                                    <a href="typography.html" class="dropdown-item">Thêm danh mục</a>
+                                    <a href="/admin/categories" class="dropdown-item">Danh sách</a>
+                                    <a href="/admin/categories/create" class="dropdown-item">Thêm danh mục</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Bình luận</a>
+                                <a href="#" class="nav-link dropdown-toggle <?= $_SERVER['REQUEST_URI'] == '/admin/comments' ? 'active' : '' ?>" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Bình luận</a>
                                 <div class="dropdown-menu bg-transparent border-0">
-                                    <a href="button.html" class="dropdown-item">Danh sách</a>
+                                    <a href="/admin/comments" class="dropdown-item">Danh sách</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Khách hàng</a>
                                 <div class="dropdown-menu bg-transparent border-0">
-                                    <a href="button.html" class="dropdown-item">Danh sách</a>
-                                    <a href="typography.html" class="dropdown-item">Thêm khách hàng</a>
+                                    <a href="/admin/users" class="dropdown-item">Danh sách</a>
+                                    <a href="/admin/users/create" class="dropdown-item">Thêm khách hàng</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Hóa đơn</a>
                                 <div class="dropdown-menu bg-transparent border-0">
-                                    <a href="button.html" class="dropdown-item">Danh sách</a>
-                                    <a href="typography.html" class="dropdown-item">Thêm hóa đơn</a>
+                                    <a href="/admin/orders" class="dropdown-item">Danh sách</a>
+                                    <a href="/order/create" class="dropdown-item">Thêm hóa đơn</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Bài viết</a>
+                                <div class="dropdown-menu bg-transparent border-0">
+                                    <a href="/admin/news" class="dropdown-item">Danh sách</a>
+                                    <a href="/admin/news/create" class="dropdown-item">Thêm bài viết</a>
                                 </div>
                             </div>
                         </div>

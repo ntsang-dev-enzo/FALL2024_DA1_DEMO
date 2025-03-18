@@ -95,14 +95,12 @@ abstract class BaseModel implements CrudInterface
                 $sql .= "$key = '$value', ";
             }
             $sql = rtrim($sql, ", ");
-
             $sql .= " WHERE $this->id=$id";
-
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             return $stmt->execute();
         } catch (\Throwable $th) {
-            error_log('Lỗi khi cập nhật dữ liệu: ', $th->getMessage());
+            error_log('Lỗi khi cập nhật dữ liệu: '. $th->getMessage());
             return false;
         }
     }

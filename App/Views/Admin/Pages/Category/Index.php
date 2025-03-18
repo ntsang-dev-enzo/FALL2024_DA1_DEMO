@@ -9,10 +9,7 @@ class Index extends BaseView
     public static function render($data = null)
     {
 ?>
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+        <div class="page-wrapper ">
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
@@ -28,12 +25,7 @@ class Index extends BaseView
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
+            
             <div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
@@ -42,7 +34,7 @@ class Index extends BaseView
                     <div class="col-12">
 
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body bg-secondary">
                                 <h5 class="card-title">Danh sách loại sản phẩm</h5>
                                 <?php
                                 if (count($data)) :

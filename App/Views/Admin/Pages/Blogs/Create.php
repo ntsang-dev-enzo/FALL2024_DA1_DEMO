@@ -31,7 +31,7 @@ class Create extends BaseView
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card bg-dark">
                             <form action="/admin/news" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="method" value="POST">
                                 <div class="mb-3">

@@ -19,7 +19,7 @@ use Google_Client;
 use Google\Service\CloudTasks\OAuthToken;
 use Google_Exception;
 use Google\Service\Oauth2;
-use GuzzleHttp\Client;
+
 
 
 class AuthController
@@ -38,7 +38,7 @@ class AuthController
 
         if (!$is_valid) {
             NotificationHelper::error('register_valid', 'Đăng ký không thành công!');
-            header('Location: /register');
+            header('Location: /login');
             exit();
         }
 
@@ -82,16 +82,16 @@ class AuthController
             'password' => $_POST['password'],
             'remember' => isset($_POST['remember'])
         ];
-        echo "<pre>";
-        var_dump($data);
-        echo "</pre>";
+
         $result = AuthHelper::login($data);
         if ($result) {
             // NotificationHelper::success('login','Đăng nhập thành công!');
             header('Location: /');
+            exit();
         } else {
             // NotificationHelper::error('login','Đăng nhập không thành công!');
             header('Location: /login');
+            exit();
         }
     }
     public static function checkLogin(): bool
@@ -174,12 +174,28 @@ class AuthController
         Myaccount::render($data);
     } */
 
-    public static function edit()
+    public static function edit($id)
     {
-        
+        $result = AuthHelper::edit($id);
+        if (!$result) {
+
+            if (isset($_SESSION['error']['login'])) {
+                header('Location: /login');
+                exit;
+            }
+            if (isset($_SESSION['error']['user'])) {
+                $data = $_SESSION['user'];
+                $user_id = $data['id'];
+                header("Location: /users/$user_id");
+                exit;
+            }
+        }
+        $data = $_SESSION['user'];
+
         Notification::render();
         NotificationHelper::unset();
-        Myaccount::render();
+        Myaccount::render($data);
+
     }
 
     public static function update($id)
@@ -191,8 +207,9 @@ class AuthController
             exit();
         }
         $data = [
-            'email' => $_POST['email'],
             'name' => $_POST['name'],
+            'phone' => $_POST['phone'],
+
         ];
 
         // kiểm tra có upload hình ảnh không nếu có thì kiểm tr5a xem có hợp lệ khoong

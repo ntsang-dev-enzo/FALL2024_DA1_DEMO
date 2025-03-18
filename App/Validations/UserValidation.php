@@ -5,10 +5,6 @@ use App\Helpers\NotificationHelper;
 class UserValidation{
     public static function create():bool{
         $is_valid=true;
-        if (!isset(($_POST['username']))||$_POST['username']==='') {
-            NotificationHelper::error('username','Tên đăng nhập không được trống!');
-            $is_valid=false;
-        } 
         if (!isset(($_POST['password']))||$_POST['password']==='') {
             NotificationHelper::error('password','Mật khẩu không được trống!');
             $is_valid=false;

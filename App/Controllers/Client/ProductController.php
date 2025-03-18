@@ -7,124 +7,157 @@ use App\Helpers\NotificationHelper;
 use App\Helpers\ViewProductHelper;
 use App\Models\Category;
 use App\Models\Comment;
-use App\Models\MiniCategory;
+use App\Models\Order;
 use App\Models\Product;
 use App\Views\Client\Components\Notification;
 use App\Views\Client\Layouts\Footer;
 use App\Views\Client\Layouts\Header;
-use App\Views\Client\Pages\Product\Category as ProductCategory;
-use App\Views\Client\Pages\Product\Detail;
-use App\Views\Client\Pages\Product\Cart;
 use App\Views\Client\Pages\Product\Checkout;
 use App\Views\Client\Pages\Product\Index;
-use Google\Cloud\Speech\V1\SpeechClient;
-use Google\Cloud\Speech\V1\RecognitionConfig;
-use Google\Cloud\Speech\V1\RecognitionAudio;
-use Google\Cloud\Core\ExponentialBackoff;
+use App\Views\Client\Pages\Product\Detail;
+use App\Views\Client\Pages\Product\ThankYou;
 
 class ProductController
 {
-    // hiển thị danh sách
     public static function index()
     {
-        $category = new Category();
-        $categories = $category->getAllCategoryByStatus();
+        try {
+            $category = new Category();
+            $categories = $category->getAllCategoryByStatus();
 
-        // Lấy giá trị từ form sắp xếp, mặc định là 'default'
-        $sortOption = $_GET['sort'] ?? 'default';
+            $sortOption = $_GET['sort'] ?? 'default';
 
-        // Lấy danh sách sản phẩm theo sắp xếp
-        $product = new Product();
-        $products = $product->sortProducts($sortOption);
-        $totalProductData = $product->countTotal();
+            $product = new Product();
+            $products = $product->sortProducts($sortOption);
+            $totalProducts = $product->countTotalProduct();
 
-        // Lấy tổng số sản phẩm từ mảng
-        $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
+            $data = [
+                'products' => $products,
+                'categories' => $categories,
+                'totalProducts' => $totalProducts,
+            ];
 
-        $data = [
-            'products' => $products,
-            'categories' => $categories,
-            'totalProducts' => $totalProducts,  // Truyền giá trị tổng số sản phẩm
-        ];
-
-        Header::render();
-        Notification::render();
-        NotificationHelper::unset();
-        Index::render($data);
-        Footer::render();
-    }
-
-    public static function detail($id)
-    {
-        $product = new Product();
-        $product_detail = $product->getOneProductByStatus($id);
-        if (!$product_detail) {
-            NotificationHelper::error('product_detail', 'Không thể xem sản phẩm này!');
-            header('location: /products');
+            Header::render();
+            Notification::render();
+            NotificationHelper::unset();
+            Index::render($data);
+            Footer::render();
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị sản phẩm: ' . $th->getMessage());
+            header('Location: /');
             exit;
         }
-        $comment = new Comment();
-        $comments = $comment->get5CommentNewestByProductAndStatus($id);
-        $data = [
-            'product' => $product_detail,
-            'comments' => $comments
-        ];
-
-        $view_result = ViewProductHelper::cookieView($id, $product_detail['view']);
-
-
-        Header::render();
-        Notification::render();
-        NotificationHelper::unset();
-        // Detail::render();
-        Detail::render($data);
-        Footer::render();
     }
-
-    public static function checkout(/* $id */)
-    {
-        // $product=new Product();
-        // $product_detail=$product->getOneProductByStatus($id);
-        // if (!$product_detail) {
-        //     NotificationHelper::error('product_detail','Không thể xem sản phẩm này!');
-        //     header('location: /products');
-        //     exit;
-        // }
-        // $comment= new Comment();
-        // $comments=$comment->get5CommentNewestByProductAndStatus($id);
-        // $data = [
-        //     'product' => $product_detail,
-        //     'comments' => $comments
-        // ];
-
-        // $view_result=ViewProductHelper::cookieView($id, $product_detail['view']);
+    public static function checkout()
+{
 
 
-        Header::render();
-        Notification::render();
-        NotificationHelper::unset();
-        Checkout::render();
-        // Detail::render($data);
-        Footer::render();
+    // Kiểm tra xem có sản phẩm nào được chọn hay không
+
+    if (empty($_POST['selected_products']) || !is_array($_POST['selected_products'])) {
+        NotificationHelper::error('fail', 'Vui lòng chọn ít nhất một sản phẩm để thanh toán.');
+        header('Location: /cart');
+        exit;
     }
+    $_SESSION['selected_products'] = $_POST['selected_products'];
+    // Lấy danh sách ID sản phẩm đã chọn từ form
+    $selectedProductIds = array_map('intval', $_POST['selected_products']);
+    
+    // Lấy thông tin sản phẩm từ database
+    $product = new Product();
+    $selectedProducts = $product->getProductsByIds($selectedProductIds);
+    // echo '<pre>';
+    // var_dump($selectedProducts);
+    // echo '</pre>';
+    // die;
+    // Nếu không có sản phẩm nào hợp lệ, quay về giỏ hàng
+    if (empty($selectedProducts)) {
+        NotificationHelper::error('kocosanphamhople' , 'Không tìm thấy sản phẩm hợp lệ để thanh toán.');
+        header('Location: /cart');
+        exit;
+    }
+    $user = $_SESSION['user'];
+// ['products' => $selectedProducts]
+    // Hiển thị giao diện thanh toán
+    Header::render();
+    Notification::render();
+    NotificationHelper::unset();
+    Checkout::render($user);
+    Footer::render();
+}
+
     public static function getProductByCategory($id)
     {
-        $category = new Category();
-        $categories = $category->getAllCategoryByStatus();
-        $product = new Product();
-        $products = $product->getAllProductByCategoryAndStatus($id);
+        try {
+            $category = new Category();
+            $categories = $category->getAllCategoryByStatus();
+            if (!$categories) {
+                NotificationHelper::error('product_detail', 'Không thể xem sản phẩm này!');
+                header('location: /products');
+                exit;
+            }
+            $product = new Product();
+            $products = $product->getAllProductByCategoryAndStatus($id);
+            if (!$products) {
+                NotificationHelper::error('product_detail', 'Không thể xem sản phẩm này!');
+                header('location: /products');
+                exit;
+            }
+            $data = [
+                'products' => $products,
+                'categories' => $categories,
+            ];
 
-
-        $data = [
-            'products' => $products,
-            'categories' => $categories,
-        ];
-        Header::render();
-        Notification::render();
-        NotificationHelper::unset();
-        Index::render($data);
-        Footer::render();
+            Header::render();
+            Notification::render();
+            NotificationHelper::unset();
+            Index::render($data);
+            Footer::render();
+        } catch (\Exception $e) {
+            die("Lỗi lấy sản phẩm theo danh mục: " . $e->getMessage());
+        }
     }
+    public static function thankyou()
+{
+   
+    Header::render();
+    Notification::render();
+    NotificationHelper::unset();
+    ThankYou::render();
+    Footer::render();
+}
+    public static function detail($id)
+    {
+        try {
+            $product = new Product();
+            $product_detail = $product->getOneProductByStatus($id);
+            if (!$product_detail) {
+                NotificationHelper::error('product_detail', 'Không thể xem sản phẩm này!');
+                header('location: /products');
+                exit;
+            }
+
+            $comment = new Comment();
+            $comments = $comment->get5CommentNewestByProductAndStatus($id);
+            $data = [
+                'product' => $product_detail,
+                'comments' => $comments,
+            ];
+
+            ViewProductHelper::cookieView($id, $product_detail['view']);
+
+            Header::render();
+            Notification::render();
+            NotificationHelper::unset();
+            Detail::render($data);
+            Footer::render();
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị chi tiết sản phẩm: ' . $th->getMessage());
+            header('Location: /products');
+            exit;
+        }
+    }
+
     public static function search()
     {
         $category = new Category();
@@ -175,4 +208,9 @@ class ProductController
         Index::render($data);
         Footer::render();
     }
+
+
+
+
+
 }

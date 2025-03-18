@@ -45,6 +45,7 @@ class Index extends BaseView
                             <div class="card-body">
                                 <h5 class="card-title">Danh sách bình luận</h5>
                                 <?php
+
                                 if (count($data)) :
                                 ?>
                                     <div class="table-responsive">

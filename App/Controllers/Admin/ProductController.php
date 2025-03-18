@@ -21,27 +21,18 @@ class ProductController
     public static function index()
 {
     $product = new Product();
-
-    // Lấy danh sách sản phẩm kèm thông tin category
     $data = $product->getAllProductJoinCategory();
-
-    // Lấy lựa chọn sắp xếp từ form, mặc định là 'default'
     $sortOption = $_GET['sort'] ?? 'default'; 
-
-    // Sắp xếp sản phẩm dựa trên lựa chọn
-    $products = $product->sortProducts($sortOption);
-
-    // Truyền dữ liệu vào view
-    $viewData = [
-        'products' => $products, // Sản phẩm đã sắp xếp
-        'sortOption' => $sortOption,  // Lựa chọn sắp xếp
+    $products = $product->sortProductsAdmin($sortOption);
+    $data = [
+        'products' => $products, 
+        'sortOption' => $sortOption,  
     ];
 
-    // Render giao diện
     Header::render();
     Notification::render();
     NotificationHelper::unset();
-    Index::render($viewData); // Truyền dữ liệu vào view
+    Index::render($data);
     Footer::render();
 }
 
@@ -88,14 +79,11 @@ class ProductController
         $data = [
             'name' => $name,
             'price' => $_POST['price'],
-            'discount_price' => $_POST['discount_price'],
+            'to_price' => $_POST['discount_price'],
             'description' => $_POST['description'],
             'is_featured' => $_POST['is_featured'],
             'category_id' => $_POST['category_id'],
-            'author' => $_POST['author'],
-            'publisher' => $_POST['publisher'],
-            'cover' => $_POST['cover'],
-            'supplier' => $_POST['supplier'],
+
             'status' => $_POST['status'],
         ];
         $is_upload=ProductValidation::uploadImage();
@@ -130,7 +118,7 @@ class ProductController
     {
 
         $product=new Product();
-        $data_product = $product->getOneProduct($id);
+        $data_product = $product->getOneProductAdmin($id);
 
         $category= new Category();
         $data_category = $category->getAllCategory();
@@ -166,9 +154,11 @@ class ProductController
         }
         // echo 'ucii';
         $name = $_POST['name'];
+
         //kiểm tra tên loại tồn tại chưa, không được trùng
         $product=new Product();
         $is_exist=$product->getOneProductByName($name);
+        
         if ($is_exist) {
             if ($is_exist['id']!=$id) {
                 NotificationHelper::error('update','Tên sản phẩm đã tồn tại!');
@@ -182,21 +172,19 @@ class ProductController
         $data = [
             'name' => $name,
             'price' => $_POST['price'],
-            'discount_price' => $_POST['discount_price'],
+            'to_price' => $_POST['to_price'],
             'description' => $_POST['description'],
             'is_featured' => $_POST['is_featured'],
             'category_id' => $_POST['category_id'],
-            'author' => $_POST['author'],
-            'publisher' => $_POST['publisher'],
-            'cover' => $_POST['cover'],
-            'supplier' => $_POST['supplier'],
             'status' => $_POST['status'],
         ];
+
         $is_upload=ProductValidation::uploadImage();
         if($is_upload){
             $data['image'] = $is_upload;
         }
         $result=$product->updateProduct($id, $data);
+        
         if ($result) {
             NotificationHelper::success('update','Cập nhật sản phẩm thành công!');
             header('location: /admin/products');
@@ -230,26 +218,53 @@ class ProductController
     public static function search() {
 
        
-        $keyword = $_GET['keyword'] ?? '';
-        $keyword = trim( $keyword);
-        
+        $category = new Category();
+        $categories = $category->getAllCategory();
 
-        if (empty($keyword)){
+        // Kiểm tra xem từ khóa có được gửi từ giọng nói không (từ AJAX hoặc HTTP request)
+        $keyword = $_GET['keyword'] ?? $_POST['keyword'] ?? ''; // Có thể là từ khóa từ GET hoặc POST
+        $keyword = trim($keyword); // Loại bỏ khoảng trắng đầu/cuối
+
+        // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+        if (empty($keyword)) {
             $_SESSION['keyword'] = null;
-            
-            $data = [];
-            Header::render();
-            Index::render();
-            Footer::render();
-            return ;
-    }
+            $product = new Product();
+            $products = $product->getAllProductJoinCategory(); // Lấy tất cả sản phẩm
+            $totalProductData = $product->countTotal();
 
-    $_SESSION ['keywords'] = $keyword;
-    $product = new Product();
-    $data = $product->search( $keyword);
-    Header::render();
-    Index::render( $data);
-    Footer::render();
+            // Lấy tổng số sản phẩm từ mảng
+            $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
+
+            $data = [
+                'products' => $products,
+                'categories' => $categories,
+                'totalProducts' => $totalProducts,  // Truyền giá trị tổng số sản phẩm
+            ];
+            Header::render();
+            Index::render($data);
+            Footer::render();
+            return;
+        }
+
+        // Lưu từ khóa tìm kiếm vào session
+        $_SESSION['keyword'] = $keyword;
+
+        // Tìm kiếm sản phẩm theo từ khóa
+        $product = new Product();
+        $products = $product->search($keyword); // Gọi phương thức search()
+        $totalProductData = $product->countTotal();
+
+        // Lấy tổng số sản phẩm từ mảng
+        $totalProducts = isset($totalProductData['total']) ? $totalProductData['total'] : 0;
+
+        $data = [
+            'products' => $products,
+            'categories' => $categories,
+            'totalProducts' => $totalProducts,  // Truyền giá trị tổng số sản phẩm
+        ];
+        Header::render();
+        Index::render($data);
+        Footer::render();
 
 }
 }

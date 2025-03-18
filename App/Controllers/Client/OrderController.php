@@ -1,204 +1,222 @@
 <?php
+
 namespace App\Controllers\Client;
 
 use App\Models\Order;
-use App\Models\OrderDetail;
+use App\Models\Cart;
 use App\Helpers\NotificationHelper;
-use App\Helpers\AuthHelper;
-use App\Validations\CheckoutValidation;
+use App\Helpers\VNPAYHelper;
 use App\Views\Client\Components\Notification;
 use App\Views\Client\Layouts\Footer;
 use App\Views\Client\Layouts\Header;
 use App\Views\Client\Pages\Product\DetailCheckout;
 use App\Views\Client\Pages\Product\OrderHistory;
 
-
 class OrderController
 {
-    // Xử lý tạo đơn hàng khi bấm thanh toán
-    public static function createOrder()
+
+    public function storeSession()
     {
-        // Kiểm tra xem người dùng đã đăng nhập chưa
-        if (!AuthHelper::checkLogin()) {
-            header('Location: /login');
-            exit;
-        }
-        if (!CheckoutValidation::validate()) {
-            header('Location: /checkout');
-            exit;
-        }
-
-        // Lấy giỏ hàng từ cookie
-        $cart_data = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
-        if (empty($cart_data)) {
-            NotificationHelper::error('cart_empty', 'Giỏ hàng của bạn đang trống.');
-            header('Location: /cart');
-            exit;
-        }
-
-        // Tính tổng tiền và xử lý các sản phẩm
-        $total_amount = 0;
-        $items = [];
-        foreach ($cart_data as $cart) {
-            // Kiểm tra xem sản phẩm đã tồn tại trong mảng items chưa
-            $product_exists = false;
-            foreach ($items as &$existing_item) {
-                if ($existing_item['product_id'] == $cart['product_id']) {
-                    $existing_item['quantity'] += $cart['quantity'];  
-                    $product_exists = true;
-                    break;
-                }
-            }
-
-            // Nếu sản phẩm chưa có trong mảng items, thêm mới
-            if (!$product_exists) {
-                $items[] = [
-                    'product_id' => $cart['product_id'],
-                    'price' => $cart['price'],
-                    'quantity' => $cart['quantity']
-                ];
-            }
-
-            // Tính tổng tiền
-            $total_amount += $cart['quantity'] * $cart['price'];
-        }
-
-        // Dữ liệu đơn hàng từ form
-        $orderData = [
-            'customer_id' => $_SESSION['user']['id'],
-            'order_date' => date('Y-m-d H:i:s'),
-            'status' => 0,
-            'shipping_address' =>  $_POST['street']. ' - ' . $_POST['wardName'] . ' - ' . $_POST['districtName'] . ' - ' . $_POST['cityName'] ,
-            'payment_method' => $_POST['paymentMethod'],
-            'total_amount' => $total_amount,
-            'name' => $_POST['name'], 
-            'email' => $_POST['email'], 
-            'phone' => $_POST['phone'], 
-            'items' => $items,  // Dữ liệu items cho việc thêm vào bảng order_detail
+        // echo '<pre>';
+        // var_dump($_POST['payment_method']);
+        // echo '</pre>';
+        // die;
+        $order_id = $_POST['order_id'];
+        $total_amount = $_POST['total_amount'];
+        $_SESSION['checkout'] = [
+            'user_id' => $_POST['user_id'] ?? '',
+            'name' => $_POST['name'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'phone' => $_POST['phone'] ?? '',
+            'street' => $_POST['street'] ?? '',
+            'city' => $_POST['cityName'] ?? '',
+            'district' => $_POST['districtName'] ?? '',
+            'ward' => $_POST['wardName'] ?? '',
         ];
 
-        // Tạo đơn hàng
-        $orderModel = new Order();
-        $orderId = $orderModel->createOrder($orderData);
-
-        // Nếu tạo đơn hàng thành công
-        if ($orderId) {
-            // Thêm chi tiết sản phẩm vào bảng order_detail
-            $orderDetailModel = new OrderDetail();
-            foreach ($items as $item) {
-                $orderDetailData = [
-                    'order_id' => $orderId,
-                    'product_id' => $item['product_id'],
-                    'quantity' => $item['quantity'],
-                    'price' => $item['price'],
-                    'name' => $orderData['name'],  
-                    'email' => $orderData['email'],
-                    'phone' => $orderData['phone'],
-                    'address' => $orderData['shipping_address'],
-                ];
-                // Thêm chi tiết đơn hàng vào database
-                $orderDetailModel->createOrderDetail($orderDetailData);
-            }
-            setcookie('cart', '', time() - 3600, '/');
-            // Thông báo thành công
-            NotificationHelper::success('create', 'Đơn hàng đã được tạo thành công!');
-            header("Location: /order/detail/$orderId");
+        if ($_POST['payment_method'] == 'vnpay') {
+            header("Location: /payment/vnpay/$order_id/$total_amount");
             exit;
         } else {
-            NotificationHelper::error('create', 'Tạo đơn hàng thất bại!');
+            $this->checkout();
+            unset($_SESSION['checkout']);
+            exit;
+        }
+    }
+
+    public function checkout()
+    {
+        if (!isset($_SESSION['user']['id'])) {
+            NotificationHelper::error('fail-login', 'Bạn cần đăng nhập để đặt hàng!');
+            header("Location: /login");
+            exit;
+        }
+
+        $user_id = $_SESSION['user']['id'];
+        $name = $_POST['name'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $phone = $_POST['phone'] ?? '';
+        $street = $_POST['street'] ?? '';
+        // $_SESSION['street']=$_POST['street'];
+        $city = $_POST['cityName'] ?? '';
+        // $_SESSION['cityName']=$_POST['cityName'];
+        $district = $_POST['districtName'] ?? '';
+        // $_SESSION['districtName']=$_POST['districtName'];
+        $ward = $_POST['wardName'] ?? '';
+        // $_SESSION['wardName'] = $_POST['wardName'];
+        $shipping_address = trim("$street, $ward, $district, $city");
+        // $_SESSION['shippingAddress'] = $shipping_address;
+        $total_amount = $_POST['totalPrice'] ?? 0;
+        $payment_method = $_POST['payment-method'] ?? 'cod';
+        if (empty($name) || empty($email) || empty($phone) || empty($shipping_address)) {
+            NotificationHelper::error('fail-order-info', 'Vui lòng nhập đầy đủ thông tin!');
             header("Location: /checkout");
             exit;
         }
+
+        $cartModel = new Cart();
+        $cart_data = $cartModel->getCartByUserId($user_id);
+
+        if (empty($cart_data)) {
+            NotificationHelper::error('empty-cart', 'Giỏ hàng trống, không thể đặt hàng!');
+            header("Location: /cart");
+            exit;
+        }
+
+        // Kiểm tra phương thức thanh toán hợp lệ
+        $payment_method = strtolower($payment_method);
+        if (!in_array($payment_method, ['cod', 'vnpay'])) {
+            NotificationHelper::error('invalid-payment', 'Phương thức thanh toán không hợp lệ!');
+            header("Location: /checkout");
+            exit;
+        }
+
+        $items = [];
+        foreach ($cart_data as $cart) {
+            $items[] = [
+                'product_id' => $cart['product_id'],
+                'price' => $cart['price'],
+                'quantity' => $cart['quantity']
+            ];
+        }
+
+        $orderModel = new Order();
+        $order_id = $orderModel->createOrder([
+            'customer_id' => $user_id,
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'order_date' => date('Y-m-d H:i:s'),
+            'status' => ($payment_method === 'cod') ? 0 : 1,
+            'total_amount' => $total_amount,
+            'shipping_address' => $shipping_address,
+            'payment_method' => $payment_method,
+            'items' => $items
+        ]);
+
+        if ($order_id) {
+            if ($payment_method === "vnpay") {
+                $paymentURL = VNPAYHelper::createPaymentUrl($order_id, $total_amount);
+                header('Location: ' . $paymentURL);
+                exit;
+            } else {
+                $cartModel->clearCart($user_id);
+                NotificationHelper::success('order-success', 'Đặt hàng thành công! Bạn sẽ thanh toán khi nhận hàng.');
+                header("Location: /thankyou");
+                exit;
+            }
+        } else {
+            NotificationHelper::error('fail-order', 'Đặt hàng thất bại!');
+            header("Location: /cart");
+            exit;
+        }
     }
 
-    // Hiển thị chi tiết đơn hàng
-    public static function orderDetail($orderId)
+    public static function deleteOrder(int $id)
     {
-        // Kiểm tra người dùng đã đăng nhập chưa
-        if (!AuthHelper::checkLogin()) {
-            NotificationHelper::error('auth', 'Vui lòng đăng nhập để xem đơn hàng.');
-            header('Location: /login');
+        $order = new Order();
+        $order_detail = $order->getOrderById($id);
+
+        if (!$order_detail) {
+            NotificationHelper::error('delete', 'Đơn hàng không tồn tại!');
+            header('location: /history-orders');
             exit;
         }
 
-        // Lấy thông tin người dùng hiện tại
-        $userId = $_SESSION['user']['id'];
-
-        // Lấy dữ liệu đơn hàng
-        $orderModel = new Order();
-        $orderData = $orderModel->getOrderById($orderId);
-
-        // Kiểm tra xem đơn hàng có tồn tại không
-        if (!$orderData) {
-            NotificationHelper::error('detail', 'Không tìm thấy đơn hàng!');
-            header('Location: /');
+        if ($order_detail['status'] != 0) {
+            NotificationHelper::error('delete', 'Không thể hủy đơn hàng khi trạng thái đã xác nhận!');
+            header('location: /history-orders');
             exit;
         }
 
-        // Kiểm tra xem người dùng có quyền truy cập vào đơn hàng này không
-        if ($orderData['customer_id'] !== $userId) {
-            NotificationHelper::error('permission', 'Bạn không có quyền xem đơn hàng này.');
-            header('Location: /');
+        $result = $order->deleteOrder($id);
+
+        if ($result) {
+            NotificationHelper::success('delete', 'Hủy đơn hàng thành công!');
+        } else {
+            NotificationHelper::error('delete', 'Hủy đơn hàng thất bại!');
+        }
+
+        header('location: /history-orders');
+        exit;
+    }
+
+    public function historyOrders()
+    {
+        if (!isset($_SESSION['user']['id'])) {
+            NotificationHelper::error('fail-login', 'Cần đăng nhập để xem lịch sử đơn hàng!');
+            header("Location: /login");
             exit;
         }
 
-        // Lấy chi tiết các sản phẩm trong đơn hàng
-        $orderDetailModel = new OrderDetail();
-        $orderItems = $orderDetailModel->getOrderDetailsByOrderId($orderId);
-        
-        // Tính tổng tiền của các sản phẩm trong đơn hàng
-        $totalAmount = 0;
-        foreach ($orderItems as $item) {
-            $totalAmount += $item['price'] * ($item['total_quantity'] - ($item['total_quantity']/2)); 
-        }
-        $shippingFee = 32000;
+        $user_id = $_SESSION['user']['id'];
+        $orderHistoryModel = new Order();
+        $userOrders = $orderHistoryModel->getOrdersByUser($user_id);
 
-        // Tính tổng cộng (tiền sản phẩm + phí vận chuyển)
-        $totalAmountWithShipping = $totalAmount + $shippingFee;
-
-        // Thêm thông tin tính toán vào dữ liệu đơn hàng
-        $orderData['items'] = $orderItems;
-        $orderData['totalAmount'] = $totalAmount;
-        $orderData['shippingFee'] = $shippingFee;
-        $orderData['totalAmountWithShipping'] = $totalAmountWithShipping;
-        // echo '<pre>';
-        // var_dump($totalAmount);
-
-        // Render view chi tiết đơn hàng
         Header::render();
         Notification::render();
         NotificationHelper::unset();
-        DetailCheckout::render($orderData);
+        OrderHistory::render($userOrders);
         Footer::render();
     }
-    public static function orderHistory()
+
+    public function orderDetails($orderId)
     {
-        // Kiểm tra người dùng đã đăng nhập chưa
-        if (!AuthHelper::checkLogin()) {
-            NotificationHelper::error('auth', 'Vui lòng đăng nhập để xem lịch sử mua hàng.');
-            header('Location: /login');
+        if (!isset($_SESSION['user']['id'])) {
+            NotificationHelper::error('fail-login', 'Cần đăng nhập để xem chi tiết đơn hàng!');
+            header("Location: /login");
             exit;
         }
 
-        // Lấy thông tin người dùng hiện tại
-        $userId = $_SESSION['user']['id'];
+        $user_id = $_SESSION['user']['id'];
+        $orderModel = new Order();
+        $orderDetails = $orderModel->getOrderDetailsByOrderId($orderId);
 
-        // Lấy lịch sử mua hàng
-        $orderDetailModel = new Order();
-        $orderHistory = $orderDetailModel->getOrderHistoryByUserId($userId);
-
-        // Nếu không có lịch sử mua hàng
-        if (empty($orderHistory)) {
-            NotificationHelper::error('history', 'Bạn chưa có đơn hàng nào.');
-            header('Location: /');
+        if (empty($orderDetails) || $orderDetails[0]['customer_id'] != $user_id) {
+            NotificationHelper::error('unauthorized', 'Bạn không có quyền xem đơn hàng này!');
+            header("Location: /history-orders");
             exit;
         }
 
-        // Render view lịch sử đơn hàng
+        $totalAmount = array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $orderDetails));
+        $shippingFee = 0;
+        $totalAmountWithShipping = $totalAmount + $shippingFee;
+
+        $orderInfo = [
+            'customer_name' => $orderDetails[0]['customer_name'] ?? 'Không có dữ liệu',
+            'phone' => $orderDetails[0]['customer_phone'] ?? 'Không có dữ liệu',
+            'shipping_address' => $orderDetails[0]['shipping_address'] ?? 'Không có dữ liệu',
+            'items' => $orderDetails,
+            'totalAmount' => $totalAmount,
+            'shippingFee' => $shippingFee,
+            'totalAmountWithShipping' => $totalAmountWithShipping,
+            'payment_method' => $orderDetails[0]['payment_method'] ?? 'Không có dữ liệu',
+        ];
+
         Header::render();
         Notification::render();
         NotificationHelper::unset();
-        OrderHistory::render($orderHistory);  // Đảm bảo bạn có view OrderHistory để hiển thị dữ liệu
+        DetailCheckout::render($orderInfo);
         Footer::render();
     }
 }

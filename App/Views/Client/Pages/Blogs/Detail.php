@@ -12,6 +12,7 @@ class Detail extends BaseView
 
 
 ?>
+<div style="height: 110px;" class="bg-dark"></div>
         <div class="container my-5">
     <div class="row">
         <!-- Nội dung bài viết -->
@@ -47,10 +48,10 @@ class Detail extends BaseView
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $item['name'] ?></h5>
-                                <div class="card-text"><?= $item['short_description'] ?></div>
+                                
                                 <div class="card-text"><?= $item['publish_date'] ?></div>
                                 
-                                <a href="/Detail/<?= $item['id'] ?>" class="btn btn-cart btn-danger w-100">Xem thêm</a> </div>
+                                <a href="/blogs/detail/<?= $item['id'] ?>" class="btn btn-cart btn-danger w-100">Xem thêm</a> </div>
                         </div>
                     </div>
                 </div>

@@ -1,13 +1,15 @@
 <?php
+// /ngrok http 8080
 
 use App\Helpers\AuthHelper;
 use App\Models\Database;
 session_start();
-ini_set('display_errors', '1');
+ob_start();
+ini_set('display_errors', 1);
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 ini_set('log_errors', TRUE); 
-ini_set('error_log', './logs/php/php-errors.log');
+ini_set('error_log', 'log/php/php-errors.php');
 
 require_once 'vendor/autoload.php';
 
@@ -19,12 +21,13 @@ $dotenv =  Dotenv::createImmutable(paths: __DIR__);/* Dotenv::createImmutable(__
 $echo=$dotenv->load();
 
 
-// require_once 'config.php';
-// AuthHelper::middleware();
+require_once 'config.php';
+AuthHelper::middleware();
 
 // *** Client
 Route::get('/', 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
+Route::get('/thankyou', 'App\Controllers\Client\ProductController@thankyou');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 Route::get('/cart', 'App\Controllers\Client\CartController@index');
 Route::post('/add-to-cart', 'App\Controllers\Client\CartController@addToCart');
@@ -33,10 +36,17 @@ Route::post('/remove-cart-item', 'App\Controllers\Client\CartController@removeCa
 Route::post('/clear-cart', 'App\Controllers\Client\CartController@clearCart');
 Route::post('/addcontact', 'App\Controllers\Client\ContactController@addcontact');
 Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
-Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
+Route::post('/checkout', 'App\Controllers\Client\ProductController@checkout');
 Route::get('/client/products/search', 'App\Controllers\Client\ProductController@search'); 
-Route::get('/history-orders', 'App\Controllers\Client\OrderController@orderHistory');
+Route::get('/history-orders', 'App\Controllers\Client\OrderController@historyOrders');
+Route::delete('/order/{id}', 'App\Controllers\Client\OrderController@deleteOrder'); 
 // Route::get('/admin/contact', 'App\Controllers\Admin\ContactController@index');
+Route::post('/order/create/action', 'App\Controllers\Client\OrderController@checkout'); 
+Route::get('/payment/vnpay/{orderId}/{amount}', 'App\Controllers\Client\PaymentController@vnpayPayment');
+Route::get('/payment/vnpay/callback', 'App\Controllers\Client\PaymentController@vnpayCallback');
+Route::get('/page404', 'App\Controllers\Client\HomeController@page404');
+Route::post('/order/session', 'App\Controllers\Client\OrderController@storeSession'); 
+
 
 
 
@@ -62,7 +72,7 @@ Route::get('/register', 'App\Controllers\Client\AuthController@register');
 Route::post('/registerform', 'App\Controllers\Client\AuthController@registerAction');
 Route::get('/logout', 'App\Controllers\Client\AuthController@logout');
 /* Route::get('/users/{id}', 'App\Controllers\Client\AuthController@edit'); */
-Route::get('/myaccount', 'App\Controllers\Client\AuthController@edit');
+Route::get('/users/{id}', 'App\Controllers\Client\AuthController@edit');
 Route::put('/users/{id}', 'App\Controllers\Client\AuthController@update');
 Route::get('/change-password', 'App\Controllers\Client\AuthController@changePassword');
 Route::put('/change-password', 'App\Controllers\Client\AuthController@changePasswordAction');
@@ -115,8 +125,8 @@ Route::put('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@upda
 Route::delete('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@delete');
 
 // *** Đơn hàng (Order)
-Route::post('/order/create/action', 'App\Controllers\Client\OrderController@createOrder'); 
-Route::get('/order/detail/{id}', 'App\Controllers\Client\OrderController@orderDetail');    
+
+Route::get('/order/detail/{id}', 'App\Controllers\Client\OrderController@orderDetails');    
 Route::get('/admin/orders', 'App\Controllers\Admin\OrderController@index'); 
 Route::delete('/admin/order/{id}', 'App\Controllers\Admin\OrderController@deleteOrder'); 
 Route::get('/admin/order/{id}', 'App\Controllers\Admin\OrderController@edit'); 
@@ -133,7 +143,7 @@ Route::post('/admin/news', 'App\Controllers\Admin\BlogsController@store');
 Route::delete('/admin/news/{id}', 'App\Controllers\Admin\BlogsController@delete');
 
 
-Route::get('/admin', 'App\Controllers\Admin\ContactController@index'); 
+// Route::get('/admin', 'App\Controllers\Admin\ContactController@index'); 
 
 Route::dispatch($_SERVER['REQUEST_URI']);
 

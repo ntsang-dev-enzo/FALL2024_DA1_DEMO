@@ -59,18 +59,13 @@ class AuthValidation{
     }
     public static function edit():bool{
         $is_valid=true;
-        if (!isset($_POST['email']) || $_POST['email'] === '') {
-            NotificationHelper::error('email', 'Email không được trống!');
-            $is_valid = false;
-        } else {
-            $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
-            if (!preg_match($emailPattern, $_POST['email'])) {
-                NotificationHelper::error('email', 'Email không đúng định dạng');
-                $is_valid = false;
-            }
-        }
+
         if (!isset(($_POST['name']))||$_POST['name']==='') {
             NotificationHelper::error('name','Tên người dùng không được trống!');
+            $is_valid=false;
+        }
+        if (!isset(($_POST['phone']))||$_POST['phone']==='') {
+            NotificationHelper::error('phone','Tên người dùng không được trống!');
             $is_valid=false;
         }
 

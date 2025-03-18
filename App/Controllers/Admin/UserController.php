@@ -49,7 +49,6 @@ class UserController
     // xử lý chức năng thêm
     public static function store()
 {
-    // validation các trường dữ liệu
     $is_valid = UserValidation::create();
     if (!$is_valid) {
         NotificationHelper::error('store', 'Thông tin không hợp lệ! Vui lòng kiểm tra lại.');
@@ -57,10 +56,8 @@ class UserController
         exit;
     }
 
-    // lấy tên đăng nhập
-    $username = $_POST['username'];
+    $username = $_POST['email'];
 
-    // kiểm tra tên đăng nhập đã tồn tại chưa
     $user = new User();
     $is_exist = $user->getOneUserByUsername($username);
     if ($is_exist) {
@@ -71,8 +68,7 @@ class UserController
 
     // chuẩn bị dữ liệu
     $data = [
-        'username' => $username,
-        'email' => $_POST['email'],
+        'email' => $username,
         'name' => $_POST['name'],
         'password' => password_hash($_POST['password'], PASSWORD_DEFAULT), // mã hóa mật khẩu
         're_password' => password_hash($_POST['re_password'], PASSWORD_DEFAULT),

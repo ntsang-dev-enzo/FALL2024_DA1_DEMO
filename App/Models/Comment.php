@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Exception;
 class Comment extends BaseModel
 {
     protected $table = 'comments';
@@ -29,6 +29,65 @@ class Comment extends BaseModel
     {
         return $this->getAllByStatus();
     }
+    // Lấy tất cả comment theo product_id có status = 1
+    public function getCommentsByProductAndStatus($product_id)
+    {
+        try {
+            $sql = "SELECT * FROM comments WHERE product_id = ? AND status = 1 ORDER BY created_at DESC";
+            $stmt = $this->_conn->MySQLi()->prepare($sql);
+            $stmt->bind_param('i', $product_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (Exception $e) {
+            die("Lỗi truy vấn bình luận: " . $e->getMessage());
+        }
+    }
+    public function countCommentByProduct()
+{
+    try {
+        $query = "
+            SELECT p.name AS product_name, COUNT(c.id) AS total_comments 
+            FROM comments c
+            JOIN products p ON c.product_id = p.id
+            GROUP BY c.product_id, p.name
+        ";
+        $result = $this->_conn->MySQLi()->query($query);
+
+        if (!$result) {
+            throw new Exception("Lỗi truy vấn: " . $this->_conn->MySQLi()->error);
+        }
+
+        $comments = [];
+        while ($row = $result->fetch_assoc()) {
+            $comments[$row['product_name']] = $row['total_comments'];
+        }
+
+        return $comments; 
+    } catch (Exception $e) {
+        throw new Exception("Lỗi khi đếm comment theo sản phẩm: " . $e->getMessage());
+    }
+}
+
+
+    public function getCommentsByProductId($productId)
+    {
+        try {
+            $stmt = $this->_conn->MySQLi()->prepare("
+                SELECT c.*, u.name, u.username 
+                FROM comments c
+                JOIN users u ON c.user_id = u.id
+                WHERE c.product_id = ?
+                ORDER BY c.created_at DESC
+            ");
+            $stmt->bind_param("i", $productId);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        } catch (Exception $e) {
+            throw new Exception("Lỗi khi lấy bình luận: " . $e->getMessage());
+        }
+    }
+
     public function getAllCommentJoinProductAndUser()
     {
         $result = [];
@@ -68,7 +127,7 @@ class Comment extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT comments.*,customers.username, customers.name, customers.image 
+            $sql = "SELECT comments.*, customers.name, customers.image 
             FROM comments INNER JOIN 
             customers ON comments.user_id=customers.id 
             WHERE comments.product_id=? 
@@ -89,22 +148,7 @@ class Comment extends BaseModel
         return $this->countTotal();
     }
 
-    public function countCommentByProduct()
-    {
-        $result = [];
-        try {
-            $sql = "SELECT COUNT(*) AS count, products.name 
-            FROM comments INNER JOIN products 
-            ON comments.product_id=products.id 
-            GROUP BY comments.product_id 
-            ORDER BY count DESC LIMIT 5;";
-            $result = $this->_conn->MySQLi()->query($sql);
-            return $result->fetch_all(MYSQLI_ASSOC);
-        } catch (\Throwable $th) {
-            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
-            return $result;
-        }
-    }
+
 
 }
 

@@ -39,8 +39,8 @@ class User extends BaseModel
     {
         try {
             // Câu lệnh SQL để thêm người dùng
-            $sql = "INSERT INTO users (username, email, name, password, image, status) 
-                    VALUES (?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO customers ( email, name, password, image, status) 
+                    VALUES ( ?, ?, ?, ?, ?)";
 
             // Kết nối với MySQLi
             $conn = $this->_conn->MySQLi();
@@ -50,8 +50,8 @@ class User extends BaseModel
             
             // Ràng buộc các tham số (chuẩn bị cho câu lệnh SQL)
             $stmt->bind_param(
-                'sssssi', 
-                $userData['username'], 
+                'ssssi', 
+
                 $userData['email'], 
                 $userData['name'], 
                 $userData['password'], 
@@ -89,10 +89,9 @@ class User extends BaseModel
     public function updateUserByUsernameAndEmail( array $data)
     {
         try {
-            $username=$data['username'];
             $email=$data['email'];
             $password=$data['password'];
-            $sql = "UPDATE $this->table SET password='$password' WHERE username ='$username' AND email='$email' ";
+            $sql = "UPDATE $this->table SET password='$password' WHERE  email='$email' ";
 
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);

@@ -55,11 +55,9 @@ class Create extends BaseView
                                     <?php endif; ?>
 
                                     <!-- Các trường nhập liệu -->
-                                    <div class="form-group">
+
                                         <input type="hidden" name="method" value="POST" id="">
-                                        <label for="username">Tên đăng nhập*</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Nhập tên đăng nhập..." name="username" value="<?= htmlspecialchars($data['username'] ?? '') ?>" required>
-                                    </div>
+
 
                                     <div class="form-group">
                                         <label for="email">Email*</label>
@@ -75,10 +73,9 @@ class Create extends BaseView
                                         <label for="password">Mật khẩu*</label>
                                         <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu..." name="password" required>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="re_password">Xác nhận mật khẩu*</label>
-                                        <input type="password" class="form-control" id="re_password" placeholder="Xác nhận mật khẩu..." name="re_password" required>
+                                        <label for="re_password">XÁc nhận mật khẩu*</label>
+                                        <input type="password" class="form-control" id="re_password" placeholder="Nhập mật khẩu..." name="re_password" required>
                                     </div>
 
                                     <div class="form-group">
@@ -99,7 +96,7 @@ class Create extends BaseView
                                 <div class="border-top">
                                     <div class="card-body">
                                         <button type="reset" class="btn btn-danger text-white">Làm lại</button>
-                                        <button type="submit" class="btn btn-primary">Thêm</button>
+                                        <input type="submit" class="btn btn-primary" value="Thêm">
                                     </div>
                                 </div>
                             </form>

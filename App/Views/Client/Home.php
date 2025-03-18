@@ -59,19 +59,19 @@ class Home extends BaseView
             <div class="home_banner-creative-banner">
                 <!-- Large Banner -->
                 <div class="home_banner-item home_banner-large">
-                    <img src="https://scontent.fvca1-3.fna.fbcdn.net/v/t39.30808-6/474572090_592568480226303_1459600964274001330_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=111&ccb=1-7&_nc_sid=f727a1&_nc_ohc=I02lmLVBjS4Q7kNvgE9s3kp&_nc_oc=AdhIJx9R65PqFa5r6znEAYJq9QaLYwiK8MjxyLUwpBHVWbmKzg8NHuZ75z7uulWg5FVxmyARMLQyFO9BqCKu-hED&_nc_zt=23&_nc_ht=scontent.fvca1-3.fna&_nc_gid=AeOFhw9NYoaCLkqH-wQ7QcW&oh=00_AYBinn8lDIAq06xzbaDyNcmhLyVWRVgWEJXr5aMlALceKw&oe=67982344" alt="Bánh kem 1">
+                    <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/480957245_615059734643844_8752257887841576100_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeHQwmjSxNx1O_lxdRZfl6bUMB2IPUiL78IwHYg9SIvvwmcJTSGyIUerEtvJvMM7KAz-vKI-Dy0uDoaCkUcrihm8&_nc_ohc=SHgVMJ0Q8KMQ7kNvgF8L2qg&_nc_oc=Adj4jz2xTzpSs4udQA7veKYvOx1rvd0kS4q6XZaTp1_76BGY10j3Ofes0BWFPA9klgo&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=AtmfuB3it32SHRircMbakA8&oh=00_AYDVhagchK5YqB8BuJ_DU99owLJFQxdPu66QXlgFstzzyQ&oe=67C1CAF6" alt="Bánh kem 1">
                     <div class="home_banner-text">Bánh Kem Socola Đậm Vị</div>
                 </div>
 
                 <!-- Small Banner 1 -->
                 <div class="home_banner-item home_banner-small">
-                    <img src="https://scontent.fvca1-1.fna.fbcdn.net/v/t39.30808-6/474726758_594561106693707_4103127272585303320_n.jpg?stp=dst-jpg_p552x414_tt6&_nc_cat=104&ccb=1-7&_nc_sid=f727a1&_nc_ohc=iJBnGKuhIioQ7kNvgH0ExRU&_nc_oc=AdhgRPwWPIxR_mCttgPTA8S46cMEgJXoKO_oFBtr26jE8mOFOLp5J6J_7VFUQgLMIN9dV_wnkvhAZO0c2hS7cte7&_nc_zt=23&_nc_ht=scontent.fvca1-1.fna&_nc_gid=ACtQh95qVtv4Yeuxv7Ok8Zp&oh=00_AYBxsOub6WF3kDT1jEUk03cx1GqYjyLSrihYGFhRbKq_ig&oe=67980B15" alt="Bánh kem 2">
+                    <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/481053243_615059714643846_5360350595104480824_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEH7XV0BDd1doi3oqRhF2UYWNsJzABSeFxY2wnMAFJ4XENeB_DzyVgusZxp5jAi_ACFzyTiQDTYJKXtvGT4ywAb&_nc_ohc=JRCDm4onHKIQ7kNvgEmuIzf&_nc_oc=AdhPdOFGkEwTAyheepysqp54TRA0Qso8pStcwASrVH9lsJk7g6Im3sY7qOYQL2Zyhr8&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=AtmfuB3it32SHRircMbakA8&oh=00_AYDfoFxi_B9-lMiXbfZHr32ODDNnt3lOy5m8EdeMQkvsBg&oe=67C1E562" alt="Bánh kem 2">
                     <div class="home_banner-text">Đa dạng mẫu mã</div>
                 </div>
 
                 <!-- Small Banner 2 -->
                 <div class="home_banner-item home_banner-small">
-                    <img src="https://scontent.fvca1-1.fna.fbcdn.net/v/t39.30808-6/474639320_594561080027043_8241756399679587856_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=105&ccb=1-7&_nc_sid=f727a1&_nc_ohc=1m5XY4JdShUQ7kNvgFc77Pt&_nc_oc=AdgYBsFgXN2mYT7dy9eUb3bqsptb7pyKATnjB4iRM-nv0teZ8VIB1sfI6HPGTzFaryLboFsWMZc50mkKp9g2zZVR&_nc_zt=23&_nc_ht=scontent.fvca1-1.fna&_nc_gid=ACtQh95qVtv4Yeuxv7Ok8Zp&oh=00_AYDynOBNyU_7VSxYNd6DkNaMhw7_1M5Aeeayu45G2GoiCw&oe=67982F58" alt="Bánh kem 3">
+                    <img src="https://scontent.fvca1-3.fna.fbcdn.net/v/t39.30808-6/480770015_614311964718621_8767263193269310257_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=103&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeFbYtFfCwafc8yqBbsVSr8ZKbM_4O5ok9cpsz_g7miT10H7vErx-Rt3HLiAfNgOV7SIwYwdlwatzAz62OFkuQsd&_nc_ohc=ZLkKLz913WcQ7kNvgGHTD4N&_nc_oc=AdiPhsg-JSOo_s008hgBeGaTMrIQrUP6xZsCf7Y8-iip1fVzGqy9uOu5oCWUWWAvN1Q&_nc_zt=23&_nc_ht=scontent.fvca1-3.fna&_nc_gid=Acawhn4ZErX-eUH3RiuLcOZ&oh=00_AYBerJp4E4HPLc8kXVytaPrpo_AsAHq-iDcJgW274zP_mA&oe=67C1EEAD" alt="Bánh kem 3">
                     <div class="home_banner-text">Dâu Tây Ngọt Ngào</div>
                 </div>
             </div>
@@ -79,196 +79,80 @@ class Home extends BaseView
         <!-- Facts End -->
         <div class="container py-5 product_home_otd">
             <div class="text-center mb-4">
-                <h2 class="fw-bold">Sản Phẩm Bán Chạy Trong Tuần</h2>
+                <h2 class="fw-bold">Sản Phẩm Bánh Kem Bán Chạy Trong Tuần</h2>
                 <p class="text-muted">Cùng xem qua các loại bánh kem hấp dẫn nhất của chúng tôi!</p>
             </div>
             <div class="horizontal-scroll-container" id="scrollContainer">
+                <?php
+
+                foreach ($data['products'] as $item):
+
+                ?>
                 <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 1">
+                    <a href="/products/<?=$item['id']?>"><img style="height: 300px;" src="/public/uploads/products/<?=$item['image']?>" class="card-img-top" alt="Bánh kem 1"></a>
                     <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Tiên Cá</h5>
-                        <p class="card-text text-muted">Hương vị đậm đà.</p>
-                        <p class="fw-bold text-danger">320.000đ</p>
+                        <a href="/products/<?=$item['id']?>"><h5 class="card-title fw-bold"><?=$item['name']?></h5></a>
+                        <p class="card-text text-muted"><?=$item['category_name']?></p>
+                        <p class="fw-bold text-danger"><?=number_format($item['price'])?>đ</p>
                     </div>
                 </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
+                <?php
+                endforeach;
+                ?>
+                
             </div>
         </div>
         <div class="container py-5 product_home_otd">
             <div class="text-center mb-4">
-                <h2 class="fw-bold">Sản Phẩm Bán Chạy Trong Tuần</h2>
-                <p class="text-muted">Cùng xem qua các loại bánh kem hấp dẫn nhất của chúng tôi!</p>
+                <h2 class="fw-bold">Sản Phẩm Bánh Bông Lan Bán Chạy Trong Tuần</h2>
+                <p class="text-muted">Cùng xem qua các loại bánh bông lan hấp dẫn nhất của chúng tôi!</p>
             </div>
             <div class="horizontal-scroll-container" id="scrollContainer">
+                <?php
+
+                foreach ($data['productsV2'] as $item):
+
+                ?>
                 <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 1">
+                    <a href="/products/<?=$item['id']?>"><img style="height: 300px;" src="/public/uploads/products/<?=$item['image']?>" class="card-img-top" alt="Bánh kem 1"></a>
                     <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Tiên Cá</h5>
-                        <p class="card-text text-muted">Hương vị đậm đà.</p>
-                        <p class="fw-bold text-danger">320.000đ</p>
+                        <a href="/products/<?=$item['id']?>"><h5 class="card-title fw-bold"><?=$item['name']?></h5></a>
+                        <p class="card-text text-muted"><?=$item['category_name']?></p>
+                        <p class="fw-bold text-danger"><?=number_format($item['price'])?>đ</p>
                     </div>
                 </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
+                <?php
+                endforeach;
+                ?>
+                
             </div>
         </div>
         <div class="container py-5 product_home_otd">
             <div class="text-center mb-4">
-                <h2 class="fw-bold">Sản Phẩm Bán Chạy Trong Tuần</h2>
-                <p class="text-muted">Cùng xem qua các loại bánh kem hấp dẫn nhất của chúng tôi!</p>
+                <h2 class="fw-bold">Sản Phẩm Khác Bán Chạy Trong Tuần</h2>
+                <p class="text-muted">Cùng xem qua các loại bánh khác hấp dẫn nhất của chúng tôi!</p>
             </div>
             <div class="horizontal-scroll-container" id="scrollContainer">
+                <?php
+
+                foreach ($data['productsV3'] as $item):
+
+                ?>
                 <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 1">
+                    <a href="/products/<?=$item['id']?>"><img style="height: 300px;" src="/public/uploads/products/<?=$item['image']?>" class="card-img-top" alt="Bánh kem 1"></a>
                     <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Tiên Cá</h5>
-                        <p class="card-text text-muted">Hương vị đậm đà.</p>
-                        <p class="fw-bold text-danger">320.000đ</p>
+                        <a href="/products/<?=$item['id']?>"><h5 class="card-title fw-bold"><?=$item['name']?></h5></a>
+                        <p  class="card-text text-muted"><?=$item['category_name']?></p>
+                        <p class="fw-bold text-danger"><?=number_format($item['price'])?>đ</p>
                     </div>
                 </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
+                <?php
+                endforeach;
+                ?>
+                
             </div>
         </div>
-        <div class="container py-5 product_home_otd">
-            <div class="text-center mb-4">
-                <h2 class="fw-bold">Sản Phẩm Bán Chạy Trong Tuần</h2>
-                <p class="text-muted">Cùng xem qua các loại bánh kem hấp dẫn nhất của chúng tôi!</p>
-            </div>
-            <div class="horizontal-scroll-container" id="scrollContainer">
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 1">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Tiên Cá</h5>
-                        <p class="card-text text-muted">Hương vị đậm đà.</p>
-                        <p class="fw-bold text-danger">320.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="min-width: 250px;">
-                    <img style="height: 300px;" src="https://via.placeholder.com/300" class="card-img-top" alt="Bánh kem 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bánh Kem Spiderman</h5>
-                        <p class="card-text text-muted">Vị trà xanh thơm mát.</p>
-                        <p class="fw-bold text-danger">240.000đ</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <!-- About Start -->
         <div class="container-xxl bg-light my-6 pt-0">
             <div class="container">
@@ -343,10 +227,10 @@ class Home extends BaseView
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="row img-twice position-relative h-100">
                             <div class="col-6">
-                                <img class="img-fluid rounded" src="https://scontent.fvca1-3.fna.fbcdn.net/v/t39.30808-6/471244565_570927329066256_3659720442242993367_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHKLm2QGU2XPejyMVUQDio-Eh1Wb_WEIWwSHVZv9YQhbHh9iigoWDm50Ly2YjddWGUUfYl05aiuqBZnsgxhajzN&_nc_ohc=6e_eDzdNYtIQ7kNvgG5T42S&_nc_oc=AdgmXOr45Lsx81KQtGvn2ADgAQYGz1v1PLaGmgBYjDdkpDJYIEf-AYE-dko0K83qr2cnrsnTyzrqiuE0yVzaJkB0&_nc_zt=23&_nc_ht=scontent.fvca1-3.fna&_nc_gid=AlwKtHbcnkEBSE0yN0Rh1VI&oh=00_AYDy3xtLTumqL3ZE4LOSY4IsFAqOfBniPcJe85zet4Ca6Q&oe=679ADF19" alt="">
+                                <img class="img-fluid rounded" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t39.30808-6/438225023_3752193485099266_7681271445865456084_n.jpg?stp=c0.225.1366.1366a_dst-jpg_s206x206_tt6&_nc_cat=104&ccb=1-7&_nc_sid=92e838&_nc_eui2=AeHm-oqz6qZAAHbaEDmL1bKzvW-35woD3ye9b7fnCgPfJyeKRutfV8UjcEUpr7beCBwG7F2ByJoIz9An-YB-uW9u&_nc_ohc=qaMSFr6Q6TEQ7kNvgGdXrwK&_nc_oc=Adh5Jh890DrxT868p_7QuzPI0j2PMJGvKTpoaRlC8jBWVcNM84MuV6ZECQBPusZ28js&_nc_zt=23&_nc_ht=scontent.fvca1-2.fna&_nc_gid=AykFYD6iLZF35gOaW_PRAls&oh=00_AYBPpB43piE_Sk79sypgxn0wIlFqDoCGeYzOcGMNIUN4vQ&oe=67C2002A" alt="">
                             </div>
                             <div class="col-6 align-self-end">
-                                <img class="img-fluid rounded" src="https://scontent.fvca1-1.fna.fbcdn.net/v/t39.30808-6/474726758_594561106693707_4103127272585303320_n.jpg?stp=dst-jpg_p552x414_tt6&_nc_cat=104&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEs069jNSPpN86B1kqkRJR-upz42sMjkI26nPjawyOQjeg9jhQR1OrQFMXtTMn5g0VlKt3k2U3XDgpCr-9UlHp1&_nc_ohc=vdrGyqHt62IQ7kNvgE87UIR&_nc_oc=AdhuwAv5j4sn_RKj0h8VgVHoQIcjDyA2rWJfr6KlAbKyPzgJ0TuXsvT7jVrp5EuBDGUqLh21XLufqY1W6SR1YiPa&_nc_zt=23&_nc_ht=scontent.fvca1-1.fna&_nc_gid=A8HoovwwsN8hKVj03WjEC-G&oh=00_AYC9D0QnxZL25DjDsC5jjaaq7s4xF9eLfbCCKGvlWtEcCA&oe=679AE655" alt="">
+                                <img class="img-fluid rounded" src="https://scontent.fvca1-2.fna.fbcdn.net/v/t39.30808-6/438225023_3752193485099266_7681271445865456084_n.jpg?stp=c0.225.1366.1366a_dst-jpg_s206x206_tt6&_nc_cat=104&ccb=1-7&_nc_sid=92e838&_nc_eui2=AeHm-oqz6qZAAHbaEDmL1bKzvW-35woD3ye9b7fnCgPfJyeKRutfV8UjcEUpr7beCBwG7F2ByJoIz9An-YB-uW9u&_nc_ohc=qaMSFr6Q6TEQ7kNvgGdXrwK&_nc_oc=Adh5Jh890DrxT868p_7QuzPI0j2PMJGvKTpoaRlC8jBWVcNM84MuV6ZECQBPusZ28js&_nc_zt=23&_nc_ht=scontent.fvca1-2.fna&_nc_gid=AykFYD6iLZF35gOaW_PRAls&oh=00_AYBPpB43piE_Sk79sypgxn0wIlFqDoCGeYzOcGMNIUN4vQ&oe=67C2002A" alt="">
                             </div>
                         </div>
                     </div>

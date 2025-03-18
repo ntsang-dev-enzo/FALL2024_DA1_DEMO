@@ -11,22 +11,6 @@ public static function create(): bool{
         NotificationHelper::error('name','Tên sản phẩm không được trống!');
         $is_valid=false;
     } 
-    if (!isset(($_POST['publisher']))||$_POST['publisher']==='') {
-        NotificationHelper::error('publisher','Nhà xuất bản không được trống!');
-        $is_valid=false;
-    } 
-    if (!isset(($_POST['author']))||$_POST['author']==='') {
-        NotificationHelper::error('author','Tác giả không được trống!');
-        $is_valid=false;
-    } 
-    if (!isset(($_POST['supplier']))||$_POST['supplier']==='') {
-        NotificationHelper::error('supplier','Nhà cung cấp không được trống!');
-        $is_valid=false;
-    } 
-    if (!isset(($_POST['cover']))||$_POST['cover']==='') {
-        NotificationHelper::error('cover','Hình thức bìa không được trống!');
-        $is_valid=false;
-    } 
     if (!isset(($_POST['category_id']))||$_POST['category_id']==='') {
         NotificationHelper::error('category_id','Tên loại không được trống!');
         $is_valid=false;

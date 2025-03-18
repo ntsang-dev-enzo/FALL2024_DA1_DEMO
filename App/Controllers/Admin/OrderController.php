@@ -37,7 +37,7 @@ class OrderController
 public static function edit(int $id)
 {
     $order = new Order();
-    $data = $order->getOneOrder($id);
+    $data = $order->getOrderById($id);
     
     if (!$data) {
         NotificationHelper::error('edit', 'Không thể xem đơn hàng này!');
@@ -57,29 +57,33 @@ public static function edit(int $id)
 // Xử lý chức năng sửa (cập nhật đơn hàng)
 public static function update(int $id)
 {
-    // Validate các trường dữ liệu
-    // (Bạn có thể áp dụng validation tại đây nếu cần)
-
     $order = new Order();
-
-    // Dữ liệu cần cập nhật
-    $data = [
-        'status' => $_POST['status'],
-    ];
-
-    // Cập nhật đơn hàng
+    $currentOrder = $order->getOrderById($id);
+    
+    if (!$currentOrder) {
+        NotificationHelper::error('update', 'Đơn hàng không tồn tại!');
+        header('location: /admin/orders');
+        exit;
+    }
+    $currentStatus = (int) $currentOrder['status']; 
+    $newStatus = (int) $_POST['status'];
+    if ($newStatus <= $currentStatus) {
+        NotificationHelper::error('update', 'Không thể cập nhật trạng thái lùi về!');
+        header("location: /admin/order/$id");
+        exit;
+    }
+    $data = ['status' => $newStatus];
     $result = $order->updateOrder($id, $data);
-
     if ($result) {
         NotificationHelper::success('update', 'Cập nhật đơn hàng thành công!');
         header('location: /admin/orders');
-        exit;
     } else {
         NotificationHelper::error('update', 'Cập nhật đơn hàng thất bại!');
-        header("location: /admin/orders/$id");
-        exit;
+        header("location: /admin/order/$id");
     }
+    exit;
 }
+
 
 
 //     // thực hiện xoá
@@ -89,11 +93,11 @@ public static function update(int $id)
         $result=$order->deleteOrder($id);
         
         if ($result) {
-            NotificationHelper::success('delete','Xóa người dùng thành công!');
+            NotificationHelper::success('delete','Hủy đơn hàng thành công!');
             header('location: /admin/orders');
             exit;
         }else{
-            NotificationHelper::error('delete','Xóa người dùng thất bại!');
+            NotificationHelper::error('delete','Hủy đơn hàng thất bại!');
             header('location: /admin/orders');
             exit;
         }

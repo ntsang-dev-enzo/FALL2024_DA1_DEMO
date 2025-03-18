@@ -95,12 +95,6 @@ class CategoryController
     // hiển thị giao diện form sửa
     public static function edit(int $id)
     {
-        // giả sử data là mảng dữ liệu lấy được từ database
-        // $data = [
-        //     'id' => $id,
-        //     'name' => 'Category 1',
-        //     'status' => 1
-        // ];
         $category=new Category();
         $data = $category->getOneCategory($id);
         if (!$data) {
